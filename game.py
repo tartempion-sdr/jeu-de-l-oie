@@ -1,8 +1,9 @@
 import pygame
-from joueurclass import Joueur1
+from joueurclass import Joueur
 
 
 
 class Game:
     def __init__(self):
-        self.joueur = Joueur1()
+        self.joueur1 = Joueur()
+        self.joueurIA = Joueur()
