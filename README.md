@@ -8,6 +8,8 @@ git push origine master
 
 jeu de l'oie read me
 
+![alt tag](https://github.com/tartempion-sdr/jeu-de-l-oie/blob/master/assets/verdure850x567.jpg)
+
 a règle de base est intangible. Le jeu se joue avec 2 dés. Un premier coup décide de celui qui va commencer. L'oie signale les cases fastes disposées de 9 en 9. Nul ne peut s'arrêter sur ces cases bénéfiques et on double alors le jet.
 
     Qui fait 9 au premier jet, ira au 26 s'il l'a fait par 6 et 3, ou au 53 s'il l'a fait par 4 et 5.
