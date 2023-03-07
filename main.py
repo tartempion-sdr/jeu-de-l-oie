@@ -123,7 +123,7 @@ while running:
                     game.cestaquidejouer = False
                     break
            
-                #game.cestaquidejouer is False: 
+                 
         elif game.cestaquidejouer is False:            
             game.joueurIA.printrandom()
             game.joueurIA.deplacementdupion()
@@ -132,15 +132,17 @@ while running:
             continue
         
 # a améliorer ... lance le "de" avec la souris, prochainement que la souris ne lance la fonction que sur le de
-        # elif event.type == pygame.MOUSEBUTTONDOWN and game.cestaquidejouer is True:
+        if event.type == pygame.MOUSEBUTTONDOWN and game.cestaquidejouer is True:
              
-        #     game.joueur1.printrandom() 
-        #     game.joueur1.deplacementdupion()
-        #     game.cestaquidejouer = False
-        
+            game.joueur1.printrandom() 
+            game.joueur1.deplacementdupion()
+            game.cestaquidejouer = False
+            break
+
+        elif game.cestaquidejouer is False: 
+            game.joueurIA.printrandom()
+            game.joueurIA.deplacementdupion()
             
-        #     game.joueurIA.printrandom()
-        #     game.joueurIA.deplacementdupion()
-            
-        #     game.cestaquidejouer = True
-            #time.sleep(1)
+            game.cestaquidejouer = True
+            time.sleep(2)
+            continue
