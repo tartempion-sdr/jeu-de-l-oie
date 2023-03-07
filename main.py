@@ -3,6 +3,7 @@ import random
 from joueurclass import Joueur
 from game import Game
 import time
+from grille import Grille
 pygame.init()
 
 
@@ -15,7 +16,7 @@ pygame.display.set_caption("jeu de l'oie")
 # generer la fenetre de notre jeu
 screen = pygame.display.set_mode((850,567))
 
-background = pygame.image.load("assets/verdure850x567.jpg")
+background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
 # en cour - generer dé, pion, face123456
 
@@ -34,7 +35,7 @@ running = True
 
 # boucle tant que cette condition est vrai
 while running:
-    # recule et affiche le pion a qui le tour
+    #  affiche le pion a qui le tour en bas a droite
     
     if game.cestaquidejouer  == True:
                 pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
@@ -66,17 +67,17 @@ while running:
 
     if game.joueurIA.valeurdude_joueurIA == 0:    
         faceDuDe_joueurIA = pygame.image.load("assets/de.png")
-    elif game.joueurIA.valeurdude_joueur1 == 1:    
+    elif game.joueurIA.valeurdude_joueurIA == 1:    
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-1-b.svg.png")
-    elif game.joueurIA.valeurdude_joueur1 == 2:
+    elif game.joueurIA.valeurdude_joueurIA == 2:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-2-b.svg.png")
-    elif game.joueurIA.valeurdude_joueur1 == 3:
+    elif game.joueurIA.valeurdude_joueurIA == 3:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-3-b.svg.png")
-    elif game.joueurIA.valeurdude_joueur1 == 4:
+    elif game.joueurIA.valeurdude_joueurIA == 4:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-4-b.svg.png")
-    elif game.joueurIA.valeurdude_joueur1 == 5:
+    elif game.joueurIA.valeurdude_joueurIA == 5:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-5-b.svg.png")
-    elif game.joueurIA.valeurdude_joueur1 == 6:
+    elif game.joueurIA.valeurdude_joueurIA == 6:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-6-b.svg.png")
         
 
@@ -90,16 +91,19 @@ while running:
     screen.blit(game.joueur1.image_joueur1, game.joueur1.rect_joueur1)
     screen.blit(game.joueurIA.image_joueurIA, game.joueurIA.rect_joueurIA)
     
-    screen.blit(pionQuiIndiquePoint_joueur1,(57,0))
-    screen.blit(pionQuiIndiquePoint_joueurIA,(57,57))
+    # pion qui indique les des
+    screen.blit(pionQuiIndiquePoint_joueur1,(387,258))
+    screen.blit(pionQuiIndiquePoint_joueurIA,(387,315))
+    
+    #pion a qui le tour
+    screen.blit(pionAQuiLeTour,(22,82))
+    #de cliquable , pas encors
+    screen.blit(decliquable,(79,82))
 
-    screen.blit(pionAQuiLeTour,(736,510))
-
-    screen.blit(faceDuDe_joueur1,(0,0))
-    screen.blit(faceDuDe_joueurIA,(0,57))
-
-    screen.blit(decliquable,(793,510))
-
+    #des
+    screen.blit(faceDuDe_joueur1,(330,258))
+    screen.blit(faceDuDe_joueurIA,(330,315))
+    
     #mettre à jour l'arriere plan
     pygame.display.flip()
 
@@ -118,15 +122,15 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key==pygame.K_d and game.cestaquidejouer is True:
                  
-                    game.joueur1.printrandom() 
-                    game.joueur1.deplacementdupion()
+                    game.joueur1.printrandom1() 
+                    game.joueur1.deplacementdupion1()
                     game.cestaquidejouer = False
                     break
            
                  
         elif game.cestaquidejouer is False:            
-            game.joueurIA.printrandom()
-            game.joueurIA.deplacementdupion()
+            game.joueurIA.printrandomIA()
+            game.joueurIA.deplacementdupionIA()
             game.cestaquidejouer = True
             time.sleep(2)
             continue
@@ -134,14 +138,14 @@ while running:
 # a améliorer ... lance le "de" avec la souris, prochainement que la souris ne lance la fonction que sur le de
         if event.type == pygame.MOUSEBUTTONDOWN and game.cestaquidejouer is True:
              
-            game.joueur1.printrandom() 
-            game.joueur1.deplacementdupion()
+            game.joueur1.printrandom1() 
+            game.joueur1.deplacementdupion1()
             game.cestaquidejouer = False
             break
 
         elif game.cestaquidejouer is False: 
-            game.joueurIA.printrandom()
-            game.joueurIA.deplacementdupion()
+            game.joueurIA.printrandomIA()
+            game.joueurIA.deplacementdupionIA()
             
             game.cestaquidejouer = True
             time.sleep(2)
