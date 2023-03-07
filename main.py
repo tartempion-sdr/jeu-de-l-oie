@@ -36,9 +36,9 @@ while running:
     screen.blit(game.joueur1.image_joueur1, game.joueur1.rect_joueur1)
     screen.blit(game.joueurIA.image_joueurIA, game.joueurIA.rect_joueurIA)
     
-    screen.blit(pionAQuiLeTour,(636,510))
-    screen.blit(faceDuDe,(693,500))
-    screen.blit(decliquable,(750,467))
+    screen.blit(pionAQuiLeTour,(679,510))
+    screen.blit(faceDuDe,(736,510))
+    screen.blit(decliquable,(793,510))
 
     #mettre à jour l'arriere plan
     pygame.display.flip()
