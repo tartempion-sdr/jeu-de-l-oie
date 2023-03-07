@@ -55,3 +55,8 @@ while running:
                 
                 game.joueur1.printrandom() 
                 game.joueur1.deplacementdupion()
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print("OK OK")
+            game.joueur1.printrandom() 
+            game.joueur1.deplacementdupion()
