@@ -1,4 +1,4 @@
-![alt tag](https://github.com/tartempion-sdr/jeu-de-l-oie/blob/master/assets/verdure850x567.jpg)
+![alt tag](https://github.com/tartempion-sdr/jeu-de-l-oie/blob/master/assets/capture-decran-de-2023-03-08-00-26-29.png)
 jeu de l'oie read me
 a règle de base est intangible. Le jeu se joue avec 2 dés. Un premier coup décide de celui qui va commencer. L'oie signale les cases fastes disposées de 9 en 9. Nul ne peut s'arrêter sur ces cases bénéfiques et on double alors le jet.
 
