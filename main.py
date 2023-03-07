@@ -43,4 +43,6 @@ while running:
             pygame.quit()
         elif event.type == pygame.KEYDOWN:
             if event.key==pygame.K_d:
-                deresultat = game.joueur.printrandom()
+                
+                game.joueur.printrandom() 
+                game.joueur.deplacementdupion()

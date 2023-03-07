@@ -9,7 +9,7 @@ class Joueur1(pygame.sprite.Sprite):
         # self.nomjoueur = ""
         # self.position = int()
         # self.grille = list
-        self.valeurdude = ""
+        self.valeurdude = int()
         self.image = pygame.image.load("assets/blanc-chess-mini.png")
         self.rect = self.image.get_rect()
         self.rect.x = 0
@@ -31,13 +31,20 @@ class Joueur1(pygame.sprite.Sprite):
 
     def printrandom(self):
             
-            de = str(random.randint(1, 6))
-            deresultat = de
-            print(Joueur1.valeurdude)
-            return deresultat 
+        de = int(random.randint(1, 6))
+        deresultat = de
+        self.valeurdude = deresultat
+        print(self.valeurdude)
+        return deresultat 
                 
-     
-        
+       
+       
+    def deplacementdupion(self):
+
+        print(type(self.rect.x))
+        print(type(self.valeurdude))
+        self.rect.x += 5 *  self.valeurdude
+                
     
 
 
