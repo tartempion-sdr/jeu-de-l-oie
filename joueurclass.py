@@ -1,31 +1,34 @@
 import pygame
 import random
 import time
+from grille import Grille
 #from game import Game
 # cree une class qui representera notre joueur
 
 class Joueur(pygame.sprite.Sprite):
     
+    
     def __init__(self):
         super().__init__()
         # self.nomjoueur = ""
-        # self.position = int()
+        
         # self.grille = list
-        self.valeurdude_joueur1 = int()
-        self.valeurdude_joueurIA = int()
+        self.valeurdude_joueur1 = 0
+        self.valeurdude_joueurIA = 0
+        
+        self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
+        self.rect_joueur1 = self.image_joueur1.get_rect()
+        
+        self.rect_joueur1.x = 48
+        self.rect_joueur1.y = 22
+        
+        
         
 
         self.image_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         self.rect_joueurIA = self.image_joueurIA.get_rect()
-        self.rect_joueurIA.x = 18
-        self.rect_joueurIA.y = 20
-
-
-        self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
-        self.rect_joueur1 = self.image_joueur1.get_rect()
-        self.rect_joueur1.x = 48
-        # -57 pour la hauteur du sprite car c'est calculer du coin droite en haut du sprit
-        self.rect_joueur1.y = 20
+        self.rect_joueurIA.x = 48
+        self.rect_joueurIA.y = 22
 
 
     def entrez_votre_nom(self):
@@ -40,28 +43,29 @@ class Joueur(pygame.sprite.Sprite):
     
   
 
-    def printrandom1(self):     
+    def printrandom1(self):  
+
         de = int(random.randint(1, 6))
-        deresultat = de
-        
+        deresultat = de 
         self.valeurdude_joueur1 = deresultat
         #print(self.valeurdude_joueur1)
-              
+        
 
     def deplacementdupion1(self):
+        position1 = self.valeurdude_joueur1
+        self.rect_joueur1.x = Grille[position1][1]
+        self.rect_joueur1.y = Grille[position1][2]
         
-        self.rect_joueur1.x += 100 +   self.valeurdude_joueur1
 
-
+    
     def printrandomIA(self):
-            deIA = int(random.randint(1, 6))
-            deresultatIA = deIA 
-            
-            self.valeurdude_joueurIA = deresultatIA
-            #print(self.valeurdude_joueurIA)
+        deIA = int(random.randint(1, 6))
+        deresultatIA = deIA 
+        self.valeurdude_joueurIA = deresultatIA
+        #print(self.valeurdude_joueurIA)
         
-    def deplacementdupionIA(self):    
-        self.rect_joueurIA.x += 100 +  self.valeurdude_joueurIA
-    
-
-    
+    def deplacementdupionIA(self):   
+        positionIA = self.valeurdude_joueurIA
+        self.rect_joueurIA.x = Grille[positionIA][1]
+        self.rect_joueurIA.y = Grille[positionIA][2]
+        

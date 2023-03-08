@@ -3,7 +3,7 @@ import random
 from joueurclass import Joueur
 from game import Game
 import time
-from grille import Grille
+
 pygame.init()
 
 
@@ -89,6 +89,7 @@ while running:
     
     # applique l'image de mon joueur1  !!!!!!  dé, pion, face123456
     screen.blit(game.joueur1.image_joueur1, game.joueur1.rect_joueur1)
+    
     screen.blit(game.joueurIA.image_joueurIA, game.joueurIA.rect_joueurIA)
     
     # pion qui indique les des
