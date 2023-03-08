@@ -146,7 +146,7 @@ while running:
 
         elif game.cestaquidejouer is False: 
             game.joueurIA.printrandomIA()
-            game.joueurIA.deplacementdupionIA()
+            positionIA = game.joueurIA.deplacementdupionIA()
             
             game.cestaquidejouer = True
             time.sleep(2)

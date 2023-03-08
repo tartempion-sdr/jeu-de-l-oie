@@ -15,11 +15,13 @@ class Joueur(pygame.sprite.Sprite):
         # self.grille = list
         self.valeurdude_joueur1 = 0
         self.valeurdude_joueurIA = 0
-        
+        self.position1 = 0
+        self.positionIA = 0
+
         self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
         self.rect_joueur1 = self.image_joueur1.get_rect()
         
-        self.rect_joueur1.x = 48
+        self.rect_joueur1.x = 18
         self.rect_joueur1.y = 22
         
         
@@ -27,7 +29,7 @@ class Joueur(pygame.sprite.Sprite):
 
         self.image_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         self.rect_joueurIA = self.image_joueurIA.get_rect()
-        self.rect_joueurIA.x = 48
+        self.rect_joueurIA.x = 18
         self.rect_joueurIA.y = 22
 
 
@@ -52,10 +54,11 @@ class Joueur(pygame.sprite.Sprite):
         
 
     def deplacementdupion1(self):
-        position1 = self.valeurdude_joueur1
-        self.rect_joueur1.x = Grille[position1][1]
-        self.rect_joueur1.y = Grille[position1][2]
         
+        self.position1 += self.valeurdude_joueur1
+        self.rect_joueur1.x = Grille[self.position1][1] 
+        self.rect_joueur1.y = Grille[self.position1][2]
+        return
 
     
     def printrandomIA(self):
@@ -63,9 +66,11 @@ class Joueur(pygame.sprite.Sprite):
         deresultatIA = deIA 
         self.valeurdude_joueurIA = deresultatIA
         #print(self.valeurdude_joueurIA)
+    
+             
+    def deplacementdupionIA(self): 
         
-    def deplacementdupionIA(self):   
-        positionIA = self.valeurdude_joueurIA
-        self.rect_joueurIA.x = Grille[positionIA][1]
-        self.rect_joueurIA.y = Grille[positionIA][2]
-        
+        self.positionIA += self.valeurdude_joueurIA
+        self.rect_joueurIA.x = int(Grille[self.positionIA][1]) +30
+        self.rect_joueurIA.y = Grille[self.positionIA][2]
+        return
