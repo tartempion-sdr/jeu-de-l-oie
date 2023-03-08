@@ -29,7 +29,7 @@ class Joueur(pygame.sprite.Sprite):
 
         self.image_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         self.rect_joueurIA = self.image_joueurIA.get_rect()
-        self.rect_joueurIA.x = 18
+        self.rect_joueurIA.x = 48
         self.rect_joueurIA.y = 22
 
 
