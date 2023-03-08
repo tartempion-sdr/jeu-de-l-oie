@@ -17,13 +17,13 @@ class Joueur(pygame.sprite.Sprite):
 
         self.image_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         self.rect_joueurIA = self.image_joueurIA.get_rect()
-        self.rect_joueurIA.x = 10
+        self.rect_joueurIA.x = 18
         self.rect_joueurIA.y = 20
 
 
         self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
         self.rect_joueur1 = self.image_joueur1.get_rect()
-        self.rect_joueur1.x = 22
+        self.rect_joueur1.x = 48
         # -57 pour la hauteur du sprite car c'est calculer du coin droite en haut du sprit
         self.rect_joueur1.y = 20
 
