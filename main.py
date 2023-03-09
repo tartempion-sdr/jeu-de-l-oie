@@ -18,9 +18,11 @@ screen = pygame.display.set_mode((850,567))
 
 background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
-# en cour - generer dé, pion, face123456
+background2 = pygame.image.load("assets/verdure850x567.png")
+pictureAcceuil = pygame.image.load("assets/oie2.jpeg")
+messageAcceuil = pygame.image.load("assets/message-acceuil.png")
 
-     
+# en cour - generer dé, pion, face123456
 pionQuiIndiquePoint_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
 pionQuiIndiquePoint_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         
@@ -31,6 +33,42 @@ decliquable = pygame.image.load("assets/de.png")
 
 game = Game()
 running = True
+
+acceuil = True
+
+
+while acceuil :
+
+    # appliquer a l'arriere plan de notre jeu
+    screen.blit(background2,(0,0))
+    screen.blit(pictureAcceuil,(317,333))
+    screen.blit(messageAcceuil,(0,506))
+    
+    
+    #mettre à jour l'arriere plan
+    pygame.display.flip()
+
+
+    # si le joueur clic , le joueur passe au jeu
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            acceuil = False
+            
+        elif event.type == pygame.QUIT:
+            running = False
+            pygame.quit()    
+            
+    
+    
+    # si le joueur ferme cette fenetre
+    
+    # for event in pygame.event.get():
+    #     # que l'evenement est fermeture de fenetre
+    #     if event.type == pygame.QUIT:
+    #         running = False
+    #         pygame.quit()
+
+    
 
 
 # boucle tant que cette condition est vrai

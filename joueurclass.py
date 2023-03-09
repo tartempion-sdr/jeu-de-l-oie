@@ -54,19 +54,11 @@ class Joueur(pygame.sprite.Sprite):
         
 
     def deplacementdupion1(self):
-    
+        time.sleep(1)
         self.position1 += self.valeurdude_joueur1
         self.rect_joueur1.x = Grille[self.position1][1] 
         self.rect_joueur1.y = Grille[self.position1][2]
-        # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
         
-        
-        if self.position1 == self.positionIA:
-            self.positionIA -= self.valeurdude_joueurIA
-            self.rect_joueurIA.x = int(Grille[self.positionIA][1]) +30
-            self.rect_joueurIA.y = Grille[self.positionIA][2]
-            time.sleep(1)
-            pass
 
     def printrandomIA(self):
         deIA = int(random.randint(1, 6))
@@ -76,16 +68,9 @@ class Joueur(pygame.sprite.Sprite):
     
              
     def deplacementdupionIA(self): 
-        
+        time.sleep(1)
         self.positionIA += self.valeurdude_joueurIA
         self.rect_joueurIA.x = int(Grille[self.positionIA][1]) +30
         self.rect_joueurIA.y = Grille[self.positionIA][2]
         
-        # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
         
-        if self.positionIA == self.position1:
-            self.position1 -= self.valeurdude_joueurIA
-            self.rect_joueur1.x = Grille[self.position1][1] 
-            self.rect_joueur1.y = Grille[self.position1][2]
-            time.sleep(1)
-            pass
