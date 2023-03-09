@@ -166,108 +166,167 @@ while running:
                     
                     game.joueur1.printrandom1() 
                     game.joueur1.deplacementdupion1()
-                    game.cestaquidejouer = False
                     
+                    # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
+                    if game.joueur1.position1 == game.joueurIA.positionIA :
+                        game.joueurIA.redeplacementdupionIA()
+                        game.joueurIA.positionIA -= game.joueur1.valeurdude_joueur1
+                        game.joueurIA.redeplacementdupionIA()
+
+                    # out of range > 
+                    if game.joueur1.position1 == 69:
+                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -5
+                        game.joueur1.redeplacementdupion1()
+
+                    # out of range > 
+                    if game.joueur1.position1 == 68:
+                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -4
+                        game.joueur1.redeplacementdupion1()
+
+                    # out of range > 
+                    if game.joueur1.position1 == 67:
+                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -3
+                        game.joueur1.redeplacementdupion1()
+                           
+                    # out of range > 
+                    if game.joueur1.position1 == 66:
+                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -2
+                        game.joueur1.redeplacementdupion1()
+                           
+                    # out of range > 
+                    if game.joueur1.position1 == 65:
+                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -1
+                        game.joueur1.redeplacementdupion1()
+                           
+                    # out of range > 
+                    if game.joueur1.position1 == 64:
+                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 
+                        game.joueur1.redeplacementdupion1()
+                            
                     if game.joueur1.position1 == 63:
                         print("l'IA HALLL 9000 A GAGNER !!!!!!")
                         #acceuil = True
 
                     if game.joueur1.position1 == 58:
                         game.joueur1.position1 = 0
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
                         
 
                     if game.joueur1.position1 == 46:
                         game.joueur1.position1 = 54
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
 
                     if game.joueur1.position1 == 42:
                         game.joueur1.position1 = 30
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
 
                     if game.joueur1.position1 == 40:
                         game.joueur1.position1 = 62
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
 
                     if game.joueur1.position1 == 36:
                         game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
 
                     if game.joueur1.position1 == 27:
                         game.joueur1.position1 = 57
-                        game.joueur1.deplacementdupion1()     
+                        game.joueur1.redeplacementdupion1()     
 
                     if game.joueur1.position1 == 26:
                         game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
 
                     if game.joueur1.position1 == 8:
                         game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.deplacementdupion1()
+                        game.joueur1.redeplacementdupion1()
 
-                    if game.joueur1.position1 == game.joueurIA.positionIA :
-                        # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
-                        game.joueurIA.positionIA -= game.joueur1.valeurdude_joueur1
-                        game.joueur1.deplacementdupion1()
-                        #pass
-                    
-                        #break 
+                    else:
+                        game.cestaquidejouer = False
+
                     
         # IA joueur
         elif game.cestaquidejouer is False: 
             time.sleep(1)           
             game.joueurIA.printrandomIA()
             game.joueurIA.deplacementdupionIA()
-            game.cestaquidejouer = True
             
             
+            # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
+            if game.joueurIA.positionIA == game.joueur1.position1 :
+                game.joueur1.redeplacementdupion1()
+                game.joueur1.position1 -= game.joueurIA.valeurdude_joueurIA
+                game.joueur1.redeplacementdupion1()
+            
+            # out of range >
+            if game.joueurIA.positionIA == 69:
+                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -5
+                game.joueurIA.redeplacementdupionIA()
+            
+            # out of range >
+            if game.joueurIA.positionIA == 68:
+                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -4
+                game.joueurIA.redeplacementdupionIA()
+            
+            # out of range >
+            if game.joueurIA.positionIA == 67:
+                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -3
+                game.joueurIA.redeplacementdupionIA()
 
-            
+            # out of range > 
+            if game.joueurIA.positionIA == 66:
+                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -2
+                game.joueurIA.redeplacementdupionIA()
+
+            # out of range > 
+            if game.joueurIA.positionIA == 65:
+                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -1
+                game.joueurIA.redeplacementdupionIA()    
+
+            if game.joueurIA.positionIA == 64:
+                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA 
+                game.joueurIA.redeplacementdupionIA()            
 
             if game.joueurIA.positionIA == 63:
                 print("l'IA HALLL 9000 A GAGNER !!!!!!")
                 #acceuil = True
 
             if game.joueurIA.positionIA == 58:
-                game.joueurIA.positionIA == 0
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.positionIA = 0
+                game.joueurIA.redeplacementdupionIA()
 
             if game.joueurIA.positionIA == 46:
                 game.joueurIA.positionIA = 8
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
             if game.joueurIA.positionIA == 42:
                 game.joueurIA.positionIA = 30
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
             if game.joueurIA.positionIA == 40:
                 game.joueurIA.positionIA = 62
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
             if game.joueurIA.positionIA == 36:
                 game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
 
             if game.joueurIA.positionIA == 27:
                 game.joueurIA.positionIA = 57
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
             if game.joueurIA.positionIA == 26:
                 game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
             if game.joueurIA.positionIA == 8:
                 game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.deplacementdupionIA()
+                game.joueurIA.redeplacementdupionIA()
 
+            else:
+                game.cestaquidejouer = True
 
-
-            # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
-            if game.joueurIA.positionIA == game.joueur1.position1 :
-                game.joueur1.position1 -= game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.deplacementdupionIA()
-                
+            
                 
                 
         

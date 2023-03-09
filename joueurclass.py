@@ -61,9 +61,16 @@ class Joueur(pygame.sprite.Sprite):
         self.position1 += self.valeurdude_joueur1
         self.rect_joueur1.x = Grille[self.position1][1] 
         self.rect_joueur1.y = Grille[self.position1][2]
-        
         time.sleep(1)
         self.sound_manager.play("pion")
+
+    def redeplacementdupion1(self):
+
+        self.rect_joueur1.x = Grille[self.position1][1] 
+        self.rect_joueur1.y = Grille[self.position1][2]
+        time.sleep(1)
+        self.sound_manager.play("pion")
+
 
     def printrandomIA(self):
         deIA = int(random.randint(1, 6))
@@ -79,3 +86,10 @@ class Joueur(pygame.sprite.Sprite):
         self.rect_joueurIA.y = Grille[self.positionIA][2]
         time.sleep(1)
         self.sound_manager.play("pion")
+
+    def redeplacementdupionIA(self):   
+
+        self.rect_joueurIA.x = int(Grille[self.positionIA][1]) +30
+        self.rect_joueurIA.y = Grille[self.positionIA][2]
+        time.sleep(1)
+        self.sound_manager.play("pion")    
