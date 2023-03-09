@@ -42,7 +42,7 @@ while acceuil :
     # appliquer a l'arriere plan de notre jeu
     screen.blit(background2,(0,0))
     screen.blit(pictureAcceuil,(317,333))
-    screen.blit(messageAcceuil,(0,506))
+    screen.blit(messageAcceuil,(251,272))
     
     
     #mettre à jour l'arriere plan
@@ -52,6 +52,7 @@ while acceuil :
     # si le joueur clic , le joueur passe au jeu
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
+            game.joueur1.sound_manager.play("de") 
             acceuil = False
             
         elif event.type == pygame.QUIT:
@@ -76,6 +77,7 @@ while running:
     #  affiche le pion a qui le tour en bas a droite
     
     if game.cestaquidejouer  == True:
+                
                 pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
                 
     else:
@@ -159,143 +161,113 @@ while running:
 # lance le "de" avec le clic de la souris ou avec la touche d 
 #            
         if event.type == pygame.MOUSEBUTTONDOWN and game.cestaquidejouer is True or event.type == pygame.KEYDOWN and event.key==pygame.K_d and game.cestaquidejouer is True:
+                           
+                # 1 joueur
                     
-                    # 1 joueur
                     game.joueur1.printrandom1() 
                     game.joueur1.deplacementdupion1()
                     game.cestaquidejouer = False
                     
                     if game.joueur1.position1 == 63:
                         print("l'IA HALLL 9000 A GAGNER !!!!!!")
+                        #acceuil = True
 
                     if game.joueur1.position1 == 58:
                         game.joueur1.position1 = 0
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)
+                        game.joueur1.deplacementdupion1()
+                        
 
                     if game.joueur1.position1 == 46:
                         game.joueur1.position1 = 54
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1) 
+                        game.joueur1.deplacementdupion1()
 
                     if game.joueur1.position1 == 42:
                         game.joueur1.position1 = 30
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)
+                        game.joueur1.deplacementdupion1()
 
                     if game.joueur1.position1 == 40:
                         game.joueur1.position1 = 62
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)
+                        game.joueur1.deplacementdupion1()
 
                     if game.joueur1.position1 == 36:
                         game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)
+                        game.joueur1.deplacementdupion1()
 
                     if game.joueur1.position1 == 27:
                         game.joueur1.position1 = 57
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)     
+                        game.joueur1.deplacementdupion1()     
 
                     if game.joueur1.position1 == 26:
                         game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)
+                        game.joueur1.deplacementdupion1()
 
                     if game.joueur1.position1 == 8:
                         game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                        game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                        time.sleep(1)
+                        game.joueur1.deplacementdupion1()
 
                     if game.joueur1.position1 == game.joueurIA.positionIA :
                         # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
                         game.joueurIA.positionIA -= game.joueur1.valeurdude_joueur1
-                        game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                        game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                        time.sleep(1)
-                        pass
+                        game.joueur1.deplacementdupion1()
+                        #pass
                     
-                        break 
+                        #break 
+                    
         # IA joueur
-        elif game.cestaquidejouer is False:            
+        elif game.cestaquidejouer is False: 
+            time.sleep(1)           
             game.joueurIA.printrandomIA()
             game.joueurIA.deplacementdupionIA()
             game.cestaquidejouer = True
-            time.sleep(1)
+            
             
 
             
 
             if game.joueurIA.positionIA == 63:
                 print("l'IA HALLL 9000 A GAGNER !!!!!!")
-            
+                #acceuil = True
+
             if game.joueurIA.positionIA == 58:
                 game.joueurIA.positionIA == 0
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
             if game.joueurIA.positionIA == 46:
                 game.joueurIA.positionIA = 8
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
             if game.joueurIA.positionIA == 42:
                 game.joueurIA.positionIA = 30
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
             if game.joueurIA.positionIA == 40:
                 game.joueurIA.positionIA = 62
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
             if game.joueurIA.positionIA == 36:
                 game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
 
             if game.joueurIA.positionIA == 27:
                 game.joueurIA.positionIA = 57
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
             if game.joueurIA.positionIA == 26:
                 game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
             if game.joueurIA.positionIA == 8:
                 game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.rect_joueurIA.x = int(Grille[game.joueurIA.positionIA][1]) +30
-                game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
 
 
 
             # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
             if game.joueurIA.positionIA == game.joueur1.position1 :
                 game.joueur1.position1 -= game.joueurIA.valeurdude_joueurIA
-                game.joueur1.rect_joueur1.x = Grille[game.joueur1.position1][1] 
-                game.joueur1.rect_joueur1.y = Grille[game.joueur1.position1][2]
-                time.sleep(1)
+                game.joueurIA.deplacementdupionIA()
                 
                 
-                continue
+                
         

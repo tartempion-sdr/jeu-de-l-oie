@@ -2,6 +2,7 @@ import pygame
 import random
 import time
 from grille import Grille
+from sounds import SoundManager
 #from game import Game
 # cree une class qui representera notre joueur
 
@@ -17,6 +18,8 @@ class Joueur(pygame.sprite.Sprite):
         self.valeurdude_joueurIA = 0
         self.position1 = 0
         self.positionIA = 0
+        
+        self.sound_manager = SoundManager()
 
         self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
         self.rect_joueur1 = self.image_joueur1.get_rect()
@@ -50,27 +53,29 @@ class Joueur(pygame.sprite.Sprite):
         de = int(random.randint(1, 6))
         deresultat = de 
         self.valeurdude_joueur1 = deresultat
-        #print(self.valeurdude_joueur1)
-        
+        self.sound_manager.play("de")
+        time.sleep(0.5)
 
     def deplacementdupion1(self):
-        time.sleep(1)
+        
         self.position1 += self.valeurdude_joueur1
         self.rect_joueur1.x = Grille[self.position1][1] 
         self.rect_joueur1.y = Grille[self.position1][2]
         
+        time.sleep(1)
+        self.sound_manager.play("pion")
 
     def printrandomIA(self):
         deIA = int(random.randint(1, 6))
         deresultatIA = deIA 
         self.valeurdude_joueurIA = deresultatIA
-        #print(self.valeurdude_joueurIA)
-    
+        self.sound_manager.play("de")
+        time.sleep(0.5)
              
     def deplacementdupionIA(self): 
-        time.sleep(1)
+        
         self.positionIA += self.valeurdude_joueurIA
         self.rect_joueurIA.x = int(Grille[self.positionIA][1]) +30
         self.rect_joueurIA.y = Grille[self.positionIA][2]
-        
-        
+        time.sleep(1)
+        self.sound_manager.play("pion")
