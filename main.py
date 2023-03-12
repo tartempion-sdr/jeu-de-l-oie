@@ -54,37 +54,29 @@ while acceuil :
         if event.type == pygame.MOUSEBUTTONDOWN:
             game.joueur1.sound_manager.play("de") 
             acceuil = False
-            
+        # si le joueur ferme cette fenetre
         elif event.type == pygame.QUIT:
             running = False
             pygame.quit()    
             
     
     
-    # si le joueur ferme cette fenetre
     
-    # for event in pygame.event.get():
-    #     # que l'evenement est fermeture de fenetre
-    #     if event.type == pygame.QUIT:
-    #         running = False
-    #         pygame.quit()
-
     
-
 
 # boucle tant que cette condition est vrai
 while running:
     #  affiche le pion a qui le tour en bas a droite
     
-    if game.cestaquidejouer  == True:
+    if game.joueur1.cestaquidejouer  == True:
                 
-                pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
+        pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
                 
     else:
         pionAQuiLeTour = pygame.image.load("assets/noir-chess-mini.png")
         
         
-   
+
 
     
 
@@ -149,184 +141,64 @@ while running:
     pygame.display.flip()
 
     # si le joueur ferme cette fenetre
-    
-    
+
+
     for event in pygame.event.get():
         # que l'evenement est fermeture de fenetre
         if event.type == pygame.QUIT:
             running = False
-       
+    
             pygame.quit()
 
-# lance le "de" avec le clic de la souris ou avec la touche d 
-#            
-        if event.type == pygame.MOUSEBUTTONDOWN and game.cestaquidejouer is True or event.type == pygame.KEYDOWN and event.key==pygame.K_d and game.cestaquidejouer is True:
-                           
-                # 1 joueur
-                    
-                    game.joueur1.printrandom1() 
-                    game.joueur1.deplacementdupion1()
-                    
-                    # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
-                    if game.joueur1.position1 == game.joueurIA.positionIA :
-                        game.joueurIA.redeplacementdupionIA()
-                        game.joueurIA.positionIA -= game.joueur1.valeurdude_joueur1
-                        game.joueurIA.redeplacementdupionIA()
-
-                    # out of range > 
-                    if game.joueur1.position1 == 69:
-                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -5
-                        game.joueur1.redeplacementdupion1()
-
-                    # out of range > 
-                    if game.joueur1.position1 == 68:
-                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -4
-                        game.joueur1.redeplacementdupion1()
-
-                    # out of range > 
-                    if game.joueur1.position1 == 67:
-                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -3
-                        game.joueur1.redeplacementdupion1()
-                           
-                    # out of range > 
-                    if game.joueur1.position1 == 66:
-                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -2
-                        game.joueur1.redeplacementdupion1()
-                           
-                    # out of range > 
-                    if game.joueur1.position1 == 65:
-                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 -1
-                        game.joueur1.redeplacementdupion1()
-                           
-                    # out of range > 
-                    if game.joueur1.position1 == 64:
-                        game.joueur1.position1 -= game.joueur1.valeurdude_joueur1 
-                        game.joueur1.redeplacementdupion1()
+    # lance le "de" avec le clic de la souris ou avec la touche d 
+    #            
+        if event.type == pygame.MOUSEBUTTONDOWN and game.joueur1.cestaquidejouer is True   or event.type == pygame.KEYDOWN and event.key==pygame.K_d and game.joueur1.cestaquidejouer is True :
                             
-                    if game.joueur1.position1 == 63:
-                        print("l'IA HALLL 9000 A GAGNER !!!!!!")
-                        #acceuil = True
+            # 1 joueur
+            game.joueur1.printrandom1()
+            print("1 " + str(game.joueur1.cestaquidejouer))
 
-                    if game.joueur1.position1 == 58:
-                        game.joueur1.position1 = 0
-                        game.joueur1.redeplacementdupion1()
-                        
+            game.joueur1.deplacementdupion1()
+            print("1 " + str(game.joueur1.cestaquidejouer))
 
-                    if game.joueur1.position1 == 46:
-                        game.joueur1.position1 = 54
-                        game.joueur1.redeplacementdupion1()
+            
+        # bug essaye try exept teatcher du net
+        
+            if game.joueur1.position1 == game.joueurIA.positionIA: 
+                game.joueur1.collision1()
+                print("J-1" , int(game.joueur1.position1))
+                print("J-IA" , int(game.joueurIA.positionIA))
+                print("1 " + str(game.joueur1.cestaquidejouer))
 
-                    if game.joueur1.position1 == 42:
-                        game.joueur1.position1 = 30
-                        game.joueur1.redeplacementdupion1()
-
-                    if game.joueur1.position1 == 40:
-                        game.joueur1.position1 = 62
-                        game.joueur1.redeplacementdupion1()
-
-                    if game.joueur1.position1 == 36:
-                        game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.redeplacementdupion1()
-
-                    if game.joueur1.position1 == 27:
-                        game.joueur1.position1 = 57
-                        game.joueur1.redeplacementdupion1()     
-
-                    if game.joueur1.position1 == 26:
-                        game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.redeplacementdupion1()
-
-                    if game.joueur1.position1 == 8:
-                        game.joueur1.position1 += game.joueur1.valeurdude_joueur1
-                        game.joueur1.redeplacementdupion1()
-
-                    else:
-                        game.cestaquidejouer = False
-
-                    
-        # IA joueur
-        elif game.cestaquidejouer is False: 
+            
+            game.joueur1.reverif1()
+            print("1 " + str(game.joueur1.cestaquidejouer))
+            game.joueur1.redeplacementdupion1()
+            game.joueur1.cestaquidejouer = False
+            
+            
+        elif game.joueur1.cestaquidejouer == False:
+  
+            # IA joueur
             time.sleep(1)           
             game.joueurIA.printrandomIA()
+            print("2 " + str(game.joueur1.cestaquidejouer))
+
             game.joueurIA.deplacementdupionIA()
-            
-            
-            # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.
-            if game.joueurIA.positionIA == game.joueur1.position1 :
-                game.joueur1.redeplacementdupion1()
-                game.joueur1.position1 -= game.joueurIA.valeurdude_joueurIA
-                game.joueur1.redeplacementdupion1()
-            
-            # out of range >
-            if game.joueurIA.positionIA == 69:
-                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -5
-                game.joueurIA.redeplacementdupionIA()
-            
-            # out of range >
-            if game.joueurIA.positionIA == 68:
-                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -4
-                game.joueurIA.redeplacementdupionIA()
-            
-            # out of range >
-            if game.joueurIA.positionIA == 67:
-                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -3
-                game.joueurIA.redeplacementdupionIA()
-
-            # out of range > 
-            if game.joueurIA.positionIA == 66:
-                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -2
-                game.joueurIA.redeplacementdupionIA()
-
-            # out of range > 
-            if game.joueurIA.positionIA == 65:
-                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA -1
-                game.joueurIA.redeplacementdupionIA()    
-
-            if game.joueurIA.positionIA == 64:
-                game.joueurIA.positionIA -= game.joueurIA.valeurdude_joueurIA 
-                game.joueurIA.redeplacementdupionIA()            
-
-            if game.joueurIA.positionIA == 63:
-                print("l'IA HALLL 9000 A GAGNER !!!!!!")
-                #acceuil = True
-
-            if game.joueurIA.positionIA == 58:
-                game.joueurIA.positionIA = 0
-                game.joueurIA.redeplacementdupionIA()
-
-            if game.joueurIA.positionIA == 46:
-                game.joueurIA.positionIA = 8
-                game.joueurIA.redeplacementdupionIA()
-
-            if game.joueurIA.positionIA == 42:
-                game.joueurIA.positionIA = 30
-                game.joueurIA.redeplacementdupionIA()
-
-            if game.joueurIA.positionIA == 40:
-                game.joueurIA.positionIA = 62
-                game.joueurIA.redeplacementdupionIA()
-
-            if game.joueurIA.positionIA == 36:
-                game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.redeplacementdupionIA()
-
-
-            if game.joueurIA.positionIA == 27:
-                game.joueurIA.positionIA = 57
-                game.joueurIA.redeplacementdupionIA()
-
-            if game.joueurIA.positionIA == 26:
-                game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.redeplacementdupionIA()
-
-            if game.joueurIA.positionIA == 8:
-                game.joueurIA.positionIA += game.joueurIA.valeurdude_joueurIA
-                game.joueurIA.redeplacementdupionIA()
-
-            else:
-                game.cestaquidejouer = True
-
-            
-                
-                
+            print("2 " + str(game.joueur1.cestaquidejouer))
+       
+        # bug essaye try exept teatcher du net
         
+            if game.joueurIA.positionIA == game.joueur1.position1:  
+                game.joueurIA.collisionIA()
+                print("J-IA" , int(game.joueurIA.positionIA))
+                print("J-1" , int(game.joueur1.position1))
+                print("2 " + str(game.joueur1.cestaquidejouer))
+    
+            game.joueurIA.revefifIA()
+            print("2 " + str(game.joueur1.cestaquidejouer))
+
+            game.joueurIA.redeplacementdupionIA()
+            game.joueur1.cestaquidejouer = True
+            print("2 " + str(game.joueur1.cestaquidejouer))
+    
