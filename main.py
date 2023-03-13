@@ -68,7 +68,7 @@ while acceuil :
 while running:
     #  affiche le pion a qui le tour en bas a droite
     
-    if game.joueur1.cestaquidejouer  == True:
+    if game.joueur1.cestaujoueur1dejouer  == True:
                 
         pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
                 
@@ -144,61 +144,90 @@ while running:
 
 
     for event in pygame.event.get():
-        # que l'evenement est fermeture de fenetre
+           # que l'evenement est fermeture de fenetre
         if event.type == pygame.QUIT:
             running = False
     
-            pygame.quit()
+            pygame.quit()    
+                          
 
     # lance le "de" avec le clic de la souris ou avec la touche d 
-    #            
-        if event.type == pygame.MOUSEBUTTONDOWN and game.joueur1.cestaquidejouer is True   or event.type == pygame.KEYDOWN and event.key==pygame.K_d and game.joueur1.cestaquidejouer is True :
+               
+            
+        if event.type == pygame.MOUSEBUTTONDOWN and game.joueur1.cestaujoueur1dejouer == True  :
                             
+             
             # 1 joueur
             game.joueur1.printrandom1()
-            print("1 " + str(game.joueur1.cestaquidejouer))
-
             game.joueur1.deplacementdupion1()
-            print("1 " + str(game.joueur1.cestaquidejouer))
-
-            
-        # bug essaye try exept teatcher du net
+            print("1-1 " + str(game.joueur1.cestaujoueur1dejouer))
         
-            if game.joueur1.position1 == game.joueurIA.positionIA: 
-                game.joueur1.collision1()
-                print("J-1" , int(game.joueur1.position1))
-                print("J-IA" , int(game.joueurIA.positionIA))
-                print("1 " + str(game.joueur1.cestaquidejouer))
+        elif game.joueur1.position1 == game.joueurIA.positionIA and game.joueurIA.positionIA != 0:
+            game.joueurIA.colision1()
+            print("1-2 " + str(game.joueur1.cestaujoueur1dejouer))
+        
+            
+
+
+        else:
+                
+            game.joueur1.reverif1()
+            
+            
+            print("1-3 " + str(game.joueur1.cestaujoueur1dejouer))
+            print("J-1" , int(game.joueur1.position1))
+            print("J-IA" , int(game.joueurIA.positionIA))    
+            game.joueur1.cestaujoueur1dejouer = False
+            
+            #colision 
+            
+        
+            
+            
+        
+                
 
             
-            game.joueur1.reverif1()
-            print("1 " + str(game.joueur1.cestaquidejouer))
-            game.joueur1.redeplacementdupion1()
-            game.joueur1.cestaquidejouer = False
             
-            
-        elif game.joueur1.cestaquidejouer == False:
-  
+        while game.joueur1.cestaujoueur1dejouer == False:
+
             # IA joueur
             time.sleep(1)           
             game.joueurIA.printrandomIA()
-            print("2 " + str(game.joueur1.cestaquidejouer))
+        
 
             game.joueurIA.deplacementdupionIA()
-            print("2 " + str(game.joueur1.cestaquidejouer))
-       
-        # bug essaye try exept teatcher du net
+            print("2-1 " + str(game.joueur1.cestaujoueur1dejouer)) 
+            print("2-1 " + str(game.joueurIA.cestaujoueurIAdejouer)) 
         
-            if game.joueurIA.positionIA == game.joueur1.position1:  
-                game.joueurIA.collisionIA()
-                print("J-IA" , int(game.joueurIA.positionIA))
-                print("J-1" , int(game.joueur1.position1))
-                print("2 " + str(game.joueur1.cestaquidejouer))
-    
-            game.joueurIA.revefifIA()
-            print("2 " + str(game.joueur1.cestaquidejouer))
+            
+        if game.joueurIA.positionIA == game.joueur1.position1  and game.joueurIA.positionIA != 0:
+            game.joueurIA.colisionIA()
 
-            game.joueurIA.redeplacementdupionIA()
-            game.joueur1.cestaquidejouer = True
-            print("2 " + str(game.joueur1.cestaquidejouer))
+            game.joueurIA.rect_joueur1.x = Grille[game.joueurIA.position1][1] 
+            game.joueurIA.rect_joueur1.y = Grille[game.joueurIA.position1][2]
+            print("2-2 " + str(game.joueur1.cestaujoueur1dejouer)) 
+            print("2-2 " + str(game.joueurIA.cestaujoueurIAdejouer)) 
+            
+
+        else:
+            
+            game.joueurIA.revefifIA()
+            game.joueurIA.rect_joueurIA.x = Grille[game.joueurIA.positionIA][1] 
+            game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
+            print("2-3 " + str(game.joueur1.cestaujoueur1dejouer)) 
+            print("2-3 " + str(game.joueurIA.cestaujoueurIAdejouer)) 
+
+            print("J-IA" , int(game.joueurIA.positionIA))
+            print("J-1" , int(game.joueur1.position1))
+            game.joueur1.cestaujoueur1dejouer = True
+            
+
     
+            game.joueur1.cestaujoueur1dejouer =  True
+            game.joueurIA.cestaujoueurIAdejouer = False  
+            break            
+        
+        
+                    
+                    

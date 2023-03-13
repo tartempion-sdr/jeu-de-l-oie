@@ -18,7 +18,8 @@ class Joueur(pygame.sprite.Sprite):
         self.valeurdude_joueurIA = 0
         self.position1 = 0
         self.positionIA = 0
-        self.cestaquidejouer = True  
+        self.cestaujoueur1dejouer = True
+        self.cestaujoueurIAdejouer = False
         self.sound_manager = SoundManager()
 
         self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
@@ -32,9 +33,9 @@ class Joueur(pygame.sprite.Sprite):
 
         self.image_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         self.rect_joueurIA = self.image_joueurIA.get_rect()
-        self.rect_joueurIA.x = 48
+        self.rect_joueurIA.x = 42
         self.rect_joueurIA.y = 22
-
+            #x42y22
 
     def entrez_votre_nom(self):
         
@@ -55,7 +56,7 @@ class Joueur(pygame.sprite.Sprite):
         self.valeurdude_joueur1 = deresultat
         
         self.sound_manager.play("de")
-
+        print(type(self.position1))
     def deplacementdupion1(self):
         
         self.position1 += self.valeurdude_joueur1
@@ -64,87 +65,161 @@ class Joueur(pygame.sprite.Sprite):
         time.sleep(1)
         self.sound_manager.play("pion")
 
-    def collision1(self):
-        
-        # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.      
-    
+    def colision1(self):
+        self.rect_joueur1.x = Grille[self.position1][1] 
+        self.rect_joueur1.y = Grille[self.position1][2]
         self.positionIA -= self.valeurdude_joueur1
-        
-        print("ok")
+        time.sleep(3)
+        self.sound_manager.play("pion")
+        self.rect_joueurIA.x = Grille[self.positionIA][1] 
+        self.rect_joueurIA.y = Grille[self.positionIA][2]
+
+        print("colision1")
 
     def reverif1(self):
+
         
+
         # out of range > 
         if self.position1 == 69:
-            self.position1 -= self.valeurdude_joueur1 -5
-            
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.position1 - self.valeurdude_joueur1)))
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            self.sound_manager.play("pion")
 
         # out of range > 
         if self.position1 == 68:
-            self.position1 -= self.valeurdude_joueur1 -4
-            
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.position1 - (self.valeurdude_joueur1 - 1))))
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            self.sound_manager.play("pion")
 
         # out of range > 
         if self.position1 == 67:
-            self.position1 -= self.valeurdude_joueur1 -3
-            
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1   = 63 - ((63 -(self.position1 - (self.valeurdude_joueur1 - 1))))
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            self.sound_manager.play("pion")
                 
         # out of range > 
         if self.position1 == 66:
-            self.position1 -= self.valeurdude_joueur1 -2
-            
-                
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.position1 - (self.valeurdude_joueur1 - 1))))
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+
         # out of range > 
         if self.position1 == 65:
-            self.position1 -= self.valeurdude_joueur1 -1
-            
-                
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.position1 - (self.valeurdude_joueur1 - 1))))
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+
         # out of range > 
         if self.position1 == 64:
-            self.position1 -= self.valeurdude_joueur1 
-            
-                
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1 = 63 - ((63 -(self.position1 - (self.valeurdude_joueur1 - 1))))
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+
         if self.position1 == 63:
-            print("l'IA HALLL 9000 A GAGNER !!!!!!")
+            print("JOUEUR1 A GAGNER !!!!!!")
             #acceuil = True
+            self.sound_manager.play("pion")
 
         if self.position1 == 62:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 = 40
-            
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+
         if self.position1 == 58:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 = 0
-            
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 46:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 = 54
-            
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 42:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 = 30
-            
-
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 36:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 += self.valeurdude_joueur1
-            
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 27:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 = 57
-                 
+            self.sound_manager.play("pion")     
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 26:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 += self.valeurdude_joueur1
-            
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 8:
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
+            time.sleep(3)
             self.position1 += self.valeurdude_joueur1
-                            
-    def redeplacementdupion1(self):
-        self.rect_joueur1.x = Grille[self.position1][1] 
-        self.rect_joueur1.y = Grille[self.position1][2]
-        #time.sleep(1)
-        #self.sound_manager.play("pion")
+            self.sound_manager.play("pion")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
+       # if self.cestaquidejouer == True:
+
+           # self.cestaquidejouer = False
 
 
     def printrandomIA(self):
@@ -161,94 +236,164 @@ class Joueur(pygame.sprite.Sprite):
         self.rect_joueurIA.y = Grille[self.positionIA][2]
         time.sleep(1)
         self.sound_manager.play("pion")
-
-    def collisionIA(self):
-        # Celui qui est rejoint par un autre joueur sur la même case devra se rendre sur la case ou l’autre joueur se situait avant de jouer.      
-        
-           
+    
+    def colisionIA(self):
+     
+          
+        self.rect_joueurIA.x = Grille[self.positionIA][1] 
+        self.rect_joueurIA.y = Grille[self.positionIA][2]
         self.position1 -= self.valeurdude_joueurIA
-        
-        print("ok")
+        time.sleep(3)
+        self.sound_manager.play("pion")
+        self.rect_joueur1.x = Grille[self.position1][1] 
+        self.rect_joueur1.y = Grille[self.position1][2]
+
+        print("colisionIA")
 
     def revefifIA(self):
             
             
-        
        
-        
-        # out of range >
-        if self.positionIA == 69:
-            self.positionIA -= self.valeurdude_joueurIA -5
-            
-        # out of range >
-        if self.positionIA == 68:
-            self.positionIA -= self.valeurdude_joueurIA -4
-            
-        
-        # out of range >
-        if self.positionIA == 67:
-            self.positionIA -= self.valeurdude_joueurIA -3
-            
 
         # out of range > 
+        if self.positionIA == 69:
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            time.sleep(1)
+            self.positionIA  = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
+            print(str(63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)))
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
+
+        # out of range > 
+        if self.positionIA == 68:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
+
+        # out of range > 
+        if self.positionIA == 67:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
+                
+        # out of range > 
         if self.positionIA == 66:
-            self.positionIA -= self.valeurdude_joueurIA -2
-            self.redeplacementdupionIA()
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         # out of range > 
         if self.positionIA == 65:
-            self.positionIA -= self.valeurdude_joueurIA -1
-            self.redeplacementdupionIA()    
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
+        # out of range > 
         if self.positionIA == 64:
-            self.positionIA -= self.valeurdude_joueurIA 
-            self.redeplacementdupionIA()            
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.position1  = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         if self.positionIA == 63:
-            print("vous avez GAGNER !!!!!!")
+            print("JOUEUR-IA A GAGNER !!!!!!")
             #acceuil = True
-        
+            self.sound_manager.play("pion")
+
         if self.positionIA == 62:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA = 40
-            self.redeplacementdupionIA()
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         if self.positionIA == 58:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA = 0
-            self.redeplacementdupionIA()
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         if self.positionIA == 46:
-            self.positionIA = 8
-            self.redeplacementdupionIA()
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
+            self.positionIA = 54
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         if self.positionIA == 42:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA = 30
-            self.redeplacementdupionIA()
-
-        if self.positionIA == 62:
-            self.positionIA = 40
-            self.redeplacementdupionIA()
-
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
+        
         if self.positionIA == 36:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA += self.valeurdude_joueurIA
-            self.redeplacementdupionIA()
-
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         if self.positionIA == 27:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA = 57
-            self.redeplacementdupionIA()
-
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
+        
         if self.positionIA == 26:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA += self.valeurdude_joueurIA
-            self.redeplacementdupionIA()
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
         if self.positionIA == 8:
+            self.rect_joueurIA.x = Grille[self.position1][1] 
+            self.rect_joueurIA.y = Grille[self.position1][2]
+            time.sleep(1)
             self.positionIA += self.valeurdude_joueurIA
-            self.redeplacementdupionIA()
-        
-    def redeplacementdupionIA(self):   
+            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
+            self.sound_manager.play("pion")
 
-        self.rect_joueurIA.x = int(Grille[self.positionIA][1]) +30
-        self.rect_joueurIA.y = Grille[self.positionIA][2]
+    
+
         
-        #self.sound_manager.play("pion")    
-        
+   
