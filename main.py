@@ -24,26 +24,32 @@ messageAcceuil = pygame.image.load("assets/message-acceuil.png")
 
 background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
-# en cour - generer dé, pion, face123456
+# - generer dé, pion, face123456
 pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
 pionNoir = pygame.image.load("assets/noir-chess-mini.png")
 
-de0 = pygame.image.load("assets/de.png")      
-de1 = pygame.image.load("assets/64px-Dice-1-b.svg.png")
-de2 = pygame.image.load("assets/64px-Dice-2-b.svg.png")
-de3 = pygame.image.load("assets/64px-Dice-3-b.svg.png")
-de4 = pygame.image.load("assets/64px-Dice-4-b.svg.png")
-de5 = pygame.image.load("assets/64px-Dice-5-b.svg.png")
-de6 = pygame.image.load("assets/64px-Dice-6-b.svg.png")
+de0 = "assets/de.png"   
+de1 = "assets/64px-Dice-1-b.svg.png"
+de2 = "assets/64px-Dice-2-b.svg.png"
+de3 = "assets/64px-Dice-3-b.svg.png"
+de4 = "assets/64px-Dice-4-b.svg.png"
+de5 = "assets/64px-Dice-5-b.svg.png"
+de6 = "assets/64px-Dice-6-b.svg.png"
+deListe = [de0, de1, de2, de3, de4, de5, de6] 
+    
+    
+        
 
 
 
 decliquable = pygame.image.load("assets/de.png")
+
 # charger joueur
 
 joueur = Joueur()
 running = True
 acceuil = True
+
 
 
 while acceuil :
@@ -69,62 +75,29 @@ while acceuil :
             pygame.quit()    
             
     
-    
-    
+
     
 
 # boucle tant que cette condition est vrai
 while running:
-    #  affiche le pion a qui le tour en bas a droite
     
+
+    faceDuDejoueur1 = pygame.image.load(deListe[joueur.valeurdude_joueur1])
+
+    faceDuDejoueurIA = pygame.image.load(deListe[joueur.valeurdude_joueurIA])    
+        
+#  affiche le pion a qui le tour en bas a droite
+# affiche valeur du dé pour joueur1 et joueurIA
     if joueur.cestaujoueur1dejouer  == True:
                 
         pionAQuiLeTour = pionBlanc
-                
+        
     else:
         pionAQuiLeTour = pionNoir
-        
-        
-
-
-    
-
-    if joueur.valeurdude_joueur1 == 0:    
-        faceDuDe_joueur1 = de0
-    elif joueur.valeurdude_joueur1 == 1:    
-        faceDuDe_joueur1 = de1
-    elif joueur.valeurdude_joueur1 == 2:
-        faceDuDe_joueur1 = de2
-    elif joueur.valeurdude_joueur1 == 3:
-        faceDuDe_joueur1 = de3
-    elif joueur.valeurdude_joueur1 == 4:
-        faceDuDe_joueur1 = de4
-    elif joueur.valeurdude_joueur1 == 5:
-        faceDuDe_joueur1 = de5
-    elif joueur.valeurdude_joueur1 == 6:
-        faceDuDe_joueur1 = de6
-
-
-
-    if joueur.valeurdude_joueurIA == 0:    
-        faceDuDe_joueurIA = pygame.image.load("assets/de.png")
-    elif joueur.valeurdude_joueurIA == 1:    
-        faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-1-b.svg.png")
-    elif joueur.valeurdude_joueurIA == 2:
-        faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-2-b.svg.png")
-    elif joueur.valeurdude_joueurIA == 3:
-        faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-3-b.svg.png")
-    elif joueur.valeurdude_joueurIA == 4:
-        faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-4-b.svg.png")
-    elif joueur.valeurdude_joueurIA == 5:
-        faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-5-b.svg.png")
-    elif joueur.valeurdude_joueurIA == 6:
-        faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-6-b.svg.png")
-        
-
+       
     
     
-
+    
     # appliquer a l'arriere plan de notre jeu
     screen.blit(background,(0,0))
     
@@ -143,8 +116,8 @@ while running:
     screen.blit(decliquable,(79,82))
 
     #des
-    screen.blit(faceDuDe_joueur1,(330,258))
-    screen.blit(faceDuDe_joueurIA,(330,315))
+    screen.blit(faceDuDejoueur1,(330,258))
+    screen.blit(faceDuDejoueurIA,(330,315))
     
     #mettre à jour l'arriere plan
     pygame.display.flip()
@@ -180,7 +153,7 @@ while running:
             print("J-1" , int(joueur.position1))
             print("J-IA" , int(joueur.positionIA))    
             joueur.cestaujoueur1dejouer = False
-            
+              
             
         elif joueur.cestaujoueur1dejouer == False:
 
@@ -212,7 +185,11 @@ while running:
             
 
     
-            
+                
+    
+
+    
+
              
             break            
         

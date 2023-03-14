@@ -9,6 +9,7 @@ from sounds import SoundManager
 class Joueur(pygame.sprite.Sprite):
     
     
+    
     def __init__(self):
         super().__init__()
         # self.nomjoueur = ""
@@ -16,9 +17,12 @@ class Joueur(pygame.sprite.Sprite):
         # self.grille = list
         self.valeurdude_joueur1 = 0
         self.valeurdude_joueurIA = 0
+
+        
+        
         self.position1 = 0
         self.positionIA = 0
-        
+
         self.cestaujoueur1dejouer = True
         
         self.sound_manager = SoundManager()
@@ -32,7 +36,11 @@ class Joueur(pygame.sprite.Sprite):
         self.rect_joueurIA = self.image_joueurIA.get_rect()
         self.rect_joueurIA.x = 42
         self.rect_joueurIA.y = 22
-            #x42y22
+
+        
+        
+    
+
 
     def entrez_votre_nom(self):
         
@@ -43,9 +51,7 @@ class Joueur(pygame.sprite.Sprite):
                 print("Vous Vous appellez : " + self.nomjoueur)
                 print("\n" + self.nomjoueur + " appuyer sur la touche a pour lancé le dé\n")
     
-    
-  
-
+     
     def printrandom1(self):  
 
         de = int(random.randint(1, 6))
@@ -54,6 +60,7 @@ class Joueur(pygame.sprite.Sprite):
         
         self.sound_manager.play("de")
         print(type(self.position1))
+   
     def deplacementdupion1(self):
         
         self.position1 += self.valeurdude_joueur1
