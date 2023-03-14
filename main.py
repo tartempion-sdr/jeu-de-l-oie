@@ -27,7 +27,15 @@ background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 # en cour - generer dé, pion, face123456
 pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
 pionNoir = pygame.image.load("assets/noir-chess-mini.png")
-        
+
+de0 = pygame.image.load("assets/de.png")      
+de1 = pygame.image.load("assets/64px-Dice-1-b.svg.png")
+de2 = pygame.image.load("assets/64px-Dice-2-b.svg.png")
+de3 = pygame.image.load("assets/64px-Dice-3-b.svg.png")
+de4 = pygame.image.load("assets/64px-Dice-4-b.svg.png")
+de5 = pygame.image.load("assets/64px-Dice-5-b.svg.png")
+de6 = pygame.image.load("assets/64px-Dice-6-b.svg.png")
+
 
 
 decliquable = pygame.image.load("assets/de.png")
@@ -82,19 +90,19 @@ while running:
     
 
     if joueur.valeurdude_joueur1 == 0:    
-        faceDuDe_joueur1 = pygame.image.load("assets/de.png")
+        faceDuDe_joueur1 = de0
     elif joueur.valeurdude_joueur1 == 1:    
-        faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-1-b.svg.png")
+        faceDuDe_joueur1 = de1
     elif joueur.valeurdude_joueur1 == 2:
-        faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-2-b.svg.png")
+        faceDuDe_joueur1 = de2
     elif joueur.valeurdude_joueur1 == 3:
-        faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-3-b.svg.png")
+        faceDuDe_joueur1 = de3
     elif joueur.valeurdude_joueur1 == 4:
-        faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-4-b.svg.png")
+        faceDuDe_joueur1 = de4
     elif joueur.valeurdude_joueur1 == 5:
-        faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-5-b.svg.png")
+        faceDuDe_joueur1 = de5
     elif joueur.valeurdude_joueur1 == 6:
-        faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-6-b.svg.png")
+        faceDuDe_joueur1 = de6
 
 
 
