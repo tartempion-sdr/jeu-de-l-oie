@@ -18,13 +18,13 @@ screen = pygame.display.set_mode((850,567))
 
 background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
-background2 = pygame.image.load("assets/verdure850x567.png")
+backgroundAcceuil = pygame.image.load("assets/verdure850x567.png")
 pictureAcceuil = pygame.image.load("assets/oie2.jpeg")
 messageAcceuil = pygame.image.load("assets/message-acceuil.png")
 
 # en cour - generer dé, pion, face123456
-pionQuiIndiquePoint_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
-pionQuiIndiquePoint_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
+pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
+pionNoir = pygame.image.load("assets/noir-chess-mini.png")
         
 
 
@@ -33,14 +33,13 @@ decliquable = pygame.image.load("assets/de.png")
 
 joueur = Joueur()
 running = True
-
 acceuil = True
 
 
 while acceuil :
 
     # appliquer a l'arriere plan de notre jeu
-    screen.blit(background2,(0,0))
+    screen.blit(backgroundAcceuil,(0,0))
     screen.blit(pictureAcceuil,(317,333))
     screen.blit(messageAcceuil,(251,272))
     
@@ -70,10 +69,10 @@ while running:
     
     if joueur.cestaujoueur1dejouer  == True:
                 
-        pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
+        pionAQuiLeTour = pionBlanc
                 
     else:
-        pionAQuiLeTour = pygame.image.load("assets/noir-chess-mini.png")
+        pionAQuiLeTour = pionNoir
         
         
 
@@ -125,8 +124,8 @@ while running:
     screen.blit(joueur.image_joueurIA, joueur.rect_joueurIA)
     
     # pion qui indique les des
-    screen.blit(pionQuiIndiquePoint_joueur1,(387,258))
-    screen.blit(pionQuiIndiquePoint_joueurIA,(387,315))
+    screen.blit(pionBlanc,(387,258))
+    screen.blit(pionNoir,(387,315))
     
     #pion a qui le tour
     screen.blit(pionAQuiLeTour,(22,82))
