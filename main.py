@@ -1,7 +1,7 @@
 import pygame
 import random
 from joueurclass import Joueur
-from game import Game
+
 import time
 from grille import Grille
 pygame.init()
@@ -31,7 +31,7 @@ pionQuiIndiquePoint_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
 decliquable = pygame.image.load("assets/de.png")
 # charger joueur
 
-game = Game()
+Joueur = Joueur()
 running = True
 
 acceuil = True
