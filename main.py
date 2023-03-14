@@ -80,36 +80,36 @@ while running:
 
     
 
-    if game.joueur1.valeurdude_joueur1 == 0:    
+    if joueur.valeurdude_joueur1 == 0:    
         faceDuDe_joueur1 = pygame.image.load("assets/de.png")
-    elif game.joueur1.valeurdude_joueur1 == 1:    
+    elif joueur.valeurdude_joueur1 == 1:    
         faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-1-b.svg.png")
-    elif game.joueur1.valeurdude_joueur1 == 2:
+    elif joueur.valeurdude_joueur1 == 2:
         faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-2-b.svg.png")
-    elif game.joueur1.valeurdude_joueur1 == 3:
+    elif joueur.valeurdude_joueur1 == 3:
         faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-3-b.svg.png")
-    elif game.joueur1.valeurdude_joueur1 == 4:
+    elif joueur.valeurdude_joueur1 == 4:
         faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-4-b.svg.png")
-    elif game.joueur1.valeurdude_joueur1 == 5:
+    elif joueur.valeurdude_joueur1 == 5:
         faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-5-b.svg.png")
-    elif game.joueur1.valeurdude_joueur1 == 6:
+    elif joueur.valeurdude_joueur1 == 6:
         faceDuDe_joueur1 = pygame.image.load("assets/64px-Dice-6-b.svg.png")
 
 
 
-    if game.joueurIA.valeurdude_joueurIA == 0:    
+    if joueur.valeurdude_joueurIA == 0:    
         faceDuDe_joueurIA = pygame.image.load("assets/de.png")
-    elif game.joueurIA.valeurdude_joueurIA == 1:    
+    elif joueur.valeurdude_joueurIA == 1:    
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-1-b.svg.png")
-    elif game.joueurIA.valeurdude_joueurIA == 2:
+    elif joueur.valeurdude_joueurIA == 2:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-2-b.svg.png")
-    elif game.joueurIA.valeurdude_joueurIA == 3:
+    elif joueur.valeurdude_joueurIA == 3:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-3-b.svg.png")
-    elif game.joueurIA.valeurdude_joueurIA == 4:
+    elif joueur.valeurdude_joueurIA == 4:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-4-b.svg.png")
-    elif game.joueurIA.valeurdude_joueurIA == 5:
+    elif joueur.valeurdude_joueurIA == 5:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-5-b.svg.png")
-    elif game.joueurIA.valeurdude_joueurIA == 6:
+    elif joueur.valeurdude_joueurIA == 6:
         faceDuDe_joueurIA = pygame.image.load("assets/64px-Dice-6-b.svg.png")
         
 
@@ -120,9 +120,9 @@ while running:
     screen.blit(background,(0,0))
     
     # applique l'image de mon joueur1  !!!!!!  dé, pion, face123456
-    screen.blit(game.joueur1.image_joueur1, game.joueur1.rect_joueur1)
+    screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
     
-    screen.blit(game.joueurIA.image_joueurIA, game.joueurIA.rect_joueurIA)
+    screen.blit(joueur.image_joueurIA, joueur.rect_joueurIA)
     
     # pion qui indique les des
     screen.blit(pionQuiIndiquePoint_joueur1,(387,258))
@@ -154,30 +154,30 @@ while running:
     # lance le "de" avec le clic de la souris ou avec la touche d 
                
             
-        if event.type == pygame.MOUSEBUTTONDOWN and game.joueur1.cestaujoueur1dejouer == True  :
+        if event.type == pygame.MOUSEBUTTONDOWN and joueur.cestaujoueur1dejouer == True  :
                             
              
             # 1 joueur
-            game.joueur1.printrandom1()
-            game.joueur1.deplacementdupion1()
-            print("1-1 " + str(game.joueur1.cestaujoueur1dejouer))
+            joueur.printrandom1()
+            joueur.deplacementdupion1()
+            print("1-1 " + str(joueur.cestaujoueur1dejouer))
         
-        elif game.joueur1.position1 == game.joueurIA.positionIA and game.joueurIA.positionIA != 0:
-            game.joueurIA.colision1()
-            print("1-2 " + str(game.joueur1.cestaujoueur1dejouer))
+        elif joueur.position1 == joueur.positionIA and joueur.positionIA != 0:
+            joueur.colision1()
+            print("1-2 " + str(joueur.cestaujoueur1dejouer))
         
             
 
 
         else:
                 
-            game.joueur1.reverif1()
+            joueur.reverif1()
             
             
-            print("1-3 " + str(game.joueur1.cestaujoueur1dejouer))
-            print("J-1" , int(game.joueur1.position1))
-            print("J-IA" , int(game.joueurIA.positionIA))    
-            game.joueur1.cestaujoueur1dejouer = False
+            print("1-3 " + str(joueur.cestaujoueur1dejouer))
+            print("J-1" , int(joueur.position1))
+            print("J-IA" , int(joueur.positionIA))    
+            joueur.cestaujoueur1dejouer = False
             
             #colision 
             
@@ -189,43 +189,43 @@ while running:
 
             
             
-        while game.joueur1.cestaujoueur1dejouer == False:
+        while joueur.cestaujoueur1dejouer == False:
 
             # IA joueur
             time.sleep(1)           
-            game.joueurIA.printrandomIA()
+            joueur.printrandomIA()
         
 
-            game.joueurIA.deplacementdupionIA()
-            print("2-1 " + str(game.joueur1.cestaujoueur1dejouer)) 
-            print("2-1 " + str(game.joueurIA.cestaujoueurIAdejouer)) 
+            joueur.deplacementdupionIA()
+            print("2-1 " + str(joueur.cestaujoueur1dejouer)) 
+            print("2-1 " + str(joueur.cestaujoueurIAdejouer)) 
         
             
-        if game.joueurIA.positionIA == game.joueur1.position1  and game.joueurIA.positionIA != 0:
-            game.joueurIA.colisionIA()
+        if joueur.positionIA == joueur.position1  and joueur.positionIA != 0:
+            joueur.colisionIA()
 
-            game.joueurIA.rect_joueur1.x = Grille[game.joueurIA.position1][1] 
-            game.joueurIA.rect_joueur1.y = Grille[game.joueurIA.position1][2]
-            print("2-2 " + str(game.joueur1.cestaujoueur1dejouer)) 
-            print("2-2 " + str(game.joueurIA.cestaujoueurIAdejouer)) 
+            joueur.rect_joueur1.x = Grille[joueur.position1][1] 
+            joueur.rect_joueur1.y = Grille[joueur.position1][2]
+            print("2-2 " + str(joueur.cestaujoueur1dejouer)) 
+            print("2-2 " + str(joueur.cestaujoueurIAdejouer)) 
             
 
         else:
             
-            game.joueurIA.revefifIA()
-            game.joueurIA.rect_joueurIA.x = Grille[game.joueurIA.positionIA][1] 
-            game.joueurIA.rect_joueurIA.y = Grille[game.joueurIA.positionIA][2]
-            print("2-3 " + str(game.joueur1.cestaujoueur1dejouer)) 
-            print("2-3 " + str(game.joueurIA.cestaujoueurIAdejouer)) 
+            joueur.revefifIA()
+            joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] 
+            joueur.rect_joueurIA.y = Grille[joueur.positionIA][2]
+            print("2-3 " + str(joueur.cestaujoueur1dejouer)) 
+            print("2-3 " + str(joueur.cestaujoueurIAdejouer)) 
 
-            print("J-IA" , int(game.joueurIA.positionIA))
-            print("J-1" , int(game.joueur1.position1))
-            game.joueur1.cestaujoueur1dejouer = True
+            print("J-IA" , int(joueur.positionIA))
+            print("J-1" , int(joueur.position1))
+            joueur.cestaujoueur1dejouer = True
             
 
     
-            game.joueur1.cestaujoueur1dejouer =  True
-            game.joueurIA.cestaujoueurIAdejouer = False  
+            joueur.cestaujoueur1dejouer =  True
+            joueur.cestaujoueurIAdejouer = False  
             break            
         
         
