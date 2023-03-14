@@ -16,7 +16,7 @@ pygame.display.set_caption("  jeu de l'oie")
 # generer la fenetre de notre jeu
 screen = pygame.display.set_mode((850,567))
 
-oieAcceuil = pygame.image.load("assets/oie3.png").convert_alpha()
+
 
 backgroundAcceuil = pygame.image.load("assets/verdure850x567.png")
 pictureAcceuil = pygame.image.load("assets/oie2.jpeg")
@@ -42,9 +42,9 @@ while acceuil :
 
     # appliquer a l'arriere plan de notre jeu
     screen.blit(backgroundAcceuil,(0,0))
-    screen.blit(pictureAcceuil,(317,333))
-    screen.blit(messageAcceuil,(251,272))
-    screen.blit(oieAcceuil,(252,510))
+    screen.blit(pictureAcceuil,(0,333))
+    screen.blit(messageAcceuil,(0,272))
+    
     
     #mettre à jour l'arriere plan
     pygame.display.flip()
