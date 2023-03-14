@@ -8,8 +8,8 @@ pygame.init()
 
 
 # future icone
-#pygame_icon = pygame.image.load("/home/tartempion/Documents/python/pygame jeu de loie python/assets/oie-alsace.jpg")
-#pygame.display.set_icon(pygame_icon)
+pygame_icon = pygame.image.load("assets/oie-alsace.jpg")
+pygame.display.set_icon(pygame_icon)
 
 # titre
 pygame.display.set_caption("jeu de l'oie")
