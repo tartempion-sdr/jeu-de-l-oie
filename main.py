@@ -198,7 +198,7 @@ while running:
 
             joueur.deplacementdupionIA()
             print("2-1 " + str(joueur.cestaujoueur1dejouer)) 
-            print("2-1 " + str(joueur.cestaujoueurIAdejouer)) 
+            
         
             
         if joueur.positionIA == joueur.position1  and joueur.positionIA != 0:
@@ -207,7 +207,7 @@ while running:
             joueur.rect_joueur1.x = Grille[joueur.position1][1] 
             joueur.rect_joueur1.y = Grille[joueur.position1][2]
             print("2-2 " + str(joueur.cestaujoueur1dejouer)) 
-            print("2-2 " + str(joueur.cestaujoueurIAdejouer)) 
+             
             
 
         else:
@@ -215,17 +215,16 @@ while running:
             joueur.revefifIA()
             joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] 
             joueur.rect_joueurIA.y = Grille[joueur.positionIA][2]
+            
             print("2-3 " + str(joueur.cestaujoueur1dejouer)) 
-            print("2-3 " + str(joueur.cestaujoueurIAdejouer)) 
-
             print("J-IA" , int(joueur.positionIA))
             print("J-1" , int(joueur.position1))
             joueur.cestaujoueur1dejouer = True
             
 
     
-            joueur.cestaujoueur1dejouer =  True
-            joueur.cestaujoueurIAdejouer = False  
+            
+             
             break            
         
         

@@ -18,18 +18,15 @@ class Joueur(pygame.sprite.Sprite):
         self.valeurdude_joueurIA = 0
         self.position1 = 0
         self.positionIA = 0
+        
         self.cestaujoueur1dejouer = True
-        self.cestaujoueurIAdejouer = False
+        
         self.sound_manager = SoundManager()
 
         self.image_joueur1 = pygame.image.load("assets/blanc-chess-mini.png")
         self.rect_joueur1 = self.image_joueur1.get_rect()
-        
         self.rect_joueur1.x = 18
         self.rect_joueur1.y = 22
-        
-        
-        
 
         self.image_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
         self.rect_joueurIA = self.image_joueurIA.get_rect()
