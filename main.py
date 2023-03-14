@@ -31,7 +31,7 @@ pionQuiIndiquePoint_joueurIA = pygame.image.load("assets/noir-chess-mini.png")
 decliquable = pygame.image.load("assets/de.png")
 # charger joueur
 
-Joueur = Joueur()
+joueur = Joueur()
 running = True
 
 acceuil = True
@@ -52,7 +52,7 @@ while acceuil :
     # si le joueur clic , le joueur passe au jeu
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
-            game.joueur1.sound_manager.play("de") 
+            joueur.sound_manager.play("de") 
             acceuil = False
         # si le joueur ferme cette fenetre
         elif event.type == pygame.QUIT:
@@ -68,7 +68,7 @@ while acceuil :
 while running:
     #  affiche le pion a qui le tour en bas a droite
     
-    if game.joueur1.cestaujoueur1dejouer  == True:
+    if joueur.cestaujoueur1dejouer  == True:
                 
         pionAQuiLeTour = pygame.image.load("assets/blanc-chess-mini.png")
                 
