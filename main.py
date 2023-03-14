@@ -162,60 +162,40 @@ while running:
             joueur.deplacementdupion1()
             print("1-1 " + str(joueur.cestaujoueur1dejouer))
         
-        elif joueur.position1 == joueur.positionIA and joueur.positionIA != 0:
-            joueur.colision1()
-            print("1-2 " + str(joueur.cestaujoueur1dejouer))
-        
-            
-
-
-        else:
-                
+            if joueur.position1 == joueur.positionIA and joueur.positionIA != 0:
+                joueur.colision1()
+                print("1-2 " + str(joueur.cestaujoueur1dejouer))
+           
             joueur.reverif1()
-            
-            
             print("1-3 " + str(joueur.cestaujoueur1dejouer))
             print("J-1" , int(joueur.position1))
             print("J-IA" , int(joueur.positionIA))    
             joueur.cestaujoueur1dejouer = False
             
-            #colision 
             
-        
-            
-            
-        
-                
-
-            
-            
-        while joueur.cestaujoueur1dejouer == False:
+        elif joueur.cestaujoueur1dejouer == False:
 
             # IA joueur
             time.sleep(1)           
             joueur.printrandomIA()
-        
-
             joueur.deplacementdupionIA()
             print("2-1 " + str(joueur.cestaujoueur1dejouer)) 
             
         
             
-        if joueur.positionIA == joueur.position1  and joueur.positionIA != 0:
-            joueur.colisionIA()
-
-            joueur.rect_joueur1.x = Grille[joueur.position1][1] 
-            joueur.rect_joueur1.y = Grille[joueur.position1][2]
-            print("2-2 " + str(joueur.cestaujoueur1dejouer)) 
-             
+            if joueur.positionIA == joueur.position1  and joueur.positionIA != 0:
+                joueur.colisionIA()
+                joueur.rect_joueur1.x = Grille[joueur.position1][1] 
+                joueur.rect_joueur1.y = Grille[joueur.position1][2]
+                print("2-2 " + str(joueur.cestaujoueur1dejouer)) 
+                
             
 
-        else:
+       
             
             joueur.revefifIA()
             joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] 
-            joueur.rect_joueurIA.y = Grille[joueur.positionIA][2]
-            
+            joueur.rect_joueurIA.y = Grille[joueur.positionIA][2]            
             print("2-3 " + str(joueur.cestaujoueur1dejouer)) 
             print("J-IA" , int(joueur.positionIA))
             print("J-1" , int(joueur.position1))
