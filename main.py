@@ -8,7 +8,7 @@ pygame.init()
 
 
 # future icone
-pygame_icon = pygame.image.load("assets/oie-alsace.jpg")
+pygame_icon = pygame.image.load("assets/oie-alsace2.png")
 pygame.display.set_icon(pygame_icon)
 
 # titre
@@ -16,11 +16,13 @@ pygame.display.set_caption("jeu de l'oie")
 # generer la fenetre de notre jeu
 screen = pygame.display.set_mode((850,567))
 
-background = pygame.image.load("assets/verdure-rogner2-850x567.png")
+oieAcceuil = pygame.image.load("assets/oie3.png")
 
 backgroundAcceuil = pygame.image.load("assets/verdure850x567.png")
 pictureAcceuil = pygame.image.load("assets/oie2.jpeg")
 messageAcceuil = pygame.image.load("assets/message-acceuil.png")
+
+background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
 # en cour - generer dé, pion, face123456
 pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
@@ -42,7 +44,7 @@ while acceuil :
     screen.blit(backgroundAcceuil,(0,0))
     screen.blit(pictureAcceuil,(317,333))
     screen.blit(messageAcceuil,(251,272))
-    
+    screen.blit(oieAcceuil,(252,510))
     
     #mettre à jour l'arriere plan
     pygame.display.flip()
