@@ -47,12 +47,11 @@ decliquable = pygame.image.load("assets/de.png")
 # charger joueur
 
 joueur = Joueur()
-running = True
-acceuil = True
 
 
 
-while acceuil :
+
+while joueur.acceuil :
 
     # appliquer a l'arriere plan de notre jeu
     screen.blit(backgroundAcceuil,(0,0))
@@ -67,8 +66,9 @@ while acceuil :
     # si le joueur clic , le joueur passe au jeu
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
-            joueur.sound_manager.play("de") 
-            acceuil = False
+            joueur.sound_manager.play("oie") 
+            joueur.acceuil = False
+            joueur.running = True
         # si le joueur ferme cette fenetre
         elif event.type == pygame.QUIT:
             running = False
@@ -79,7 +79,7 @@ while acceuil :
     
 
 # boucle tant que cette condition est vrai
-while running:
+while joueur.running:
     
 
     faceDuDejoueur1 = pygame.image.load(deListe[joueur.valeurdude_joueur1])
@@ -138,22 +138,21 @@ while running:
             
         if event.type == pygame.MOUSEBUTTONDOWN and joueur.cestaujoueur1dejouer == True  :
                             
-             
+            
             # 1 joueur
             joueur.printrandom1()
             joueur.deplacementdupion1()
-            print("1-1 " + str(joueur.cestaujoueur1dejouer))
-        
-            if joueur.position1 == joueur.positionIA and joueur.positionIA != 0:
-                joueur.colision1()
-                print("1-2 " + str(joueur.cestaujoueur1dejouer))
            
-            joueur.reverif1()
-            print("1-3 " + str(joueur.cestaujoueur1dejouer))
-            print("J-1" , int(joueur.position1))
-            print("J-IA" , int(joueur.positionIA))    
+            
+        
+            joueur.colision1()
+
+        
+            joueur.reverif1() 
+    
+
             joueur.cestaujoueur1dejouer = False
-              
+            
             
         elif joueur.cestaujoueur1dejouer == False:
 
@@ -161,37 +160,39 @@ while running:
             time.sleep(1)           
             joueur.printrandomIA()
             joueur.deplacementdupionIA()
-            print("2-1 " + str(joueur.cestaujoueur1dejouer)) 
-            
-        
-            
-            if joueur.positionIA == joueur.position1  and joueur.positionIA != 0:
-                joueur.colisionIA()
-                joueur.rect_joueur1.x = Grille[joueur.position1][1] 
-                joueur.rect_joueur1.y = Grille[joueur.position1][2]
-                print("2-2 " + str(joueur.cestaujoueur1dejouer)) 
+           
                 
-            
-
-       
-            
+        
+            joueur.colisionIA()
+                  
             joueur.revefifIA()
-            joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] 
-            joueur.rect_joueurIA.y = Grille[joueur.positionIA][2]            
-            print("2-3 " + str(joueur.cestaujoueur1dejouer)) 
-            print("J-IA" , int(joueur.positionIA))
-            print("J-1" , int(joueur.position1))
             joueur.cestaujoueur1dejouer = True
             
+while joueur.findepartie == True:
 
+     # appliquer a l'arriere plan de notre jeu
+    screen.blit(backgroundAcceuil,(0,0))
+    screen.blit(pictureAcceuil,(0,333))
     
+    
+    
+    #mettre à jour l'arriere plan
+    pygame.display.flip()
+
+
+    # si le joueur clic , le joueur passe au jeu
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            joueur.sound_manager.play("oie") 
+            joueur.findepartie = False
+            joueur.acceuil = True
+        # si le joueur ferme cette fenetre
+        elif event.type == pygame.QUIT:
+            running = False
+            pygame.quit()    
                 
-    
-
-    
-
-             
-            break            
+     
+                       
         
         
                     
