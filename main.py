@@ -151,7 +151,7 @@ while joueur.running:
     
         
             joueur.cestaujoueur1dejouer = False
-        pygame.display.flip()    
+            
             
         if joueur.cestaujoueur1dejouer == False:
 
