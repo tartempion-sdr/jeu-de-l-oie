@@ -118,10 +118,9 @@ while joueur.running:
     #des
     screen.blit(faceDuDejoueur1,(330,258))
     screen.blit(faceDuDejoueurIA,(330,315))
-    
     #mettre à jour l'arriere plan
     pygame.display.flip()
-
+        
     # si le joueur ferme cette fenetre
 
 
@@ -144,30 +143,31 @@ while joueur.running:
             joueur.deplacementdupion1()
            
             
-        
+            
             joueur.colision1()
 
-        
+            
             joueur.reverif1() 
     
-
+        
             joueur.cestaujoueur1dejouer = False
+        pygame.display.flip()    
             
-            
-        elif joueur.cestaujoueur1dejouer == False:
+        if joueur.cestaujoueur1dejouer == False:
 
             # IA joueur
             time.sleep(1)           
             joueur.printrandomIA()
             joueur.deplacementdupionIA()
-           
+        
                 
         
             joueur.colisionIA()
-                  
+                
             joueur.revefifIA()
             joueur.cestaujoueur1dejouer = True
-            
+    
+    
 while joueur.findepartie == True:
 
      # appliquer a l'arriere plan de notre jeu

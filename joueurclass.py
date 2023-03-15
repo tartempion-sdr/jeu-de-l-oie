@@ -74,13 +74,13 @@ class Joueur(pygame.sprite.Sprite):
     def colision1(self):
     
         if self.position1 == self.positionIA and self.positionIA != 0:
-            time.sleep(3)
-            self.positionIA -= self.valeurdude_joueur1
             
-            self.sound_manager.play("pion")
+            self.positionIA -= self.valeurdude_joueur1
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
-                        
+            time.sleep(3) 
+            self.sound_manager.play("pion")
+                       
     def reverif1(self):
 
         
