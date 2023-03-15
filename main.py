@@ -153,7 +153,7 @@ while joueur.running:
             joueur.cestaujoueur1dejouer = False
             
             
-        if joueur.cestaujoueur1dejouer == False:
+        elif joueur.cestaujoueur1dejouer == False:
 
             # IA joueur
             time.sleep(1)           
