@@ -143,13 +143,13 @@ while joueur.running:
             joueur.deplacementdupion1()
            
             
-            
+            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
             joueur.colision1()
 
-            
+            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
             joueur.reverif1() 
     
-        
+            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
             joueur.cestaujoueur1dejouer = False
             
             
