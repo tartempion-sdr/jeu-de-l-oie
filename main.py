@@ -58,7 +58,7 @@ while joueur.acceuil :
     screen.blit(pictureAcceuil,(0,333))
     screen.blit(messageAcceuil,(0,272))
     
-    
+    pygame.display.set_caption("  acceuil")
     #mettre à jour l'arriere plan
     pygame.display.flip()
 
@@ -81,7 +81,7 @@ while joueur.acceuil :
 # boucle tant que cette condition est vrai
 while joueur.running:
     
-
+    pygame.display.set_caption("  jeu de l'oie")
     faceDuDejoueur1 = pygame.image.load(deListe[joueur.valeurdude_joueur1])
 
     faceDuDejoueurIA = pygame.image.load(deListe[joueur.valeurdude_joueurIA])    
@@ -143,13 +143,13 @@ while joueur.running:
             joueur.deplacementdupion1()
            
             
-            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
+            
             joueur.colision1()
 
-            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
+           
             joueur.reverif1() 
     
-            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
+            
             joueur.cestaujoueur1dejouer = False
             
             
@@ -175,7 +175,7 @@ while joueur.findepartie == True:
     screen.blit(pictureAcceuil,(0,333))
     
     
-    
+    pygame.display.set_caption("  FIN")
     #mettre à jour l'arriere plan
     pygame.display.flip()
 
