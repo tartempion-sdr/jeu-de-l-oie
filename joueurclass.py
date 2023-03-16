@@ -3,7 +3,7 @@ import random
 import time
 from grille import Grille
 from sounds import SoundManager
-
+pygame.init()
 # cree une class qui representera notre joueur
 
 class Joueur(pygame.sprite.Sprite):
@@ -12,7 +12,7 @@ class Joueur(pygame.sprite.Sprite):
     
     def __init__(self):
         super().__init__()
-        # self.nomjoueur = ""
+        self.nomjoueur = ""
         
         # self.grille = list
         self.valeurdude_joueur1 = 0
@@ -47,12 +47,50 @@ class Joueur(pygame.sprite.Sprite):
 
     def entrez_votre_nom(self):
         
-        font = pygame.font.SysFont("ita",18)
-        prenomInput = font.render("ENTREZ VOTRE PRENOM :" ,1 , (0, 0, 0))
-        self.screen.blit(prenomInput,(20, 20))
-        # ,pygame.key.start_text_input     
+ 
+        clock = pygame.time.Clock()
+        font = pygame.font.SysFont('Comic Sans MS,Arial',18)
+        entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,255))
+        prompt_rect = entrezvotreprenom.get_rect()
+        prompt_rect.x = 0
+        prompt_rect.y = 0
+        user_input_value = ""
+        user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
+        user_input_rect = user_input.get_rect()
+        user_input_rect.x = 0
+        user_input_rect.y = 20
 
+        continuer = True
+         
+        while continuer:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    continuer = False
+                    break
+                elif event.type == pygame.KEYDOWN:
+                    if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                        continuer = False
+                        break
+                    elif event.key == pygame.K_BACKSPACE:
+                        user_input_value = user_input_value[:-1]
+                    else:
+                        if len(user_input_value) <= 9:
+                            user_input_value += event.unicode
+                    user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
+                    user_input_rect.x = 0
+                    user_input_rect.y = 40
 
+            clock.tick(30)
+        
+            
+            
+            self.screen.blit(entrezvotreprenom, prompt_rect)
+            self.screen.blit(user_input, user_input_rect)
+            pygame.display.flip()
+        
+        print("Vous Vous appellez: ", str(user_input_value))
+        self.nomjoueur = user_input_value
+        #pygame.quit()
 
     def printrandom1(self):  
 

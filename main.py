@@ -51,11 +51,24 @@ joueur.screen
         
 pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
-
-
+# entrez votre nom
+clock = pygame.time.Clock()
+font = pygame.font.SysFont('Comic Sans MS,Arial',18)
+entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,255))
+prompt_rect = entrezvotreprenom.get_rect()
+prompt_rect.x = 0
+prompt_rect.y = 0
+user_input_value = ""
+user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
+user_input_rect = user_input.get_rect()
+user_input_rect.x = 0
+user_input_rect.y = 20
 
 
 while joueur.acceuil :
+
+    
+
     
     jouezcliq = pygame.Rect((0, 240),(216, 44))
     reglescliq = pygame.Rect((0, 284),(216, 44))
@@ -68,17 +81,41 @@ while joueur.acceuil :
     joueur.screen.blit(jouez,(0,236))
     joueur.screen.blit(regles,(0,284))
 
-    joueur.entrez_votre_nom()
+    
     pygame.display.set_caption("  acceuil")
     #mettre à jour l'arriere plan
     
-    
-    
-       
-    # si le joueur clic , le joueur passe au jeu
+    #
+        # si le joueur clic , le joueur passe au jeu
     for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN :
+            if event.type == pygame.QUIT:
+                    pygame.quit()
+                    break
+            
+            if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                
+                if len(user_input_value)< 1:
+                    print("vous n'avez rien ecrit banane !")
+                else: 
+                    joueur.acceuil = False
+                    joueur.running = True
 
+                break    
+                
+            if event.key == pygame.K_BACKSPACE:
+                user_input_value = user_input_value[:-1]
+            else:
+                if len(user_input_value) <= 9:
+                    user_input_value += event.unicode
+            user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
+            user_input_rect.x = 0
+            user_input_rect.y = 40
+        joueur.screen.blit(entrezvotreprenom, prompt_rect)
+        joueur.screen.blit(user_input, user_input_rect)     
+        pygame.display.flip()
         
+    
         if event.type == pygame.MOUSEBUTTONDOWN:
 
             if jouezcliq.collidepoint(event.pos):
@@ -96,12 +133,11 @@ while joueur.acceuil :
                 joueur.acceuil = False
                 joueur.running = True
 
-        # si le joueur ferme cette fenetre
-        elif event.type == pygame.QUIT:
-            running = False
-            pygame.quit()    
-            
-    
+         
+
+# while suite: 
+#     for event in pygame.event.get():    
+      
         if event.type == pygame.MOUSEMOTION:
             if jouezcliq.collidepoint(event.pos): 
             
@@ -113,13 +149,31 @@ while joueur.acceuil :
             
                 pygame.mouse.set_cursor(*pygame.cursors.ball)
                 joueur.screen.blit(reglestexte,(232,0))
+            
+
             elif picturecliq.collidepoint(event.pos):
                     
                 pygame.mouse.set_cursor(*pygame.cursors.ball)
             else:
                 pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
-        pygame.display.flip()
+            
+                    
+    
+
+        
+
+
+                
+                    
+            
+            pygame.display.flip()
+    #clock.tick(30)
+
+
+print("Vous Vous appellez: ", str(user_input_value))
+joueur.nomjoueur = user_input_value  
+
 # boucle tant que cette condition est vrai
 while joueur.running:
     mous = pygame.cursors.load_xbm("assets/de.xbm", "assets/de-mask.xbm")
@@ -170,7 +224,7 @@ while joueur.running:
     for event in pygame.event.get():
            # que l'evenement est fermeture de fenetre
         if event.type == pygame.QUIT:
-            running = False
+            joueur.running = False
     
             pygame.quit()    
                           
