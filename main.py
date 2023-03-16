@@ -28,8 +28,6 @@ reglestexte = pygame.image.load("assets/regles-texte.png")
 background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
 # - generer dé, pion, face123456
-pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
-pionNoir = pygame.image.load("assets/noir-chess-mini.png")
 
 de0 = "assets/de.png"   
 de1 = "assets/64px-Dice-1-b.svg.png"
@@ -66,10 +64,7 @@ user_input_rect.y = 20
 
 
 while joueur.acceuil :
-
-    
-
-    
+ 
     jouezcliq = pygame.Rect((0, 240),(216, 44))
     reglescliq = pygame.Rect((0, 284),(216, 44))
     picturecliq = pygame.Rect((0, 333),(215, 234))
@@ -83,9 +78,9 @@ while joueur.acceuil :
 
     
     pygame.display.set_caption("  acceuil")
-    #mettre à jour l'arriere plan
     
-    #
+    
+ 
         # si le joueur clic , le joueur passe au jeu
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN :
@@ -141,8 +136,7 @@ while joueur.acceuil :
 
          
 
-# while suite: 
-#     for event in pygame.event.get():    
+ 
       
         if event.type == pygame.MOUSEMOTION:
             if jouezcliq.collidepoint(event.pos): 
@@ -163,19 +157,9 @@ while joueur.acceuil :
             else:
                 pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
-            
-                    
-    
-
-        
-
-
-                
-                    
-            
+                      
             pygame.display.flip()
-    #clock.tick(30)
-
+    
 
 print("Vous Vous appellez: ", str(user_input_value))
 joueur.nomjoueur = user_input_value  
@@ -193,10 +177,10 @@ while joueur.running:
 # affiche valeur du dé pour joueur1 et joueurIA
     if joueur.cestaujoueur1dejouer  == True:
                 
-        pionAQuiLeTour = pionBlanc
+        pionAQuiLeTour = joueur.pionBlanc
         pygame.mouse.set_cursor(*mous)
     else:
-        pionAQuiLeTour = pionNoir
+        pionAQuiLeTour = joueur.pionNoir
         pygame.mouse.set_cursor(*sablier)
     
     
@@ -205,13 +189,13 @@ while joueur.running:
     joueur.screen.blit(background,(0,0))
     
     # applique l'image de mon joueur1  !!!!!!  dé, pion, face123456
-    joueur.screen.blit(pionBlanc, joueur.rect_joueur1)
+    joueur.screen.blit(joueur.pionBlanc, joueur.rect_joueur1)
     
-    joueur.screen.blit(pionNoir, joueur.rect_joueurIA)
+    joueur.screen.blit(joueur.pionNoir, joueur.rect_joueurIA)
     
     # pion qui indique les des
-    joueur.screen.blit(pionBlanc,(387,258))
-    joueur.screen.blit(pionNoir,(387,315))
+    joueur.screen.blit(joueur.pionBlanc,(387,258))
+    joueur.screen.blit(joueur.pionNoir,(387,315))
     
     #pion a qui le tour
     joueur.screen.blit(pionAQuiLeTour,(22,82))

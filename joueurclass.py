@@ -22,6 +22,8 @@ class Joueur(pygame.sprite.Sprite):
         self.screen = pygame.display.set_mode((850,567))
         self.position1 = 0
         self.positionIA = 0
+        self.pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
+        self.pionNoir = pygame.image.load("assets/noir-chess-mini.png")
 
         self.cestaujoueur1dejouer = True
         
@@ -45,52 +47,7 @@ class Joueur(pygame.sprite.Sprite):
     
 
 
-    def entrez_votre_nom(self):
-        
- 
-        clock = pygame.time.Clock()
-        font = pygame.font.SysFont('Comic Sans MS,Arial',18)
-        entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,255))
-        prompt_rect = entrezvotreprenom.get_rect()
-        prompt_rect.x = 0
-        prompt_rect.y = 0
-        user_input_value = ""
-        user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
-        user_input_rect = user_input.get_rect()
-        user_input_rect.x = 0
-        user_input_rect.y = 20
-
-        continuer = True
-         
-        while continuer:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    continuer = False
-                    break
-                elif event.type == pygame.KEYDOWN:
-                    if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
-                        continuer = False
-                        break
-                    elif event.key == pygame.K_BACKSPACE:
-                        user_input_value = user_input_value[:-1]
-                    else:
-                        if len(user_input_value) <= 9:
-                            user_input_value += event.unicode
-                    user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
-                    user_input_rect.x = 0
-                    user_input_rect.y = 40
-
-            clock.tick(30)
-        
-            
-            
-            self.screen.blit(entrezvotreprenom, prompt_rect)
-            self.screen.blit(user_input, user_input_rect)
-            pygame.display.flip()
-        
-        print("Vous Vous appellez: ", str(user_input_value))
-        self.nomjoueur = user_input_value
-        #pygame.quit()
+    
 
     def printrandom1(self):  
 
@@ -108,19 +65,21 @@ class Joueur(pygame.sprite.Sprite):
         self.rect_joueur1.y = Grille[self.position1][2]
         time.sleep(1)
         self.sound_manager.play("pion")
-          
+        self.screen.blit(self.pionBlanc, self.rect_joueur1)
+        pygame.display.flip()
+
     def colision1(self):
         
         if self.position1 == self.positionIA and self.positionIA != 0:
             
-            print("1de ", int(self.valeurdude_joueur1))
             self.positionIA -= self.valeurdude_joueur1
-            print("2de ",int(self.valeurdude_joueur1))
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
             time.sleep(1)
             self.sound_manager.play("pion")
-            
+        self.screen.blit(self.pionBlanc, self.rect_joueur1)
+        pygame.display.flip()
+
     def reverif1(self):
 
         
@@ -253,7 +212,7 @@ class Joueur(pygame.sprite.Sprite):
             self.sound_manager.play("oie")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2]
-            
+        pygame.display.flip()
       
 
 
@@ -271,7 +230,9 @@ class Joueur(pygame.sprite.Sprite):
         self.rect_joueurIA.y = Grille[self.positionIA][2]
         time.sleep(1)
         self.sound_manager.play("pion")
-        
+        self.screen.blit(self.pionNoir, self.rect_joueurIA)    
+        pygame.display.flip()
+
     def colisionIA(self):
         
         if self.positionIA == self.position1 and self.position1 != 0:
@@ -283,12 +244,12 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
             time.sleep(1)
-            
+        self.screen.blit(self.pionNoir, self.rect_joueurIA)    
+        pygame.display.flip()
+
     def revefifIA(self):
             
-            
-       
-
+        
         # out of range > 
         if self.positionIA == 69:
             
@@ -340,7 +301,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA = 63 - ((63 -(self.positionIA - self.valeurdude_joueurIA))- 1)
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
 
@@ -355,7 +316,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA = 40
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
 
@@ -365,7 +326,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA = 0
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
 
@@ -373,7 +334,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA = 54
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
 
@@ -381,7 +342,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA = 30
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
         
@@ -389,7 +350,7 @@ class Joueur(pygame.sprite.Sprite):
            
             time.sleep(1)
             self.positionIA += self.valeurdude_joueurIA
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("oie")
 
@@ -397,7 +358,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA = 57
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
         
@@ -405,7 +366,7 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA += self.valeurdude_joueurIA
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("oie")
 
@@ -413,10 +374,12 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(1)
             self.positionIA += self.valeurdude_joueurIA
-            self.rect_joueurIA.x = Grille[self.positionIA][1] 
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("oie")
-
+        
+        self.screen.blit(self.pionNoir, self.rect_joueurIA)   
+        pygame.display.flip()
     
 
         
