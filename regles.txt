@@ -1,0 +1,37 @@
+
+		=:-jeu de l'oie les règle de base-:=
+		
+	   Pour gagner arriver le premier sur la case 63
+	 
+	     Celui qui est rejoint par un autre joueur 
+		 sur la même case devra se rendre 
+	sur la case ou l’autre joueur se situait avant de jouer.
+
+    Si lors de la partie, le joueur tombe sur une oie(case[ 8,26,36 ])
+	   avance de nouveau du nombre de points réalisés. 
+	    
+	      =:-Le joueur qui tombe sur la case:-:=
+	    
+	     8  Oie                             
+	    19  hôtel passe son tour durant 2 tours.
+	    26  Oie 
+	    27 -> 57  echelles  
+	    31  au puits attendra qu’un autre joueur arrive
+		au même numéro et prendra sa place.
+	    36 Oie
+	    40 -> 62  echelles 
+	    42 correspondant au labyrinthe 
+	       retournera obligatoirement à la case 30.
+	    46 -> 54  echelles 
+	    52 correspondant la prison attendra 
+	       qu’un autre joueur vienne au même numéro pour repartir.
+	    58 correspondant à la case Tête de mort 
+	    recommencera la partie depuis le début
+	    
+		si le joueur réalise un score aux dés 
+	supérieur au nombre de case le séparant de la case 63 
+	 il devra reculer d’autant de cases supplémentaires.
+		    
+
+
+
