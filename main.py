@@ -120,18 +120,24 @@ while joueur.acceuil :
 
             if jouezcliq.collidepoint(event.pos):
                 
-
-                joueur.sound_manager.play("pion") 
-                joueur.acceuil = False
-                joueur.running = True
-        
+                if len(user_input_value)< 1:
+                    print("vous n'avez rien ecrit banane !")
+                else:
+                    joueur.sound_manager.play("pion") 
+                    joueur.acceuil = False
+                    joueur.running = True
+            
                 
         
             if picturecliq.collidepoint(event.pos):
 
-                joueur.sound_manager.play("pion") 
-                joueur.acceuil = False
-                joueur.running = True
+                if len(user_input_value)< 1:
+                    print("vous n'avez rien ecrit banane !")
+                else:
+
+                    joueur.sound_manager.play("pion") 
+                    joueur.acceuil = False
+                    joueur.running = True
 
          
 
