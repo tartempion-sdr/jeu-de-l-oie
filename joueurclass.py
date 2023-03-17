@@ -161,9 +161,14 @@ class Joueur(pygame.sprite.Sprite):
             
             time.sleep(3)
             self.position1 = 0
-            self.sound_manager.play("pion")
+            self.sound_manager.play("mort")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2]
+
+        if self.position1 == 52:
+            
+            
+            self.sound_manager.play("prison")
 
         if self.position1 == 46:
             
@@ -189,6 +194,11 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2]
 
+        if self.position1 == 31:
+            
+            
+            self.sound_manager.play("plouf")
+
         if self.position1 == 27:
             
             time.sleep(3)
@@ -204,6 +214,11 @@ class Joueur(pygame.sprite.Sprite):
             self.sound_manager.play("oie")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2]
+
+        if self.position1 == 18:
+            
+            
+            self.sound_manager.play("hotel")
 
         if self.position1 == 8:
             
@@ -328,7 +343,13 @@ class Joueur(pygame.sprite.Sprite):
             self.positionIA = 0
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
-            self.sound_manager.play("pion")
+            self.sound_manager.play("mort")
+
+        if self.position1 == 52:
+            
+            
+            self.sound_manager.play("prison")
+
 
         if self.positionIA == 46:
             
@@ -353,6 +374,12 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("oie")
+        
+        if self.position1 == 31:
+            
+            
+            self.sound_manager.play("plouf")
+
 
         if self.positionIA == 27:
             
@@ -362,6 +389,11 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             self.sound_manager.play("pion")
         
+        if self.positionIA == 18:
+            
+            
+            self.sound_manager.play("hotel")
+
         if self.positionIA == 26:
             
             time.sleep(1)

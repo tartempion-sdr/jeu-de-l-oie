@@ -50,7 +50,7 @@ joueur.screen
 pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
 # entrez votre nom
-clock = pygame.time.Clock()
+
 font = pygame.font.SysFont('Comic Sans MS,Arial',18)
 entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,255))
 prompt_rect = entrezvotreprenom.get_rect()
@@ -166,6 +166,16 @@ joueur.nomjoueur = user_input_value
 
 # boucle tant que cette condition est vrai
 while joueur.running:
+
+
+    font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+    votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
+    prompt_rect = votreprenom.get_rect()
+    prompt_rect.x = 0
+    prompt_rect.y = 0
+    joueur.screen.blit(votreprenom, prompt_rect)
+    pygame.display.flip()
+
     mous = pygame.cursors.load_xbm("assets/de.xbm", "assets/de-mask.xbm")
     sablier = pygame.cursors.load_xbm("assets/sablier.xbm", "assets/sablier-mask.xbm")
     pygame.display.set_caption("  jeu de l'oie")
