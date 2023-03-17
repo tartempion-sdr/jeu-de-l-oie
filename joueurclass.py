@@ -40,6 +40,7 @@ class Joueur(pygame.sprite.Sprite):
         self.rect_joueurIA.x = 48
         self.rect_joueurIA.y = 22
 
+        self.recommencer = True
         self.acceuil = True
         self.running = False
         self.findepartie = False
@@ -83,7 +84,6 @@ class Joueur(pygame.sprite.Sprite):
             #self.screen.blit(self.pionNoir, self.rect_joueurIA)
             #pygame.display.flip()
             
-
     def verif1(self):
 
         
@@ -288,7 +288,6 @@ class Joueur(pygame.sprite.Sprite):
             #self.screen.blit(self.pionBlanc, self.rect_joueur1)
             #pygame.display.flip()
             
-
     def vefifIA(self):
             
         
