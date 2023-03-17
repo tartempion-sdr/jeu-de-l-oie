@@ -24,6 +24,7 @@ messageAcceuil = pygame.image.load("assets/message-acceuil.png")
 jouez = pygame.image.load("assets/jouez.png")
 regles = pygame.image.load("assets/regles.png")
 reglestexte = pygame.image.load("assets/regles-texte.png")
+carreblanc = pygame.image.load("assets/carre-blanc.png")
 
 background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
@@ -83,11 +84,12 @@ while joueur.acceuil :
  
         # si le joueur clic , le joueur passe au jeu
     for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN :
-            if event.type == pygame.QUIT:
-                    pygame.quit()
-                    break
-            
+        
+        if event.type == pygame.QUIT:
+            joueur.acceuil = False
+            pygame.quit()
+            break
+        if event.type == pygame.KEYDOWN :    
             if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
                 
                 if len(user_input_value)< 1:
@@ -112,7 +114,7 @@ while joueur.acceuil :
         
     
         if event.type == pygame.MOUSEBUTTONDOWN:
-
+            
             if jouezcliq.collidepoint(event.pos):
                 
                 if len(user_input_value)< 1:
@@ -154,6 +156,7 @@ while joueur.acceuil :
             elif picturecliq.collidepoint(event.pos):
                     
                 pygame.mouse.set_cursor(*pygame.cursors.ball)
+                joueur.screen.blit(carreblanc,(232,0))
             else:
                 pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
@@ -266,19 +269,8 @@ while joueur.running:
                            
 while joueur.findepartie == True:
 
-    if joueur.position1 == 63 :
-        votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + "vous avez gagné", True ,(0,0,0),(255,255,255))
-    else:
-        votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
     
-    font = pygame.font.SysFont('Comic Sans MS,Arial',16)
     
-    prompt_rect = votreprenom.get_rect()
-    prompt_rect.x = 0
-    prompt_rect.y = 0
-    joueur.screen.blit(votreprenom, prompt_rect)
-    
-    pygame.display.flip()
     
     pygame.mouse.set_cursor(*pygame.cursors.arrow)
         
@@ -287,6 +279,17 @@ while joueur.findepartie == True:
     joueur.screen.blit(backgroundAcceuil,(0,0))
     joueur.screen.blit(pictureAcceuil,(0,333))
     
+    
+    font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+    
+    prompt_rect = votreprenom.get_rect()
+    prompt_rect.x = 0
+    prompt_rect.y = 0
+    joueur.screen.blit(votreprenom, prompt_rect)
+    if joueur.position1 == 63 :
+        votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + "vous avez gagné", True ,(0,0,0),(255,255,255))
+    else:
+        votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
     
     #mettre à jour l'arriere plan
     pygame.display.flip()

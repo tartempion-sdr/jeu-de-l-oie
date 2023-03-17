@@ -82,7 +82,7 @@ class Joueur(pygame.sprite.Sprite):
             #self.screen.blit(self.pionBlanc, self.rect_joueur1)
             #self.screen.blit(self.pionNoir, self.rect_joueurIA)
             #pygame.display.flip()
-            time.sleep(1)
+            
 
     def verif1(self):
 
@@ -287,7 +287,7 @@ class Joueur(pygame.sprite.Sprite):
             #self.screen.blit(self.pionNoir, self.rect_joueurIA)
             #self.screen.blit(self.pionBlanc, self.rect_joueur1)
             #pygame.display.flip()
-            time.sleep(1)
+            
 
     def vefifIA(self):
             
