@@ -168,13 +168,7 @@ joueur.nomjoueur = user_input_value
 while joueur.running:
 
 
-    font = pygame.font.SysFont('Comic Sans MS,Arial',16)
-    votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
-    prompt_rect = votreprenom.get_rect()
-    prompt_rect.x = 0
-    prompt_rect.y = 0
-    joueur.screen.blit(votreprenom, prompt_rect)
-    pygame.display.flip()
+    
 
     mous = pygame.cursors.load_xbm("assets/de.xbm", "assets/de-mask.xbm")
     sablier = pygame.cursors.load_xbm("assets/sablier.xbm", "assets/sablier-mask.xbm")
@@ -215,7 +209,18 @@ while joueur.running:
     #des
     joueur.screen.blit(faceDuDejoueur1,(330,258))
     joueur.screen.blit(faceDuDejoueurIA,(330,315))
+    
+    font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+    votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
+    prompt_rect = votreprenom.get_rect()
+    prompt_rect.x = 0
+    prompt_rect.y = 0
+    joueur.screen.blit(votreprenom, prompt_rect)
+    
+    
     #mettre à jour l'arriere plan
+    
+    
     pygame.display.flip()
         
     # si le joueur ferme cette fenetre
@@ -233,12 +238,16 @@ while joueur.running:
                
         
         if event.type == pygame.MOUSEBUTTONDOWN :
+            
+            
+            
+            
             if joueur.cestaujoueur1dejouer == True  :  
                 # 1 joueur 
                 joueur.printrandom1()
                 joueur.deplacementdupion1() 
                 joueur.colision1()              
-                joueur.reverif1()  
+                joueur.verif1()  
                 joueur.cestaujoueur1dejouer = False    
                 print("faux")
 
@@ -246,16 +255,31 @@ while joueur.running:
             
         
             # IA joueur
-            time.sleep(1)                  
+                             
             joueur.printrandomIA()
             joueur.deplacementdupionIA()
         
             joueur.colisionIA()
                 
-            joueur.revefifIA()            
+            joueur.vefifIA()            
             joueur.cestaujoueur1dejouer = True
-                        
+                           
 while joueur.findepartie == True:
+
+    if joueur.position1 == 63 :
+        votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + "vous avez gagné", True ,(0,0,0),(255,255,255))
+    else:
+        votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
+    
+    font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+    
+    prompt_rect = votreprenom.get_rect()
+    prompt_rect.x = 0
+    prompt_rect.y = 0
+    joueur.screen.blit(votreprenom, prompt_rect)
+    
+    pygame.display.flip()
+    
     pygame.mouse.set_cursor(*pygame.cursors.arrow)
         
     pygame.display.set_caption("  FIN")
