@@ -57,6 +57,17 @@ entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,
 prompt_rect = entrezvotreprenom.get_rect()
 prompt_rect.x = 0
 prompt_rect.y = 0
+
+pasDePrenom  = font.render("vous n'avez rien ecrit banane !" ,True ,(0,0,0),(255,255,255))
+pasDePrenom_rect = pasDePrenom.get_rect()
+pasDePrenom_rect.x = 0
+pasDePrenom_rect.y = 40
+
+cliqpasDePrenom  = font.render("ecrit et cela s'affiche tout seul, pas besoin de cliqué" ,True ,(0,0,0),(255,255,255))
+cliqpasDePrenom_rect = pasDePrenom.get_rect()
+cliqpasDePrenom_rect.x = 0
+cliqpasDePrenom_rect.y = 40
+
 user_input_value = ""
 user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
 user_input_rect = user_input.get_rect()
@@ -93,6 +104,9 @@ while joueur.acceuil :
             if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
                 
                 if len(user_input_value)< 1:
+
+                    
+
                     print("vous n'avez rien ecrit banane !")
                 else: 
                     joueur.acceuil = False
@@ -118,6 +132,9 @@ while joueur.acceuil :
             if jouezcliq.collidepoint(event.pos):
                 
                 if len(user_input_value)< 1:
+
+                    joueur.screen.blit(cliqpasDePrenom,cliqpasDePrenom_rect)
+                    pygame.display.flip()
                     print("vous n'avez rien ecrit banane !")
                 else:
                     joueur.sound_manager.play("pion") 
@@ -126,27 +143,20 @@ while joueur.acceuil :
             
                 
         
-            if picturecliq.collidepoint(event.pos):
-
-                if len(user_input_value)< 1:
-                    print("vous n'avez rien ecrit banane !")
-                else:
-
-                    joueur.sound_manager.play("pion") 
-                    joueur.acceuil = False
-                    joueur.running = True
-
+            
          
 
  
       
         if event.type == pygame.MOUSEMOTION:
-            if jouezcliq.collidepoint(event.pos): 
-            
+            if jouezcliq.collidepoint(event.pos):
+
                 pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-
-
-        
+                if len(user_input_value)< 1:
+                    joueur.screen.blit(pasDePrenom,pasDePrenom_rect)
+                    pygame.display.flip()
+                
+            
             elif reglescliq.collidepoint(event.pos): 
             
                 pygame.mouse.set_cursor(*pygame.cursors.ball)
