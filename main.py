@@ -4,6 +4,7 @@ from joueurclass import Joueur
 import csv
 import time
 from grille import Grille
+
 pygame.init()
 
 
@@ -71,8 +72,7 @@ cliqpasDePrenom_rect = pasDePrenom.get_rect()
 cliqpasDePrenom_rect.x = 0
 cliqpasDePrenom_rect.y = 40
 
-user_input_value = ""
-user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
+user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
 user_input_rect = user_input.get_rect()
 user_input_rect.x = 0
 user_input_rect.y = 20
@@ -137,7 +137,7 @@ while joueur.recommencer :
                 
                 if jouezcliq.collidepoint(event.pos):
                     
-                    if len(user_input_value)< 1:
+                    if len(joueur.nomjoueur)< 1:
 
                         joueur.screen.blit(cliqpasDePrenom,cliqpasDePrenom_rect)
                         pygame.display.flip()
@@ -156,7 +156,7 @@ while joueur.recommencer :
                 if jouezcliq.collidepoint(event.pos):
 
                     pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-                    if len(user_input_value)< 1:
+                    if len(joueur.nomjoueur)< 1:
                         joueur.screen.blit(pasDePrenom,pasDePrenom_rect)
                         pygame.display.flip()
                     
@@ -171,19 +171,25 @@ while joueur.recommencer :
                         
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
                     joueur.screen.blit(carreblanc,(232,0))
-                    yy = 20
-                    with open("out_score.csv") as fichier:
-                        
-                        for ligne in fichier:
-                            if ligne[1] <= ligne[1] :
-                                # faire quelque chose avec une ligne
-                                lignescore = font.render(ligne, True, (0,0,0), (255,255,255))
+                    
+                   
+                    with open("out_score_ordre_croissant.csv",) as fichier:
+                        reader = csv.DictReader(fichier, delimiter=",")
+                        titre = "nomjoueur         score"
+                        titrescore = font.render(str(titre), True, (0,0,0), (255,255,255))
+                        ajoutUneLigne = joueur.screen.blit(titrescore, (250, 0))                      
+                        # faire quelque chose avec une ligne
+                        l = 0
+                        yy = 20
+                        for ligne in reader:
+                             if l < 10:
                             
+                                l = l + 1
+                                yy += 25                     
+                                lignescore = font.render(str(ligne["nomjoueur"]+"           "+ ligne["score"]), True, (0,0,0), (255,255,255))
                                 ajoutUneLigne = joueur.screen.blit(lignescore, (250, yy))
-                                yy += 25
-
-                                pygame.display.flip()
-                            
+                                
+                        
                 else:
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
@@ -359,7 +365,7 @@ while joueur.recommencer :
                 
                     joueur.enregisterScore()
                     joueur.sauvegarde = False
-
+                    joueur.nomjoueur = ""
 
             # si le joueur ferme cette fenetre
             if event.type == pygame.QUIT:

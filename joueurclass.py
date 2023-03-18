@@ -4,6 +4,7 @@ import time
 from grille import Grille
 from sounds import SoundManager
 import csv
+import pandas
 pygame.init()
 # cree une class qui representera notre joueur
 
@@ -53,7 +54,7 @@ class Joueur(pygame.sprite.Sprite):
     def enregisterScore(self):
 
         
-        enTete = ["nomjoueur ", "score"]
+        enTete = ["nomjoueur", "score"]
 
         with open("in_score.csv", "w") as fichier_in: 
 
@@ -70,9 +71,14 @@ class Joueur(pygame.sprite.Sprite):
             writer2 = csv.writer(fichier_out, delimiter=",")
             for line in reader:
   
-                writer2.writerow([line["nomjoueur "]]+[line["score"]])
-            print("ok-gg")
-
+                writer2.writerow([line["nomjoueur"]]+[line["score"]])
+            
+            df = pandas.read_csv("out_score.csv", sep=",")
+            #index_col='col1'
+            df = df.sort_values(by=['score'], ascending=True)
+            df.to_csv("out_score_ordre_croissant.csv")
+        
+            
     def printrandom1(self):  
 
         de = int(random.randint(1, 6))
