@@ -3,6 +3,7 @@ import random
 import time
 from grille import Grille
 from sounds import SoundManager
+import csv
 pygame.init()
 # cree une class qui representera notre joueur
 
@@ -13,12 +14,14 @@ class Joueur(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.nomjoueur = ""
-        
+        self.user_input_value = ""
         # self.grille = list
         self.valeurdude_joueur1 = 0
         self.valeurdude_joueurIA = 0
 
-        self.score = 0        
+        self.score = 0  
+         
+
         self.screen = pygame.display.set_mode((850,567))
         self.position1 = 0
         self.positionIA = 0
@@ -27,6 +30,7 @@ class Joueur(pygame.sprite.Sprite):
 
         self.cestaujoueur1dejouer = True
         
+        self.sauvegarde = True
         
         self.sound_manager = SoundManager()
 
@@ -46,9 +50,28 @@ class Joueur(pygame.sprite.Sprite):
         self.findepartie = False
         
     
+    def enregisterScore(self):
 
+        
+        enTete = ["nomjoueur ", "score"]
 
-    
+        with open("in_score.csv", "w") as fichier_in: 
+
+            writer = csv.writer(fichier_in, delimiter=",")
+            writer.writerow(enTete)
+            lignescore = [self.nomjoueur]+[str(self.score)]  
+            writer.writerow(lignescore)
+
+            
+        with open("out_score.csv", "a") as fichier_out: 
+
+            fichier_in = open('in_score.csv') 
+            reader = csv.DictReader(fichier_in, delimiter=",")
+            writer2 = csv.writer(fichier_out, delimiter=",")
+            for line in reader:
+  
+                writer2.writerow([line["nomjoueur "]]+[line["score"]])
+            print("ok-gg")
 
     def printrandom1(self):  
 

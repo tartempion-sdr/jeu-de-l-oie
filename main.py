@@ -1,7 +1,7 @@
 import pygame
 import random
 from joueurclass import Joueur
-
+import csv
 import time
 from grille import Grille
 pygame.init()
@@ -66,7 +66,7 @@ pasDePrenom_rect = pasDePrenom.get_rect()
 pasDePrenom_rect.x = 0
 pasDePrenom_rect.y = 40
 
-cliqpasDePrenom  = font.render("ecrit et cela s'affiche tout seul, pas besoin de cliqué" ,True ,(0,0,0),(255,255,255))
+cliqpasDePrenom  = font.render("ecrit et cela s'affiche tout seul, pas besoin de cliqué quelque part pour écrire" ,True ,(0,0,0),(255,255,255))
 cliqpasDePrenom_rect = pasDePrenom.get_rect()
 cliqpasDePrenom_rect.x = 0
 cliqpasDePrenom_rect.y = 40
@@ -77,9 +77,10 @@ user_input_rect = user_input.get_rect()
 user_input_rect.x = 0
 user_input_rect.y = 20
 
+ # boucle tant que cette condition est vrai
 while joueur.recommencer :
     while joueur.acceuil :
-    
+        
         jouezcliq = pygame.Rect((0, 240),(216, 44))
         reglescliq = pygame.Rect((0, 284),(216, 44))
         picturecliq = pygame.Rect((0, 333),(215, 234))
@@ -106,28 +107,29 @@ while joueur.recommencer :
             if event.type == pygame.KEYDOWN :    
                 if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
                     
-                    if len(user_input_value)< 1:
+                    if len(joueur.nomjoueur)< 1:
+
+                        joueur.screen.blit(pasDePrenom,pasDePrenom_rect)
+                        pygame.display.flip()
 
                         
-
-                        print("vous n'avez rien ecrit banane !")
                     else: 
                         joueur.acceuil = False
                         joueur.running = True
-
+                        joueur.sauvegarde = True
                     break    
                     
                 if event.key == pygame.K_BACKSPACE:
-                    user_input_value = user_input_value[:-1]
+                    joueur.nomjoueur = joueur.nomjoueur[:-1]
                 else:
-                    if len(user_input_value) <= 9:
-                        user_input_value += event.unicode
-                user_input = font.render(user_input_value, True, (0,0,0), (255,255,255))
+                    if len(joueur.nomjoueur) <= 9:
+                        joueur.nomjoueur += event.unicode
+                user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
                 user_input_rect.x = 0
                 user_input_rect.y = 40
             joueur.screen.blit(entrezvotreprenom, prompt_rect)
             joueur.screen.blit(user_input, user_input_rect)     
-            joueur.nomjoueur = user_input_value
+            
             pygame.display.flip()
             
         
@@ -139,14 +141,16 @@ while joueur.recommencer :
 
                         joueur.screen.blit(cliqpasDePrenom,cliqpasDePrenom_rect)
                         pygame.display.flip()
-                        print("vous n'avez rien ecrit banane !")
+                        
                     else:
                         joueur.sound_manager.play("pion") 
                         joueur.acceuil = False
                         joueur.running = True
                 
-                    
-            
+                if picturecliq.collidepoint(event.pos):    
+                    joueur.sound_manager.play("pion") 
+                    joueur.acceuil = False
+                    joueur.findepartie = True
                 
             if event.type == pygame.MOUSEMOTION:
                 if jouezcliq.collidepoint(event.pos):
@@ -167,15 +171,25 @@ while joueur.recommencer :
                         
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
                     joueur.screen.blit(carreblanc,(232,0))
+                    yy = 20
+                    with open("out_score.csv") as fichier:
+                        
+                        for ligne in fichier:
+                            if ligne[1] <= ligne[1] :
+                                # faire quelque chose avec une ligne
+                                lignescore = font.render(ligne, True, (0,0,0), (255,255,255))
+                            
+                                ajoutUneLigne = joueur.screen.blit(lignescore, (250, yy))
+                                yy += 25
+
+                                pygame.display.flip()
+                            
                 else:
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
                         
                 pygame.display.flip()
-        
-
-
-    # boucle tant que cette condition est vrai
+         
     while joueur.running:
 
 
@@ -274,29 +288,42 @@ while joueur.recommencer :
                 joueur.vefifIA()            
                 joueur.cestaujoueur1dejouer = True
                             
-    while joueur.findepartie == True:
+    while joueur.findepartie :
 
-        
-        
-        
-        
-            
+             
         pygame.display.set_caption("  FIN")
         # appliquer a l'arriere plan de notre jeu
         joueur.screen.blit(backgroundAcceuil,(0,0))
         joueur.screen.blit(pictureAcceuil,(0,333))
         
-        
+        enregistrercliq = pygame.Rect((0, 0),(215, 60))
+
         font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+
         
-        prompt_rect = votreprenom.get_rect()
-        prompt_rect.x = 0
-        prompt_rect.y = 0
-        joueur.screen.blit(votreprenom, prompt_rect)
-        if joueur.position1 == 63 :
-            votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + "vous avez gagné", True ,(0,0,0),(255,255,255))
+        if joueur.sauvegarde == True:
+            enregistrer = font.render(" Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
+        else:
+            enregistrer = font.render(" Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
+
+        if joueur.position1 == 0 :
+            votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + " vous avez gagné ! ", True ,(0,0,0),(255,255,255))
+            enregistrer 
         else:
             votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
+        
+        
+        enregistrer_rect = enregistrer.get_rect()
+        enregistrer_rect.x = 0
+        enregistrer_rect.y = 30
+        joueur.screen.blit(enregistrer, enregistrer_rect)
+    
+
+
+        votreprenom_rect = votreprenom.get_rect()
+        votreprenom_rect.x = 0
+        votreprenom_rect.y = 0
+        joueur.screen.blit(votreprenom, votreprenom_rect)
         
         #mettre à jour l'arriere plan
         pygame.display.flip()
@@ -310,17 +337,33 @@ while joueur.recommencer :
                     pygame.display.flip()
                 else :
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
+                if enregistrercliq.collidepoint(event.pos):
+                    pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                    pygame.display.flip()
 
         #for event in pygame.event.get():
-            if picturecliq.collidepoint(event.pos):
-                if event.type == pygame.MOUSEBUTTONDOWN:
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                
+                if picturecliq.collidepoint(event.pos):
                     joueur.sound_manager.play("oie") 
                     joueur.score = 0
+                    
                     joueur.acceuil = True
                     joueur.findepartie = False
                     pygame.display.flip()
+
+                if enregistrercliq.collidepoint(event.pos):
+                    pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                    ## enregistre le score en un clic.
+                
+                    joueur.enregisterScore()
+                    joueur.sauvegarde = False
+
+
             # si le joueur ferme cette fenetre
             if event.type == pygame.QUIT:
+                
                 joueur.sound_manager.play("oie") 
                 joueur.findepartie = False
                 time.sleep(1)
