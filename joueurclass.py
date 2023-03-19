@@ -16,7 +16,8 @@ class Joueur(pygame.sprite.Sprite):
         super().__init__()
         self.nomjoueur = ""
         self.user_input_value = ""
-        # self.grille = list
+        
+
         self.valeurdude_joueur1 = 0
         self.valeurdude_joueurIA = 0
 
@@ -74,17 +75,15 @@ class Joueur(pygame.sprite.Sprite):
                 writer2.writerow([line["nomjoueur"]]+[line["score"]])
             
             df = pandas.read_csv("out_score.csv", sep=",")
-            #index_col='col1'
             df = df.sort_values(by=['score'], ascending=True)
             df.to_csv("out_score_ordre_croissant.csv")
         
             
-    def printrandom1(self):  
+    def printrandom(self):  
 
         de = int(random.randint(1, 6))
-        deresultat = de 
+        deresultat = de       
         self.valeurdude_joueur1 = deresultat
-        #score
         self.score += self.valeurdude_joueur1
         self.sound_manager.play("de")
         print("votre score est de: ", self.score)

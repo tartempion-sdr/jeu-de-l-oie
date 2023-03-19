@@ -147,10 +147,11 @@ while joueur.recommencer :
                         joueur.acceuil = False
                         joueur.running = True
                 
-                if picturecliq.collidepoint(event.pos):    
-                    joueur.sound_manager.play("pion") 
-                    joueur.acceuil = False
-                    joueur.findepartie = True
+                # debug
+                # if picturecliq.collidepoint(event.pos):    
+                #     joueur.sound_manager.play("pion") 
+                #     joueur.acceuil = False
+                #     joueur.findepartie = True
                 
             if event.type == pygame.MOUSEMOTION:
                 if jouezcliq.collidepoint(event.pos):
@@ -175,21 +176,24 @@ while joueur.recommencer :
                    
                     with open("out_score_ordre_croissant.csv",) as fichier:
                         reader = csv.DictReader(fichier, delimiter=",")
-                        titre = "nomjoueur         score"
-                        titrescore = font.render(str(titre), True, (0,0,0), (255,255,255))
-                        ajoutUneLigne = joueur.screen.blit(titrescore, (250, 0))                      
+                        titre = "Nom du joueur    Score   Place "
+                        titreDesScore = font.render(str(titre), True, (0,0,0), (255,255,255))
+                        ajoutTitreDesScore = joueur.screen.blit(titreDesScore, (240, 0))                      
                         # faire quelque chose avec une ligne
                         l = 0
                         yy = 20
+                    
                         for ligne in reader:
                              if l < 10:
                             
                                 l = l + 1
                                 yy += 25                     
-                                lignescore = font.render(str(ligne["nomjoueur"]+"           "+ ligne["score"]), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne = joueur.screen.blit(lignescore, (250, yy))
-                                
-                        
+                                lignesnom = font.render(str(ligne["nomjoueur"]), True, (0,0,0), (255,255,255))
+                                ajoutUneLigne1 = joueur.screen.blit(lignesnom, (250, yy))
+                                lignescore = font.render(str(ligne["score"]), True, (0,0,0), (255,255,255))
+                                ajoutUneLigne2 = joueur.screen.blit(lignescore, (400, yy))
+                                ligneclassement = font.render(str(l), True, (0,0,0), (255,255,255))
+                                ajoutUneLigne3 = joueur.screen.blit(ligneclassement, (450, yy))
                 else:
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
