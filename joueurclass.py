@@ -79,7 +79,7 @@ class Joueur(pygame.sprite.Sprite):
             df.to_csv("out_score_ordre_croissant.csv")
         
             
-    def printrandom(self):  
+    def printrandom1(self):  
 
         de = int(random.randint(1, 6))
         deresultat = de       
