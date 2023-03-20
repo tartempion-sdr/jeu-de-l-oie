@@ -2,10 +2,8 @@ import pygame
 import random
 from joueurclass import Joueur
 import csv
-import time
 from grille import Grille
 
-pygame.init()
 
 
 # future icone
@@ -227,6 +225,7 @@ while joueur.recommencer :
         joueur.screen.blit(background,(0,0))
         
         # applique l'image de mon joueur1  !!!!!!  dé, pion, face123456
+
         joueur.screen.blit(joueur.pionBlanc, joueur.rect_joueur1)
         
         joueur.screen.blit(joueur.pionNoir, joueur.rect_joueurIA)
@@ -254,11 +253,11 @@ while joueur.recommencer :
         
         #mettre à jour l'arriere plan
         
+        pygame.display.flip()   
         
-        pygame.display.flip()
             
         # si le joueur ferme cette fenetre
-
+        
 
         for event in pygame.event.get():
             # que l'evenement est fermeture de fenetre
@@ -270,34 +269,36 @@ while joueur.recommencer :
 
         # lance le "de" avec le clic de la souris ou avec la touche d 
                 
-            
+           
             if event.type == pygame.MOUSEBUTTONDOWN :
-                
-                
-                
-                
-                if joueur.cestaujoueur1dejouer == True  :  
+                    
+                if joueur.cestaujoueur1dejouer == True :                
                     # 1 joueur 
+                    
+
                     joueur.printrandom1()
+                    pygame.time.delay(1000)
                     joueur.deplacementdupion1() 
-                    joueur.colision1()              
+                    
+                    joueur.colision1()                   
                     joueur.verif1()  
                     joueur.cestaujoueur1dejouer = False    
-                    print("faux")
+                    
 
             elif joueur.cestaujoueur1dejouer == False:
                 
-            
+                
                 # IA joueur
-                                
+                pygame.time.delay(500)         
                 joueur.printrandomIA()
+                pygame.time.delay(1000)
                 joueur.deplacementdupionIA()
-            
-                joueur.colisionIA()
-                    
+                
+                joueur.colisionIA()     
                 joueur.vefifIA()            
                 joueur.cestaujoueur1dejouer = True
-                            
+        
+                
     while joueur.findepartie :
 
              
@@ -310,25 +311,26 @@ while joueur.recommencer :
 
         font = pygame.font.SysFont('Comic Sans MS,Arial',16)
 
-        
-        if joueur.sauvegarde == True:
-            enregistrer = font.render(" Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
-        else:
-            enregistrer = font.render(" Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
-
-        if joueur.position1 == 0 :
+        if joueur.position1 == 63 :
             votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + " vous avez gagné ! ", True ,(0,0,0),(255,255,255))
-            enregistrer 
+            
+    
+            if joueur.sauvegarde == True:
+                enregistrer = font.render(" Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
+                
+            else:
+                enregistrer = font.render(" Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
+
+            enregistrer_rect = enregistrer.get_rect()
+            enregistrer_rect.x = 0
+            enregistrer_rect.y = 30
+            joueur.screen.blit(enregistrer, enregistrer_rect)
+
         else:
             votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
         
         
-        enregistrer_rect = enregistrer.get_rect()
-        enregistrer_rect.x = 0
-        enregistrer_rect.y = 30
-        joueur.screen.blit(enregistrer, enregistrer_rect)
-    
-
+       
 
         votreprenom_rect = votreprenom.get_rect()
         votreprenom_rect.x = 0
@@ -348,8 +350,9 @@ while joueur.recommencer :
                 else :
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
                 if enregistrercliq.collidepoint(event.pos):
-                    pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-                    pygame.display.flip()
+                    if joueur.position1 == 63 : 
+                        pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                        pygame.display.flip()
 
         #for event in pygame.event.get():
             
@@ -364,19 +367,20 @@ while joueur.recommencer :
                     pygame.display.flip()
 
                 if enregistrercliq.collidepoint(event.pos):
-                    pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                    
                     ## enregistre le score en un clic.
-                
-                    joueur.enregisterScore()
-                    joueur.sauvegarde = False
-                    joueur.nomjoueur = ""
-
+                    if joueur.position1 == 63 : 
+                        pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                        joueur.enregisterScore()
+                        joueur.sauvegarde = False
+                        
+                        
             # si le joueur ferme cette fenetre
             if event.type == pygame.QUIT:
                 
                 joueur.sound_manager.play("oie") 
                 joueur.findepartie = False
-                time.sleep(1)
+               
                 pygame.quit()    
                     
         
