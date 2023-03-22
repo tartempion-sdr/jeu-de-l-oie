@@ -7,7 +7,7 @@ pygame.init()
 
 
 # future icone
-pygame_icon = pygame.image.load("assets/oie-icon.png")
+pygame_icon = pygame.image.load("assets/oiecase.png")
 pygame.display.set_icon(pygame_icon)
 
 # titre
