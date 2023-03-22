@@ -3,7 +3,7 @@ import random
 from joueurclass import Joueur
 import csv
 from grille import Grille
-
+pygame.init()
 
 
 # future icone
@@ -27,6 +27,8 @@ carreblanc = pygame.image.load("assets/carre-blanc.png")
 
 background = pygame.image.load("assets/verdure-rogner2-850x567.png")
 
+   
+
 mous = pygame.cursors.load_xbm("assets/de.xbm", "assets/de-mask.xbm")
 sablier = pygame.cursors.load_xbm("assets/sablier.xbm", "assets/sablier-mask.xbm")
 
@@ -41,16 +43,17 @@ de5 = "assets/64px-Dice-5-b.svg.png"
 de6 = "assets/64px-Dice-6-b.svg.png"
 deListe = [de0, de1, de2, de3, de4, de5, de6] 
     
-
+ 
 decliquable = pygame.image.load("assets/de.png")
 
 # charger joueur
 
 joueur = Joueur()
 
-joueur.screen   
+screen = pygame.display.set_mode((850,567)) 
         
 pygame.mouse.set_cursor(*pygame.cursors.arrow)
+
 
 # entrez votre nom
 
@@ -77,6 +80,7 @@ user_input_rect.y = 20
 
  # boucle tant que cette condition est vrai
 while joueur.recommencer :
+
     while joueur.acceuil :
         
         jouezcliq = pygame.Rect((0, 240),(216, 44))
@@ -84,11 +88,11 @@ while joueur.recommencer :
         picturecliq = pygame.Rect((0, 333),(215, 234))
 
         # appliquer a l'arriere plan de notre jeu
-        joueur.screen.blit(backgroundAcceuil,(0,0))
-        joueur.screen.blit(pictureAcceuil,(0,333))
-        joueur.screen.blit(messageAcceuil,(0,188))
-        joueur.screen.blit(jouez,(0,236))
-        joueur.screen.blit(regles,(0,284))
+        screen.blit(backgroundAcceuil,(0,0))
+        screen.blit(pictureAcceuil,(0,333))
+        screen.blit(messageAcceuil,(0,188))
+        screen.blit(jouez,(0,236))
+        screen.blit(regles,(0,284))
 
         
         pygame.display.set_caption("  acceuil")
@@ -107,7 +111,7 @@ while joueur.recommencer :
                     
                     if len(joueur.nomjoueur)< 1:
 
-                        joueur.screen.blit(pasDePrenom,pasDePrenom_rect)
+                        screen.blit(pasDePrenom,pasDePrenom_rect)
                         pygame.display.flip()
 
                         
@@ -125,8 +129,8 @@ while joueur.recommencer :
                 user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
                 user_input_rect.x = 0
                 user_input_rect.y = 40
-            joueur.screen.blit(entrezvotreprenom, prompt_rect)
-            joueur.screen.blit(user_input, user_input_rect)     
+            screen.blit(entrezvotreprenom, prompt_rect)
+            screen.blit(user_input, user_input_rect)     
             
             pygame.display.flip()
             
@@ -137,7 +141,7 @@ while joueur.recommencer :
                     
                     if len(joueur.nomjoueur)< 1:
 
-                        joueur.screen.blit(cliqpasDePrenom,cliqpasDePrenom_rect)
+                        screen.blit(cliqpasDePrenom,cliqpasDePrenom_rect)
                         pygame.display.flip()
                         
                     else:
@@ -156,27 +160,27 @@ while joueur.recommencer :
 
                     pygame.mouse.set_cursor(*pygame.cursors.broken_x)
                     if len(joueur.nomjoueur)< 1:
-                        joueur.screen.blit(pasDePrenom,pasDePrenom_rect)
+                        screen.blit(pasDePrenom,pasDePrenom_rect)
                         pygame.display.flip()
                     
                 
                 elif reglescliq.collidepoint(event.pos): 
                 
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
-                    joueur.screen.blit(reglestexte,(232,0))
+                    screen.blit(reglestexte,(232,0))
                 
 
                 elif picturecliq.collidepoint(event.pos):
                         
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
-                    joueur.screen.blit(carreblanc,(232,0))
+                    screen.blit(carreblanc,(232,0))
                     
                    
                     with open("out_score_ordre_croissant.csv",) as fichier:
                         reader = csv.DictReader(fichier, delimiter=",")
                         titre = "Nom du joueur    Score   Place "
                         titreDesScore = font.render(str(titre), True, (0,0,0), (255,255,255))
-                        ajoutTitreDesScore = joueur.screen.blit(titreDesScore, (240, 0))                      
+                        ajoutTitreDesScore = screen.blit(titreDesScore, (240, 0))                      
                         # faire quelque chose avec une ligne
                         l = 0
                         yy = 20
@@ -187,11 +191,11 @@ while joueur.recommencer :
                                 l = l + 1
                                 yy += 25                     
                                 lignesnom = font.render(str(ligne["nomjoueur"]), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne1 = joueur.screen.blit(lignesnom, (250, yy))
+                                ajoutUneLigne1 = screen.blit(lignesnom, (250, yy))
                                 lignescore = font.render(str(ligne["score"]), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne2 = joueur.screen.blit(lignescore, (400, yy))
+                                ajoutUneLigne2 = screen.blit(lignescore, (400, yy))
                                 ligneclassement = font.render(str(l), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne3 = joueur.screen.blit(ligneclassement, (450, yy))
+                                ajoutUneLigne3 = screen.blit(ligneclassement, (450, yy))
                 else:
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
@@ -200,64 +204,57 @@ while joueur.recommencer :
          
     while joueur.running:
 
-
-        
-
-        
-        pygame.display.set_caption("  jeu de l'oie")
-        
-        faceDuDejoueur1 = pygame.image.load(deListe[joueur.valeurdude_joueur1])
-
-        faceDuDejoueurIA = pygame.image.load(deListe[joueur.valeurdude_joueurIA])    
-    #  affiche le pion a qui le tour en bas a droite
-    # affiche valeur du dé pour joueur1 et joueurIA
-        if joueur.cestaujoueur1dejouer  == True:
-                    
-            pionAQuiLeTour = joueur.pionBlanc
-            pygame.mouse.set_cursor(*mous)
-        else:
-            pionAQuiLeTour = joueur.pionNoir
-            pygame.mouse.set_cursor(*sablier)
-        
-        
-        
-        # appliquer a l'arriere plan de notre jeu
-        joueur.screen.blit(background,(0,0))
-        
-        # applique l'image de mon joueur1  !!!!!!  dé, pion, face123456
-
-        joueur.screen.blit(joueur.pionBlanc, joueur.rect_joueur1)
-        
-        joueur.screen.blit(joueur.pionNoir, joueur.rect_joueurIA)
-        
-        # pion qui indique les des
-        joueur.screen.blit(joueur.pionBlanc,(387,258))
-        joueur.screen.blit(joueur.pionNoir,(387,315))
-        
-        #pion a qui le tour
-        joueur.screen.blit(pionAQuiLeTour,(22,82))
-        #de cliquable , pas encors
-        joueur.screen.blit(decliquable,(79,82))
-
-        #des
-        joueur.screen.blit(faceDuDejoueur1,(330,258))
-        joueur.screen.blit(faceDuDejoueurIA,(330,315))
-        
-        font = pygame.font.SysFont('Comic Sans MS,Arial',16)
-        votreprenom = font.render("case " + str(joueur.position1) + " : " + joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
-        prompt_rect = votreprenom.get_rect()
-        prompt_rect.x = 0
-        prompt_rect.y = 0
-        joueur.screen.blit(votreprenom, prompt_rect)
-        
-        
-        #mettre à jour l'arriere plan
-        
-        pygame.display.flip()   
-        
+        def toutAfficher():
+            if joueur.cestaujoueur1dejouer  == True:
+                        
+                pionAQuiLeTour = joueur.pionBlanc
+                pygame.mouse.set_cursor(*mous)
+            else:
+                pionAQuiLeTour = joueur.pionNoir
+                pygame.mouse.set_cursor(*sablier)
             
-        # si le joueur ferme cette fenetre
+            
+            pygame.display.set_caption("  jeu de l'oie")
+            
+            faceDuDejoueur1 = pygame.image.load(deListe[joueur.valeurdude_joueur1])
+
+            faceDuDejoueurIA = pygame.image.load(deListe[joueur.valeurdude_joueurIA])
+
+            # appliquer a l'arriere plan de notre jeu
+            screen.blit(background,(0,0))
         
+            # applique l'image de mon joueur1  !!!!!! 
+
+            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
+            
+            screen.blit(joueur.image_joueurIA, joueur.rect_joueurIA)
+            
+            # pion qui indique les des
+            screen.blit(joueur.pionBlanc,(387,258))
+            screen.blit(joueur.pionNoir,(387,315))
+            
+            #pion a qui le tour
+            screen.blit(pionAQuiLeTour,(22,82))
+            #de cliquable , pas encors
+            screen.blit(decliquable,(79,82))
+
+            #des
+            screen.blit(faceDuDejoueur1,(330,258))
+            screen.blit(faceDuDejoueurIA,(330,315))
+            
+            font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+            votreprenom = font.render("case " + str(joueur.position1) + " : " + joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
+            prompt_rect = votreprenom.get_rect()
+            prompt_rect.x = 0
+            prompt_rect.y = 0
+            screen.blit(votreprenom, prompt_rect)
+            
+            
+            #mettre à jour l'arriere plan    
+            pygame.display.update()      
+        
+
+        toutAfficher()
 
         for event in pygame.event.get():
             # que l'evenement est fermeture de fenetre
@@ -268,44 +265,55 @@ while joueur.recommencer :
                             
 
         # lance le "de" avec le clic de la souris ou avec la touche d 
+            if event.type == pygame.MOUSEBUTTONDOWN and joueur.cestaujoueur1dejouer == True : 
+                    
+                           
+                # 1 joueur 
                 
-           
-            if event.type == pygame.MOUSEBUTTONDOWN :
-                    
-                if joueur.cestaujoueur1dejouer == True :                
-                    # 1 joueur 
-                    
 
-                    joueur.printrandom1()
-                    pygame.time.delay(1000)
-                    joueur.deplacementdupion1() 
-                    
-                    joueur.colision1()                   
-                    joueur.verif1()  
-                    joueur.cestaujoueur1dejouer = False    
-                    
+                joueur.printrandom1()
+                pygame.time.delay(1000)
+                
+                joueur.deplacementdupion1() 
+                toutAfficher()
+                
+                joueur.colision1() 
+                toutAfficher()
 
+                joueur.verif1() 
+                toutAfficher()
+            
+                joueur.cestaujoueur1dejouer = False 
+                    
+                
             elif joueur.cestaujoueur1dejouer == False:
                 
                 
                 # IA joueur
                 pygame.time.delay(500)         
                 joueur.printrandomIA()
+
                 pygame.time.delay(1000)
                 joueur.deplacementdupionIA()
+                toutAfficher()
+
+                joueur.colisionIA() 
+                toutAfficher()
                 
-                joueur.colisionIA()     
-                joueur.vefifIA()            
+                joueur.vefifIA()  
+                toutAfficher()
                 joueur.cestaujoueur1dejouer = True
         
+          
                 
+                    
     while joueur.findepartie :
 
              
         pygame.display.set_caption("  FIN")
         # appliquer a l'arriere plan de notre jeu
-        joueur.screen.blit(backgroundAcceuil,(0,0))
-        joueur.screen.blit(pictureAcceuil,(0,333))
+        screen.blit(backgroundAcceuil,(0,0))
+        screen.blit(pictureAcceuil,(0,333))
         
         enregistrercliq = pygame.Rect((0, 0),(215, 60))
 
@@ -324,7 +332,7 @@ while joueur.recommencer :
             enregistrer_rect = enregistrer.get_rect()
             enregistrer_rect.x = 0
             enregistrer_rect.y = 30
-            joueur.screen.blit(enregistrer, enregistrer_rect)
+            screen.blit(enregistrer, enregistrer_rect)
 
         else:
             votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
@@ -335,7 +343,7 @@ while joueur.recommencer :
         votreprenom_rect = votreprenom.get_rect()
         votreprenom_rect.x = 0
         votreprenom_rect.y = 0
-        joueur.screen.blit(votreprenom, votreprenom_rect)
+        screen.blit(votreprenom, votreprenom_rect)
         
         #mettre à jour l'arriere plan
         pygame.display.flip()
