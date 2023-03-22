@@ -241,7 +241,8 @@ while joueur.recommencer :
             #des
             screen.blit(faceDuDejoueur1,(330,258))
             screen.blit(faceDuDejoueurIA,(330,315))
-            
+
+            # case n° , nom du joueur1, valeur du dé
             font = pygame.font.SysFont('Comic Sans MS,Arial',16)
             votreprenom = font.render("case " + str(joueur.position1) + " : " + joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
             prompt_rect = votreprenom.get_rect()
@@ -249,28 +250,30 @@ while joueur.recommencer :
             prompt_rect.y = 0
             screen.blit(votreprenom, prompt_rect)
             
+
             
             #mettre à jour l'arriere plan    
             pygame.display.update()      
         
 
         toutAfficher()
-
+        
         for event in pygame.event.get():
             # que l'evenement est fermeture de fenetre
             if event.type == pygame.QUIT:
                 joueur.running = False
-        
+
                 pygame.quit()    
                             
-
-        # lance le "de" avec le clic de la souris ou avec la touche d 
-            if event.type == pygame.MOUSEBUTTONDOWN and joueur.cestaujoueur1dejouer == True : 
-                    
-                           
-                # 1 joueur 
+        
+        # lance le "de" avec le clic de la souris 
+        
+            if event.type == pygame.MOUSEBUTTONDOWN :
                 
-
+                
+                    
+                    
+                # 1 joueur 
                 joueur.printrandom1()
                 pygame.time.delay(1000)
                 
@@ -282,14 +285,21 @@ while joueur.recommencer :
 
                 joueur.verif1() 
                 toutAfficher()
-            
-                joueur.cestaujoueur1dejouer = False 
+
+                for a in range(0,62):
+                    if joueur.position1 == a:
                     
-                
-            elif joueur.cestaujoueur1dejouer == False:
-                
-                
-                # IA joueur
+                        joueur.verif1() 
+                        toutAfficher()
+
+                print("joueur 1: "+ str(joueur.position1))
+                joueur.cestaujoueur1dejouer = False 
+                        
+                # IA joueur    
+        
+                toutAfficher()
+            
+            
                 pygame.time.delay(500)         
                 joueur.printrandomIA()
 
@@ -299,14 +309,21 @@ while joueur.recommencer :
 
                 joueur.colisionIA() 
                 toutAfficher()
-                
+
                 joueur.vefifIA()  
                 toutAfficher()
-                joueur.cestaujoueur1dejouer = True
-        
-          
-                
+
+                for b in range(0,62):
+                    if joueur.positionIA == b:
                     
+                        joueur.vefifIA()  
+                        toutAfficher()
+
+                print("joueur IA: "+ str(joueur.positionIA))
+                joueur.cestaujoueur1dejouer = True
+                pygame.event.clear()    
+                    
+
     while joueur.findepartie :
 
              
