@@ -46,6 +46,16 @@ deListe = [de0, de1, de2, de3, de4, de5, de6]
  
 decliquable = pygame.image.load("assets/de.png")
 
+oie = pygame.image.load("assets/oiecase.png")
+prison = pygame.image.load("assets/prison.png")
+hotel = pygame.image.load("assets/hotel.png") 
+labyrinth = pygame.image.load("assets/labyrinth.png")
+puit = pygame.image.load("assets/puit.png")
+tetedemort = pygame.image.load("assets/tetedemort.png")
+basechelle2 = pygame.image.load("assets/basechelle2.png") 
+longechelle1 = pygame.image.load("assets/longechelle1.png")
+caseliste = {8:oie, 19:hotel, 26:oie, 27:basechelle2, 31:puit, 36:oie, 42:labyrinth, 46:basechelle2, 52:prison, 58:tetedemort, 62:basechelle2}
+
 # charger joueur
 
 joueur = Joueur()
@@ -205,6 +215,9 @@ while joueur.recommencer :
     while joueur.running:
 
         def toutAfficher():
+
+            pygame.display.set_caption("  jeu de l'oie")
+
             if joueur.cestaujoueur1dejouer  == True:
                         
                 pionAQuiLeTour = joueur.pionBlanc
@@ -212,35 +225,27 @@ while joueur.recommencer :
             else:
                 pionAQuiLeTour = joueur.pionNoir
                 pygame.mouse.set_cursor(*sablier)
-            
-            
-            pygame.display.set_caption("  jeu de l'oie")
-            
+
             faceDuDejoueur1 = pygame.image.load(deListe[joueur.valeurdude_joueur1])
 
             faceDuDejoueurIA = pygame.image.load(deListe[joueur.valeurdude_joueurIA])
 
+             
             # appliquer a l'arriere plan de notre jeu
             screen.blit(background,(0,0))
-        
-            # applique l'image de mon joueur1  !!!!!! 
 
-            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
-            
-            screen.blit(joueur.image_joueurIA, joueur.rect_joueurIA)
-            
-            # pion qui indique les des
-            screen.blit(joueur.pionBlanc,(387,258))
-            screen.blit(joueur.pionNoir,(387,315))
-            
-            #pion a qui le tour
-            screen.blit(pionAQuiLeTour,(22,82))
-            #de cliquable , pas encors
-            screen.blit(decliquable,(79,82))
+            # case spéciale!
+            if int(joueur.position1) in (8, 19, 26, 27, 31, 36, 42, 46, 52, 58, 62):
+                #print(caseliste[8])
+                casespeciale1 = caseliste[joueur.position1]
+                screen.blit(casespeciale1,(420,258))
+                
 
-            #des
-            screen.blit(faceDuDejoueur1,(330,258))
-            screen.blit(faceDuDejoueurIA,(330,315))
+            if joueur.positionIA in (8, 19, 26, 27, 31, 36, 42, 46, 52, 58, 62):
+
+                casespecialeIA = caseliste[joueur.positionIA]
+                screen.blit(casespecialeIA,(420,315))
+           
 
             # nom du joueur1, valeur du dé
             font = pygame.font.SysFont('Comic Sans MS,Arial',16)
@@ -266,6 +271,30 @@ while joueur.recommencer :
             case_rect2.x = 280
             case_rect2.y = 309
             screen.blit(case2, case_rect2)
+            
+            
+           
+        
+            # applique l'image de mon joueur1  !!!!!! 
+
+            screen.blit(joueur.image_joueur1, joueur.rect_joueur1)
+            
+            screen.blit(joueur.image_joueurIA, joueur.rect_joueurIA)
+            
+            # pion qui indique les des
+            screen.blit(joueur.pionBlanc,(387,258))
+            screen.blit(joueur.pionNoir,(387,315))
+            
+            #pion a qui le tour
+            screen.blit(pionAQuiLeTour,(22,82))
+            #de cliquable , pas encors
+            screen.blit(decliquable,(79,82))
+
+            #des
+            screen.blit(faceDuDejoueur1,(330,258))
+            screen.blit(faceDuDejoueurIA,(330,315))
+
+            
 
             #mettre à jour l'arriere plan    
             pygame.display.update()      
