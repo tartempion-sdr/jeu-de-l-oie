@@ -242,16 +242,31 @@ while joueur.recommencer :
             screen.blit(faceDuDejoueur1,(330,258))
             screen.blit(faceDuDejoueurIA,(330,315))
 
-            # case n° , nom du joueur1, valeur du dé
+            # nom du joueur1, valeur du dé
             font = pygame.font.SysFont('Comic Sans MS,Arial',16)
-            votreprenom = font.render("case " + str(joueur.position1) + " : " + joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
+            votreprenom = font.render("  " + joueur.nomjoueur + " votre score est de: " + str(joueur.score), True ,(0,0,0),(255,255,255))
             prompt_rect = votreprenom.get_rect()
             prompt_rect.x = 0
             prompt_rect.y = 0
             screen.blit(votreprenom, prompt_rect)
             
+            # police et taille
+            front2 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
 
-            
+            # affiche n°case pour joueur1
+            case1 = front2.render(str(joueur.position1), True ,(0,0,0),(255,255,255))
+            case_rect1 = case1.get_rect()
+            case_rect1.x = 280
+            case_rect1.y = 256
+            screen.blit(case1, case_rect1)
+
+             # affiche n°case pour joueurIA
+            case2 = front2.render(str(joueur.positionIA), True ,(0,0,0),(255,255,255))
+            case_rect2 = case2.get_rect()
+            case_rect2.x = 280
+            case_rect2.y = 309
+            screen.blit(case2, case_rect2)
+
             #mettre à jour l'arriere plan    
             pygame.display.update()      
         
