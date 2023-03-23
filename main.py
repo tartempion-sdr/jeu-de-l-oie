@@ -328,26 +328,21 @@ while joueur.recommencer :
                         joueur.colision1() 
                         toutAfficher()
 
-                        joueur.verif1() 
+                        joueur.verif1()
                         toutAfficher()
 
-                       
-                        if joueur.position1 < 59 :
-                               
-                            
-                            print("double verification j1")  
-                            joueur.verif1() 
-                            toutAfficher()
+                        joueur.verif1()
+                        toutAfficher()
+                        print("double verification j1")  
+
+                        
+                
+                        joueur.joueur1peutjouer = False
+                        joueur.joueurIApeutjouer = True
+                        print("debloque jIA") 
 
                         # regle pour joueur1 casespeciale
-                        
-                        
-                            
-                            joueur.joueur1peutjouer = False
-                            joueur.joueurIApeutjouer = True
-                            print("debloque jIA") 
-                           
-                        if 19 == joueur.positionIA and 31 == joueur.positionIA and 52 == joueur.positionIA :
+                        if 19 == joueur.positionIA or 31 == joueur.positionIA or 52 == joueur.positionIA :
 
                             joueur.joueurIApeutjouer = False
                             joueur.joueur1peutjouer = True
@@ -414,26 +409,26 @@ while joueur.recommencer :
                         joueur.colisionIA() 
                         toutAfficher()
 
-                        joueur.vefifIA()  
+                        joueur.vefifIA()
                         toutAfficher()
 
-                        if joueur.positionIA < 59:
                             
-                            
-                            print("double verification jIA") 
-                            joueur.vefifIA()  
-                            toutAfficher()
+                        print("double verification jIA") 
+                        joueur.vefifIA()
+                           
+                        toutAfficher()
 
                        
-                        # regle pour joueurIA casespeciale
                         
                 
-                            joueur.joueur1peutjouer = True
-                            joueur.joueurIApeutjouer = False
-                            print("debloque j1") 
+                        joueur.joueur1peutjouer = True
+                        joueur.joueurIApeutjouer = False
+                        print("debloque j1") 
+
+                        # regle pour joueurIA casespeciale
                         
                             
-                        if 19 == joueur.position1 and 31 == joueur.position1 and 52 == joueur.position1 :
+                        if 19 == joueur.position1 or 31 == joueur.position1 or 52 == joueur.position1 :
                     
                         
                             joueur.joueur1peutjouer = False
@@ -554,7 +549,7 @@ while joueur.recommencer :
                     toutAfficher()
                     joueur.acceuil = True
                     joueur.findepartie = False
-                    pygame.init()
+                   
 
                 if enregistrercliq.collidepoint(event.pos):
                     
