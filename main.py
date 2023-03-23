@@ -103,8 +103,7 @@ while joueur.recommencer :
         screen.blit(messageAcceuil,(0,188))
         screen.blit(jouez,(0,236))
         screen.blit(regles,(0,284))
-
-        
+       
         pygame.display.set_caption("  acceuil")
         
         
@@ -185,7 +184,7 @@ while joueur.recommencer :
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
                     screen.blit(carreblanc,(232,0))
                     
-                   
+                    # tableau des scores
                     with open("out_score_ordre_croissant.csv",) as fichier:
                         reader = csv.DictReader(fichier, delimiter=",")
                         titre = "Nom du joueur    Score   Place "
@@ -317,60 +316,159 @@ while joueur.recommencer :
                 
                     
                 if joueur.joueur1peutjouer  == True:  
+                    toutAfficher()
                     # 1 joueur 
-                    joueur.printrandom1()
-                    pygame.time.delay(1000)
-                    
-                    joueur.deplacementdupion1() 
-                    toutAfficher()
-                    
-                    joueur.colision1() 
-                    toutAfficher()
-
-                    joueur.verif1() 
-                    toutAfficher()
-
-                    for a in range(0,58):
-                        if joueur.position1 == a:
+                    if joueur.rect_joueur1 != 52 and joueur.rect_joueur1 != 31 :
+                        joueur.printrandom1()
+                        pygame.time.delay(1000)
                         
+                        joueur.deplacementdupion1() 
+                        toutAfficher()
+                        
+                        joueur.colision1() 
+                        toutAfficher()
+
+                        joueur.verif1() 
+                        toutAfficher()
+
+                       
+                        if joueur.position1 < 59 :
+                               
+                            
+                            print("double verification j1")  
                             joueur.verif1() 
                             toutAfficher()
 
-                    
-                    if joueur.position1 != 52 :
-                        joueur.joueur1peutjouer = False
-                        joueur.joueurIApeutjouer = True
+                        # regle pour joueur1 casespeciale
+                        
+                        
                             
+                            joueur.joueur1peutjouer = False
+                            joueur.joueurIApeutjouer = True
+                            print("debloque jIA") 
+                           
+                        if 19 == joueur.positionIA and 31 == joueur.positionIA and 52 == joueur.positionIA :
+
+                            joueur.joueurIApeutjouer = False
+                            joueur.joueur1peutjouer = True
+                            print("interdit a jIA de jouer tout seul ") 
+
+                        if 19 == joueur.positionIA :
+                            joueur.hoteljIA += 1
+                            print("jIA " + str(joueur.hoteljIA) + " jour d hotel")
+                        elif joueur.hoteljIA == 2 :
+                            joueur.joueurIApeutjouer = True
+                            print("jIA est partis de l hotel")
+                        
+                        
+                        # regle pour joueurIA casespeciale 31 == 31 et 52 == 52
+                        if  31 == joueur.position1 and 31 == joueur.positionIA :
+
+                            joueur.joueur1peutjouer = False
+                            joueur.joueurIApeutjouer = True
+
+                            pygame.time.delay(500)         
+                            joueur.printrandomIA()
+                            pygame.time.delay(1000)
+                            joueur.deplacementdupionIA()
+                            toutAfficher()
+                            print("jIA est sortie du puit")
+
+                        if  52 == joueur.position1 and 52 == joueur.positionIA :
+                            
+                            joueur.joueur1peutjouer = False
+                            joueur.joueurIApeutjouer = True
+
+                            pygame.time.delay(500)         
+                            joueur.printrandomIA()
+                            pygame.time.delay(1000)
+                            joueur.deplacementdupionIA()
+                            toutAfficher()
+
+                            print("jIA est sortie de prison")
+
+                        if  19 == joueur.position1 and 19 == joueur.positionIA :
+                            
+                            joueur.joueur1peutjouer = False
+                            joueur.joueurIApeutjouer = True
+                            joueur.hoteljIA = 0
+                            print("jIA est partis de l hotel sans payer")
+                        
+
+
+                    
                     # IA joueur    
                 if joueur.joueurIApeutjouer  == True:  
                     toutAfficher()
                 
-                
-                    pygame.time.delay(500)         
-                    joueur.printrandomIA()
+                    if joueur.rect_joueurIA != 52 and joueur.rect_joueurIA != 31 :
+                        pygame.time.delay(500)         
+                        joueur.printrandomIA()
 
-                    pygame.time.delay(1000)
-                    joueur.deplacementdupionIA()
-                    toutAfficher()
+                        pygame.time.delay(1000)
+                        joueur.deplacementdupionIA()
+                        toutAfficher()
 
-                    joueur.colisionIA() 
-                    toutAfficher()
+    
 
-                    joueur.vefifIA()  
-                    toutAfficher()
+                        joueur.colisionIA() 
+                        toutAfficher()
 
-                    for b in range(0,59):
-                        if joueur.positionIA == b:
-                        
+                        joueur.vefifIA()  
+                        toutAfficher()
+
+                        if joueur.positionIA < 59:
+                            
+                            
+                            print("double verification jIA") 
                             joueur.vefifIA()  
                             toutAfficher()
 
-                    
-                    if joueur.rect_joueurIA != 52 :
-                        joueur.joueur1peutjouer = True
-                        joueur.joueurIApeutjouer = False
-                    pygame.event.clear()    
+                       
+                        # regle pour joueurIA casespeciale
                         
+                
+                            joueur.joueur1peutjouer = True
+                            joueur.joueurIApeutjouer = False
+                            print("debloque j1") 
+                        
+                            
+                        if 19 == joueur.position1 and 31 == joueur.position1 and 52 == joueur.position1 :
+                    
+                        
+                            joueur.joueur1peutjouer = False
+                            joueur.joueurIApeutjouer = True
+                            print("interdit a j1 de jouer tout seul") 
+                    
+                        if 19 == joueur.position1 :
+                            joueur.hotelj1 += 1
+                            print("j1 " + str(joueur.hotelj1) + " jour d hotel")
+                        elif joueur.hotelj1 == 2 :
+                            joueur.joueur1peutjouer = True
+                            print("j1 est partis de l hotel")
+
+                        # regle pour joueur1 casespeciale 31 == 31 et 52 == 52
+                        if  31 == joueur.position1 and 31 == joueur.positionIA :
+
+                            joueur.joueur1peutjouer = True
+                            joueur.joueurIApeutjouer = False
+                            print("j1 est sortie du puit")
+
+                        if  52 == joueur.position1 and 52 == joueur.positionIA :
+                            
+                            joueur.joueur1peutjouer = True
+                            joueur.joueurIApeutjouer = False
+                            print("j1 est sortie de prison")
+
+                        if  19 == joueur.position1 and 19 == joueur.positionIA :
+                            
+                            joueur.joueur1peutjouer = True
+                            joueur.joueurIApeutjouer = False
+                            joueur.hotelj1 = 0
+                            print("j1 est partis de l hotel sans payer")
+
+                        pygame.event.clear()    
+                            
 
     while joueur.findepartie :
 
@@ -418,15 +516,27 @@ while joueur.recommencer :
         for event in pygame.event.get():
             if event.type == pygame.MOUSEMOTION:
                 if picturecliq.collidepoint(event.pos):
+
                     pygame.mouse.set_cursor(*mous)
                     pygame.display.flip()
+
                 else :
+
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
+
                 if enregistrercliq.collidepoint(event.pos):
                     if joueur.position1 == 63 : 
+
                         pygame.mouse.set_cursor(*pygame.cursors.broken_x)
                         pygame.display.flip()
 
+                    elif joueur.sauvegarde == False:  
+
+                        pygame.mouse.set_cursor(*pygame.cursors.arrow)
+
+                    else:
+
+                        pygame.mouse.set_cursor(*pygame.cursors.arrow)
         #for event in pygame.event.get():
             
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -435,12 +545,16 @@ while joueur.recommencer :
                     joueur.sound_manager.play("oie") 
                     joueur.score = 0
                     joueur.position1 = 0
+                    joueur.rect_joueur1.x = Grille[joueur.position1][1] 
+                    joueur.rect_joueur1.y = Grille[joueur.position1][2]
                     joueur.positionIA = 0
+                    joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] + 30
+                    joueur.rect_joueurIA.y = Grille[joueur.positionIA][2] 
                     joueur.nomjoueur = ""
-                   
+                    toutAfficher()
                     joueur.acceuil = True
                     joueur.findepartie = False
-                    pygame.display.flip()
+                    pygame.init()
 
                 if enregistrercliq.collidepoint(event.pos):
                     
@@ -449,7 +563,8 @@ while joueur.recommencer :
                         pygame.mouse.set_cursor(*pygame.cursors.broken_x)
                         joueur.enregisterScore()
                         joueur.sauvegarde = False
-                    elif joueur.sauvegarde == False:
+                    else:
+                        
                         pygame.mouse.set_cursor(*pygame.cursors.arrow) 
                         
             # si le joueur ferme cette fenetre
