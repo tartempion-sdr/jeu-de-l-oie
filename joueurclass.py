@@ -30,7 +30,8 @@ class Joueur(pygame.sprite.Sprite):
         self.pionBlanc = pygame.image.load("assets/blanc-chess-mini.png")
         self.pionNoir = pygame.image.load("assets/noir-chess-mini.png")
 
-        self.cestaujoueur1dejouer = True
+        self.joueur1peutjouer = True
+        self.joueurIApeutjouer = False
         
         self.sauvegarde = True
         
@@ -74,9 +75,9 @@ class Joueur(pygame.sprite.Sprite):
   
                 writer2.writerow([line["nomjoueur"]]+[line["score"]])
             
-            df = pandas.read_csv("out_score.csv", sep=",")
-            df = df.sort_values(by=['score'], ascending=True)
-            df.to_csv("out_score_ordre_croissant.csv")
+        df = pandas.read_csv("out_score.csv", sep=",")
+        df1 = df.sort_values(by=['score'], ascending=True)
+        df1.to_csv("out_score_ordre_croissant.csv")
         
             
     def printrandom1(self):  
@@ -87,9 +88,8 @@ class Joueur(pygame.sprite.Sprite):
         self.valeurdude_joueur1 = deresultat
         self.score += self.valeurdude_joueur1
         self.sound_manager.play("de")
-        
-        
-    
+       
+
     def deplacementdupion1(self):
 
         
@@ -97,7 +97,8 @@ class Joueur(pygame.sprite.Sprite):
         self.sound_manager.play("pion") 
         self.rect_joueur1.x = Grille[self.position1][1] 
         self.rect_joueur1.y = Grille[self.position1][2]
-              
+        print("de : " + str(self.valeurdude_joueur1) + " joueur1 case : " + str(self.position1)) 
+           
     def colision1(self):
         
         if self.position1 == self.positionIA and self.position1 != 0:
@@ -187,6 +188,8 @@ class Joueur(pygame.sprite.Sprite):
         if self.position1 == 58:
             
             pygame.time.delay(1000)
+            self.joueur1peutjouer = False
+            self.joueurIApeutjouer = True
             self.position1 = 0
             self.sound_manager.play("mort")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -227,6 +230,8 @@ class Joueur(pygame.sprite.Sprite):
             
             pygame.time.delay(1000)
             self.sound_manager.play("plouf")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2]
 
         if self.position1 == 27:
 
@@ -270,8 +275,8 @@ class Joueur(pygame.sprite.Sprite):
         deIA = int(random.randint(1, 6))
         deresultatIA = deIA 
         self.valeurdude_joueurIA = deresultatIA
-        
         self.sound_manager.play("de")
+      
          
     def deplacementdupionIA(self): 
 
@@ -280,6 +285,7 @@ class Joueur(pygame.sprite.Sprite):
         self.sound_manager.play("pion")
         self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
         self.rect_joueurIA.y = Grille[self.positionIA][2] 
+        print("de : " + str(self.valeurdude_joueurIA)+ " joueurIA case : " + str(self.positionIA))
         
     def colisionIA(self):
 
@@ -376,7 +382,10 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 58:
             
+
             pygame.time.delay(1000)
+            self.joueurIApeutjouer = False
+            self.joueur1peutjouer = True
             self.positionIA = 0
             self.sound_manager.play("mort")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
@@ -416,6 +425,8 @@ class Joueur(pygame.sprite.Sprite):
 
             pygame.time.delay(1000)
             self.sound_manager.play("plouf")
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
+            self.rect_joueurIA.y = Grille[self.positionIA][2]
 
         if self.positionIA == 27:
             

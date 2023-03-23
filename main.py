@@ -218,7 +218,7 @@ while joueur.recommencer :
 
             pygame.display.set_caption("  jeu de l'oie")
 
-            if joueur.cestaujoueur1dejouer  == True:
+            if joueur.joueur1peutjouer  == True:
                         
                 pionAQuiLeTour = joueur.pionBlanc
                 pygame.mouse.set_cursor(*mous)
@@ -316,57 +316,61 @@ while joueur.recommencer :
                 
                 
                     
+                if joueur.joueur1peutjouer  == True:  
+                    # 1 joueur 
+                    joueur.printrandom1()
+                    pygame.time.delay(1000)
                     
-                # 1 joueur 
-                joueur.printrandom1()
-                pygame.time.delay(1000)
-                
-                joueur.deplacementdupion1() 
-                toutAfficher()
-                
-                joueur.colision1() 
-                toutAfficher()
-
-                joueur.verif1() 
-                toutAfficher()
-
-                for a in range(0,62):
-                    if joueur.position1 == a:
+                    joueur.deplacementdupion1() 
+                    toutAfficher()
                     
-                        joueur.verif1() 
-                        toutAfficher()
+                    joueur.colision1() 
+                    toutAfficher()
 
-                print("joueur 1: "+ str(joueur.position1))
-                joueur.cestaujoueur1dejouer = False 
+                    joueur.verif1() 
+                    toutAfficher()
+
+                    for a in range(0,58):
+                        if joueur.position1 == a:
                         
-                # IA joueur    
-        
-                toutAfficher()
-            
-            
-                pygame.time.delay(500)         
-                joueur.printrandomIA()
+                            joueur.verif1() 
+                            toutAfficher()
 
-                pygame.time.delay(1000)
-                joueur.deplacementdupionIA()
-                toutAfficher()
-
-                joueur.colisionIA() 
-                toutAfficher()
-
-                joueur.vefifIA()  
-                toutAfficher()
-
-                for b in range(0,62):
-                    if joueur.positionIA == b:
                     
-                        joueur.vefifIA()  
-                        toutAfficher()
+                    if joueur.position1 != 52 :
+                        joueur.joueur1peutjouer = False
+                        joueur.joueurIApeutjouer = True
+                            
+                    # IA joueur    
+                if joueur.joueurIApeutjouer  == True:  
+                    toutAfficher()
+                
+                
+                    pygame.time.delay(500)         
+                    joueur.printrandomIA()
 
-                print("joueur IA: "+ str(joueur.positionIA))
-                joueur.cestaujoueur1dejouer = True
-                pygame.event.clear()    
+                    pygame.time.delay(1000)
+                    joueur.deplacementdupionIA()
+                    toutAfficher()
+
+                    joueur.colisionIA() 
+                    toutAfficher()
+
+                    joueur.vefifIA()  
+                    toutAfficher()
+
+                    for b in range(0,59):
+                        if joueur.positionIA == b:
+                        
+                            joueur.vefifIA()  
+                            toutAfficher()
+
                     
+                    if joueur.rect_joueurIA != 52 :
+                        joueur.joueur1peutjouer = True
+                        joueur.joueurIApeutjouer = False
+                    pygame.event.clear()    
+                        
 
     while joueur.findepartie :
 
@@ -430,7 +434,10 @@ while joueur.recommencer :
                 if picturecliq.collidepoint(event.pos):
                     joueur.sound_manager.play("oie") 
                     joueur.score = 0
-                    
+                    joueur.position1 = 0
+                    joueur.positionIA = 0
+                    joueur.nomjoueur = ""
+                   
                     joueur.acceuil = True
                     joueur.findepartie = False
                     pygame.display.flip()
@@ -442,7 +449,8 @@ while joueur.recommencer :
                         pygame.mouse.set_cursor(*pygame.cursors.broken_x)
                         joueur.enregisterScore()
                         joueur.sauvegarde = False
-                        
+                    elif joueur.sauvegarde == False:
+                        pygame.mouse.set_cursor(*pygame.cursors.arrow) 
                         
             # si le joueur ferme cette fenetre
             if event.type == pygame.QUIT:
