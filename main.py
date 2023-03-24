@@ -531,13 +531,13 @@ while joueur.recommencer :
 
                 if enregistrercliq.collidepoint(event.pos):
                     if joueur.position1 == 63 : 
+                        if joueur.sauvegarde == True:
+                            pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                            
 
-                        pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-                        pygame.display.flip()
+                        else:
 
-                    elif joueur.sauvegarde == False:  
-
-                        pygame.mouse.set_cursor(*pygame.cursors.arrow)
+                            pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
                     else:
 
