@@ -354,7 +354,7 @@ while joueur.recommencer :
                         if 19 == joueur.positionIA :
                             joueur.hoteljIA += 1
                             print("jIA " + str(joueur.hoteljIA) + " jour d hotel")
-                        elif joueur.hoteljIA >= 2 :
+                        if joueur.hoteljIA > 2 :
                             joueur.joueurIApeutjouer = True
                             joueur.hotelj1 = 0
                             print("jIA est partis de l hotel")
@@ -446,7 +446,7 @@ while joueur.recommencer :
                         if 19 == joueur.position1 :
                             joueur.hotelj1 += 1
                             print("j1 " + str(joueur.hotelj1) + " jour d hotel")
-                        elif joueur.hotelj1 >= 2 :
+                        if joueur.hotelj1 > 2 :
 
                             joueur.joueur1peutjouer = True
                             joueur.hotelj1 = 0
