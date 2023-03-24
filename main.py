@@ -1,5 +1,4 @@
 import pygame
-import random
 from joueurclass import Joueur
 import csv
 from grille import Grille
@@ -557,6 +556,7 @@ while joueur.recommencer :
                     joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] + 30
                     joueur.rect_joueurIA.y = Grille[joueur.positionIA][2] 
                     joueur.nomjoueur = ""
+                    user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
                     toutAfficher()
                     joueur.acceuil = True
                     joueur.findepartie = False
