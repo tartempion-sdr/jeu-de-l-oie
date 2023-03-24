@@ -331,10 +331,17 @@ while joueur.recommencer :
                         joueur.colision1() 
                         toutAfficher()
 
+                        if joueur.position1 > 57 :
+                            pygame.time.delay(500) 
+                            joueur.verif1()
+                            toutAfficher()
+                            print("triple verification j1")  
+
                         joueur.verif1()
                         toutAfficher()
 
                         joueur.verif1()
+                        pygame.time.delay(100)
                         toutAfficher()
                         print("double verification j1")  
 
@@ -405,9 +412,8 @@ while joueur.recommencer :
                             joueur.hoteljIA = 0
                             print("jIA est partis de l hotel sans payer")
                         
-
-
                     
+
                     # IA joueur    
                 if joueur.joueurIApeutjouer  == True:  
                     toutAfficher()
@@ -425,20 +431,23 @@ while joueur.recommencer :
                         joueur.colisionIA() 
                         toutAfficher()
 
-                        joueur.vefifIA()
-                        toutAfficher()
-
-                            
-                         
-                        joueur.vefifIA()   
-                        toutAfficher()
-                        print("double verification jIA")
-                        
                         if joueur.positionIA > 57 :
                             pygame.time.delay(500) 
                             joueur.vefifIA()
                             toutAfficher()
                             print("triple verification jIA") 
+
+                        joueur.vefifIA()
+                        toutAfficher()
+
+                            
+                         
+                        joueur.vefifIA()
+                        pygame.time.delay(100)    
+                        toutAfficher()
+                        print("double verification jIA")
+                        
+                        
 
                         
                         joueur.joueur1peutjouer = True
@@ -491,6 +500,8 @@ while joueur.recommencer :
                             joueur.joueurIApeutjouer = False
                             joueur.hotelj1 = 0
                             print("j1 est partis de l hotel sans payer")
+
+                        
 
                         pygame.event.clear()    
                             
@@ -576,11 +587,13 @@ while joueur.recommencer :
                     joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] + 30
                     joueur.rect_joueurIA.y = Grille[joueur.positionIA][2] 
                     joueur.nomjoueur = ""
+                    joueur.hotelj1 = 0
+                    joueur.hoteljIA = 0
                     user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
-                    toutAfficher()
-                    joueur.acceuil = True
+                    joueur.running = False
                     joueur.findepartie = False
-                   
+                    joueur.acceuil = True
+                    toutAfficher()
 
                 if enregistrercliq.collidepoint(event.pos):
                     
