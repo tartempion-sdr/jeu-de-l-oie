@@ -335,8 +335,12 @@ while joueur.recommencer :
                         toutAfficher()
                         print("double verification j1")  
 
-                        
-                
+                        if joueur.position1 > 57 :
+                            pygame.time.delay(500) 
+                            joueur.verif1()
+                            toutAfficher()
+                            print("triple verification j1")  
+                    
                         joueur.joueur1peutjouer = False
                         joueur.joueurIApeutjouer = True
                         print("debloque jIA") 
@@ -351,8 +355,9 @@ while joueur.recommencer :
                         if 19 == joueur.positionIA :
                             joueur.hoteljIA += 1
                             print("jIA " + str(joueur.hoteljIA) + " jour d hotel")
-                        elif joueur.hoteljIA == 2 :
+                        elif joueur.hoteljIA >= 2 :
                             joueur.joueurIApeutjouer = True
+                            joueur.hotelj1 = 0
                             print("jIA est partis de l hotel")
                         
                         
@@ -413,14 +418,18 @@ while joueur.recommencer :
                         toutAfficher()
 
                             
-                        print("double verification jIA") 
-                        joueur.vefifIA()
-                           
+                         
+                        joueur.vefifIA()   
                         toutAfficher()
-
-                       
+                        print("double verification jIA")
                         
-                
+                        if joueur.positionIA > 57 :
+                            pygame.time.delay(500) 
+                            joueur.vefifIA()
+                            toutAfficher()
+                            print("triple verification jIA") 
+
+                        
                         joueur.joueur1peutjouer = True
                         joueur.joueurIApeutjouer = False
                         print("debloque j1") 
@@ -438,8 +447,10 @@ while joueur.recommencer :
                         if 19 == joueur.position1 :
                             joueur.hotelj1 += 1
                             print("j1 " + str(joueur.hotelj1) + " jour d hotel")
-                        elif joueur.hotelj1 == 2 :
+                        elif joueur.hotelj1 >= 2 :
+
                             joueur.joueur1peutjouer = True
+                            joueur.hotelj1 = 0
                             print("j1 est partis de l hotel")
 
                         # regle pour joueur1 casespeciale 31 == 31 et 52 == 52

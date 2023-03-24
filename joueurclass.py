@@ -422,7 +422,7 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 30
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             
-        if self.position1 == 31:
+        if self.positionIA == 31:
 
             pygame.time.delay(1000)
             self.sound_manager.play("plouf")
