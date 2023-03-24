@@ -244,6 +244,10 @@ while joueur.recommencer :
                 casespecialeIA = caseliste[joueur.positionIA]
                 screen.blit(casespecialeIA,(420,315))
            
+            if joueur.hotelj1 == 1 or joueur.hotelj1 == 2 :
+                screen.blit(casehotel1, casehotel1_rect1)
+            if joueur.hoteljIA == 1 or joueur.hoteljIA == 2 :    
+                screen.blit(casehotelIA, casehotelIA_rect1)
 
             # nom du joueur1, valeur du dé
             font = pygame.font.SysFont('Comic Sans MS,Arial',16)
@@ -354,6 +358,14 @@ while joueur.recommencer :
                         if 19 == joueur.positionIA :
                             joueur.hoteljIA += 1
                             print("jIA " + str(joueur.hoteljIA) + " jour d hotel")
+                            
+                            front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
+                            casehotelIA = front3.render(str(joueur.hoteljIA), True ,(0,0,0),(255,255,255))
+                            casehotelIA_rect1 = casehotelIA.get_rect()
+                            casehotelIA_rect1.x = 473
+                            casehotelIA_rect1.y = 315
+                            screen.blit(casehotelIA, casehotelIA_rect1)
+
                         if joueur.hoteljIA > 2 :
                             joueur.joueurIApeutjouer = True
                             joueur.hotelj1 = 0
@@ -446,6 +458,14 @@ while joueur.recommencer :
                         if 19 == joueur.position1 :
                             joueur.hotelj1 += 1
                             print("j1 " + str(joueur.hotelj1) + " jour d hotel")
+                            
+                            front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
+                            casehotel1 = front3.render(str(joueur.hotelj1), True ,(0,0,0),(255,255,255))
+                            casehotel1_rect1 = casehotel1.get_rect()
+                            casehotel1_rect1.x = 473
+                            casehotel1_rect1.y = 258
+                            screen.blit(casehotel1, casehotel1_rect1)
+
                         if joueur.hotelj1 > 2 :
 
                             joueur.joueur1peutjouer = True
