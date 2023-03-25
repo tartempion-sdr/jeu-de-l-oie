@@ -25,6 +25,12 @@ tetedemort =   pygame.image.load("assets/plateau/tetedemort.png")
 arriver =      pygame.image.load("assets/plateau/arriver.png")
 basechelle2 =  pygame.image.load("assets/plateau/basechelle2.png") 
 longechelle1 = pygame.image.load("assets/plateau/longechelle1.png")
+pattedoie1 =       pygame.image.load("assets/plateau/pattedoie1.png") 
+pattedoie2 =       pygame.image.load("assets/plateau/pattedoie2.png") 
+pattedoie3 =       pygame.image.load("assets/plateau/pattedoie3.png") 
+pattedoie4 =       pygame.image.load("assets/plateau/pattedoie4.png") 
+
+
 
 
 # cree une class qui representera notre joueur
@@ -121,6 +127,9 @@ class Joueur(pygame.sprite.Sprite):
 
             #self.screen.blit(self.background, (0,0))
             for caseplateau in range(0,64):
+                
+                
+                
                 pygame.draw.rect(self.screen, blanc, pygame.Rect(Grille[caseplateau][1], Grille[caseplateau][2], 57, 54))
             
                 font = pygame.font.SysFont('Comic Sans MS,Arial',18)
@@ -129,6 +138,37 @@ class Joueur(pygame.sprite.Sprite):
                 numcaseplateau_rect.x = Grille[caseplateau][1]
                 numcaseplateau_rect.y = Grille[caseplateau][2]
                 self.screen.blit(numcaseplateau, numcaseplateau_rect)
+
+            for caseplateauoie in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 62) :
+
+                casepattedoie_rect = pattedoie1.get_rect()
+                casepattedoie_rect.x = Grille[caseplateauoie][1]
+                casepattedoie_rect.y = Grille[caseplateauoie][2]
+                self.screen.blit(pattedoie1, casepattedoie_rect)
+                
+            for caseplateauoie in (13, 14, 15, 16, 17, 18, 19, 46, 49, 50, 51):
+
+                casepattedoie_rect = pattedoie1.get_rect()
+                casepattedoie_rect.x = Grille[caseplateauoie][1]
+                casepattedoie_rect.y = Grille[caseplateauoie][2]
+                self.screen.blit(pattedoie2, casepattedoie_rect)
+
+                
+            for caseplateauoie in (20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 53, 54, 55, 56, 57, 58, 59, 60):
+
+                casepattedoie_rect = pattedoie1.get_rect()
+                casepattedoie_rect.x = Grille[caseplateauoie][1]
+                casepattedoie_rect.y = Grille[caseplateauoie][2]
+                
+                self.screen.blit(pattedoie3, casepattedoie_rect)
+
+            for caseplateauoie in (27, 33, 34, 35, 36, 37, 61, 62):
+
+                casepattedoie_rect = pattedoie1.get_rect()
+                casepattedoie_rect.x = Grille[caseplateauoie][1]
+                casepattedoie_rect.y = Grille[caseplateauoie][2]
+                
+                self.screen.blit(pattedoie4, casepattedoie_rect)    
 
             self.screen.blit(depart,        (18, 22))
             self.screen.blit(oie,          (514, 22))
@@ -143,7 +183,7 @@ class Joueur(pygame.sprite.Sprite):
             self.screen.blit(tetedemort,  (266, 372))                
             self.screen.blit(basechelle2, (142, 197))
             self.screen.blit(arriver,     (204, 256))
-                
+            
            
 
 
