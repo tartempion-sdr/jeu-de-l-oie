@@ -6,7 +6,7 @@ pygame.init()
 
 
 # future icone
-pygame_icon = pygame.image.load("assets/oiecase.png")
+pygame_icon = pygame.image.load("assets/plateau/oiecase.png")
 pygame.display.set_icon(pygame_icon)
 
 # titre
@@ -22,7 +22,7 @@ screen = pygame.display.set_mode((850,567))
         
 pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
-mous = pygame.cursors.load_xbm("assets/de.xbm", "assets/de-mask.xbm")
+mous = pygame.cursors.load_xbm("assets/dés/de.xbm", "assets/dés/de-mask.xbm")
 # entrez votre nom
 
 font = pygame.font.SysFont('Comic Sans MS,Arial',18)
