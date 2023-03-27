@@ -61,7 +61,7 @@ while joueur.recommencer :
         screen.blit(joueur.jouez,(35,40))
         screen.blit(joueur.regles,(35,130))
         screen.blit(joueur.pictureAcceuil,(35,295))
-         
+
         pygame.display.set_caption("  acceuil")
         
         
@@ -284,7 +284,7 @@ while joueur.recommencer :
                 
             else:
                 enregistrer = font.render(joueur.nomjoueur + " Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
-                joueur.sauvegarde = False
+                
 
             enregistrer_rect = enregistrer.get_rect()
             enregistrer_rect.x = 300
@@ -368,9 +368,10 @@ while joueur.recommencer :
                     
                     ## enregistre le score en un clic.
                     if joueur.position1 == 63 : 
-                        pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-                        joueur.enregisterScore()
-                        joueur.sauvegarde = False
+                        if joueur.sauvegarde == True:
+                            pygame.mouse.set_cursor(*pygame.cursors.broken_x)
+                            joueur.enregisterScore()
+                            joueur.sauvegarde = False
                     else:
                         
                         pygame.mouse.set_cursor(*pygame.cursors.arrow) 
