@@ -25,43 +25,42 @@ pygame.mouse.set_cursor(*pygame.cursors.arrow)
 mous = pygame.cursors.load_xbm("assets/dés/de.xbm", "assets/dés/de-mask.xbm")
 # entrez votre nom
 
-font = pygame.font.SysFont('Comic Sans MS,Arial',18)
+font = pygame.font.SysFont('Comic Sans MS,Arial',13)
 entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,255))
 prompt_rect = entrezvotreprenom.get_rect()
-prompt_rect.x = 0
-prompt_rect.y = 0
+prompt_rect.x = 55
+prompt_rect.y = 86
 
 pasDePrenom  = font.render("vous n'avez rien ecrit banane !" ,True ,(0,0,0),(255,255,255))
 pasDePrenom_rect = pasDePrenom.get_rect()
-pasDePrenom_rect.x = 0
-pasDePrenom_rect.y = 40
+pasDePrenom_rect.x = 55
+pasDePrenom_rect.y = 108
 
 cliqpasDePrenom  = font.render("ecrit et cela s'affiche tout seul, pas besoin de cliqué quelque part pour écrire" ,True ,(0,0,0),(255,255,255))
 cliqpasDePrenom_rect = pasDePrenom.get_rect()
-cliqpasDePrenom_rect.x = 0
-cliqpasDePrenom_rect.y = 40
+cliqpasDePrenom_rect.x = 55
+cliqpasDePrenom_rect.y = 108
 
 user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
 user_input_rect = user_input.get_rect()
-user_input_rect.x = 0
-user_input_rect.y = 20
+user_input_rect.x = 55
+user_input_rect.y = 108
 
  # boucle tant que cette condition est vrai
 while joueur.recommencer :
 
     while joueur.acceuil :
         
-        jouezcliq = pygame.Rect((0, 240),(216, 44))
-        reglescliq = pygame.Rect((0, 284),(216, 44))
-        picturecliq = pygame.Rect((0, 333),(215, 234))
+        jouezcliq = pygame.Rect((35, 40),(186, 44))
+        reglescliq = pygame.Rect((35, 130),(186, 44))
+        picturecliq = pygame.Rect((35, 295),(186, 234))
 
         # appliquer a l'arriere plan de notre jeu
         screen.blit(joueur.backgroundAcceuil,(0,0))
-        screen.blit(joueur.pictureAcceuil,(0,333))
-        screen.blit(joueur.messageAcceuil,(0,188))
-        screen.blit(joueur.jouez,(0,236))
-        screen.blit(joueur.regles,(0,284))
-       
+        screen.blit(joueur.messageAcceuil,(587,40))
+        screen.blit(joueur.jouez,(35,40))
+        screen.blit(joueur.regles,(35,130))
+        screen.blit(joueur.pictureAcceuil,(35,295)) 
         pygame.display.set_caption("  acceuil")
         
         
@@ -94,8 +93,8 @@ while joueur.recommencer :
                     if len(joueur.nomjoueur) <= 9:
                         joueur.nomjoueur += event.unicode
                 user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
-                user_input_rect.x = 0
-                user_input_rect.y = 40
+                user_input_rect.x = 55
+                user_input_rect.y = 108
             screen.blit(entrezvotreprenom, prompt_rect)
             screen.blit(user_input, user_input_rect)     
             
@@ -130,23 +129,23 @@ while joueur.recommencer :
                 elif reglescliq.collidepoint(event.pos): 
                 
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
-                    screen.blit(joueur.reglestexte,(232,0))
+                    screen.blit(joueur.reglestexte,(488,79))
                 
 
                 elif picturecliq.collidepoint(event.pos):
                         
                     pygame.mouse.set_cursor(*pygame.cursors.ball)
-                    screen.blit(joueur.carreblanc,(232,0))
+                    screen.blit(joueur.carreblanc,(587,100))
                     
                     # tableau des scores
                     with open("out_score_ordre_croissant.csv",) as fichier:
                         reader = csv.DictReader(fichier, delimiter=",")
                         titre = "Nom du joueur    Score   Place "
                         titreDesScore = font.render(str(titre), True, (0,0,0), (255,255,255))
-                        ajoutTitreDesScore = screen.blit(titreDesScore, (240, 0))                      
+                        ajoutTitreDesScore = screen.blit(titreDesScore, (587,100))                      
                         # faire quelque chose avec une ligne
                         l = 0
-                        yy = 20
+                        yy = 105
                     
                         for ligne in reader:
                              if l < 10:
@@ -154,11 +153,11 @@ while joueur.recommencer :
                                 l = l + 1
                                 yy += 25                     
                                 lignesnom = font.render(str(ligne["nomjoueur"]), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne1 = screen.blit(lignesnom, (250, yy))
+                                ajoutUneLigne1 = screen.blit(lignesnom, (587, yy))
                                 lignescore = font.render(str(ligne["score"]), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne2 = screen.blit(lignescore, (400, yy))
+                                ajoutUneLigne2 = screen.blit(lignescore, (698, yy))
                                 ligneclassement = font.render(str(l), True, (0,0,0), (255,255,255))
-                                ajoutUneLigne3 = screen.blit(ligneclassement, (450, yy))
+                                ajoutUneLigne3 = screen.blit(ligneclassement, (745, yy))
                 else:
                     pygame.mouse.set_cursor(*pygame.cursors.arrow)
 
@@ -263,7 +262,10 @@ while joueur.recommencer :
              
         pygame.display.set_caption("  FIN")
         # appliquer a l'arriere plan de notre jeu
-        screen.blit(joueur.backgroundAcceuil,(0,0))
+        # plateau et case affichage...
+        beige = (225,210,184)
+        blanc = (250,250,250)
+        screen.fill(beige)
         screen.blit(joueur.pictureAcceuil,(0,333))
         
         enregistrercliq = pygame.Rect((0, 0),(215, 60))
@@ -342,6 +344,8 @@ while joueur.recommencer :
                     joueur.hotelj1 = 0
                     joueur.hoteljIA = 0
                     user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
+                    joueur.joueur1peutjouer = True
+                    joueur.joueurIApeutjouer = False
                     joueur.running = False
                     joueur.findepartie = False
                     joueur.acceuil = True
