@@ -266,7 +266,7 @@ while joueur.recommencer :
         
         
         
-        enregistrercliq = pygame.Rect((0, 0),(215, 60))
+        enregistrercliq = pygame.Rect((300, 300),(215, 60))
 
         font = pygame.font.SysFont('Comic Sans MS,Arial',16)
 
@@ -277,15 +277,16 @@ while joueur.recommencer :
     
             if joueur.sauvegarde == True:
                 
-                
-                enregistrer = font.render(joueur.nomjoueur + " Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
+                font5 = pygame.font.SysFont('Comic Sans MS,Arial',56)
+
+                enregistrer = font.render(joueur.nomjoueur + "GAGNEZ Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
                 
             else:
                 enregistrer = font.render(joueur.nomjoueur + " Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
 
             enregistrer_rect = enregistrer.get_rect()
-            enregistrer_rect.x = 0
-            enregistrer_rect.y = 30
+            enregistrer_rect.x = 300
+            enregistrer_rect.y = 300
             screen.blit(enregistrer, enregistrer_rect)
 
         else:
@@ -296,8 +297,8 @@ while joueur.recommencer :
 
             gameover1 = font4.render("GAME-OVER.", True ,(0,0,0),(255,255,255))
             gameover_rect = gameover1.get_rect()
-            gameover_rect.x = 300
-            gameover_rect.y = 300
+            gameover_rect.x = 490
+            gameover_rect.y = 0
             screen.blit(gameover1, gameover_rect)
 
         screen.blit(joueur.picturerecommencer,(35, 295))

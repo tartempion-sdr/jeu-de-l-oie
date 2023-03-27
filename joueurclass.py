@@ -495,7 +495,12 @@ class Joueur(pygame.sprite.Sprite):
             self.joueur1peutjouer = True
             print("interdit a jIA de jouer tout seul ") 
 
-        
+            if 19 == self.position1 or 31 == self.position1 or 52 == self.position1 :
+
+                self.joueurIApeutjouer = True
+                self.joueur1peutjouer = False
+                self.hoteljIA = 0
+                print("echange de prisonnier jIA liberer ")
 
         if 19 == self.positionIA :
             self.hoteljIA += 1
@@ -638,7 +643,7 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
             
-        if self.position1 == 52:
+        if self.positionIA == 52:
 
             if self.joueurIApeutjouer == True :
                 pygame.time.delay(1000)
@@ -721,6 +726,12 @@ class Joueur(pygame.sprite.Sprite):
             self.joueur1peutjouer = False
             self.joueurIApeutjouer = True
             print("interdit a j1 de jouer tout seul") 
+
+            if 19 == self.positionIA or 31 == self.positionIA or 52 == self.positionIA :
+                self.joueur1peutjouer = True
+                self.joueurIApeutjouer = False
+                self.hotelj1 = 0
+                print("echange de prisonnier j1 liberer") 
 
         if 19 == self.position1 :
             self.hotelj1 += 1
