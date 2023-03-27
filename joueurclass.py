@@ -408,17 +408,15 @@ class Joueur(pygame.sprite.Sprite):
         if self.position1 == 58:
             
             pygame.time.delay(1000)
-            self.joueur1peutjouer = False
-            self.joueurIApeutjouer = True
             self.position1 = 0
             self.sound_manager.play("mort")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
             
         if self.position1 == 52:
-            
-            pygame.time.delay(1000)
-            self.sound_manager.play("prison")
+            if self.joueur1peutjouer == True :
+                pygame.time.delay(1000)
+                self.sound_manager.play("prison")
 
         if self.position1 == 46:
 
@@ -449,9 +447,11 @@ class Joueur(pygame.sprite.Sprite):
         if self.position1 == 31:
             
             pygame.time.delay(1000)
-            self.sound_manager.play("plouf")
+            
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
+            if self.joueur1peutjouer == True :
+                self.sound_manager.play("plouf")
 
         if self.position1 == 27:
 
@@ -475,10 +475,10 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.y = Grille[self.position1][2] 
             
         if self.position1 == 19:
+            if self.joueur1peutjouer == True :
+                pygame.time.delay(1000)
+                self.sound_manager.play("hotel")
             
-            pygame.time.delay(1000)
-            self.sound_manager.play("hotel")
-        
         if self.position1 == 8:
             
             pygame.time.delay(1000)
@@ -494,6 +494,8 @@ class Joueur(pygame.sprite.Sprite):
             self.joueurIApeutjouer = False
             self.joueur1peutjouer = True
             print("interdit a jIA de jouer tout seul ") 
+
+        
 
         if 19 == self.positionIA :
             self.hoteljIA += 1
@@ -512,19 +514,7 @@ class Joueur(pygame.sprite.Sprite):
             print("jIA est partis de l hotel")
         
         
-        # regle pour joueurIA casespeciale 31 == 31 et 52 == 52
-        if  31 == self.position1 and 52 == self.positionIA :
-
-            self.joueur1peutjouer = False
-            self.joueurIApeutjouer = True
-
-            
-
-        if  52 == self.position1 and 31 == self.position1:
-            
-            self.joueur1peutjouer = False
-            self.joueurIApeutjouer = True
-
+        
             
 
 
@@ -643,8 +633,6 @@ class Joueur(pygame.sprite.Sprite):
             
 
             pygame.time.delay(1000)
-            self.joueurIApeutjouer = False
-            self.joueur1peutjouer = True
             self.positionIA = 0
             self.sound_manager.play("mort")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -652,8 +640,9 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.position1 == 52:
 
-            pygame.time.delay(1000)
-            self.sound_manager.play("prison")
+            if self.joueurIApeutjouer == True :
+                pygame.time.delay(1000)
+                self.sound_manager.play("prison")
 
         if self.positionIA == 46:
             
@@ -683,9 +672,11 @@ class Joueur(pygame.sprite.Sprite):
         if self.positionIA == 31:
 
             pygame.time.delay(1000)
-            self.sound_manager.play("plouf")
+            
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
+            if self.joueurIApeutjouer == True :
+                self.sound_manager.play("plouf")
 
         if self.positionIA == 27:
             
@@ -707,9 +698,9 @@ class Joueur(pygame.sprite.Sprite):
             
 
         if self.positionIA == 19:
-
-            pygame.time.delay(1000)     
-            self.sound_manager.play("hotel")
+            if self.joueurIApeutjouer == True :
+                pygame.time.delay(1000)     
+                self.sound_manager.play("hotel")
 
         if self.positionIA == 8:
             
@@ -748,17 +739,6 @@ class Joueur(pygame.sprite.Sprite):
             self.hotelj1 = 0
             print("j1 est partis de l hotel")
 
-        # regle pour joueur1 casespeciale 31 == 31 et 52 == 52
-        if  31 == self.position1 and 52 == self.positionIA :
-
-            self.joueur1peutjouer = True
-            self.joueurIApeutjouer = False
-            print("j1 est sortie du puit")
-
-        if  52 == self.position1 and 31 == self.positionIA :
-            
-            self.joueur1peutjouer = True
-            self.joueurIApeutjouer = False
-            print("j1 est sortie de prison")
+       
 
       

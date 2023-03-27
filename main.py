@@ -290,15 +290,23 @@ while joueur.recommencer :
 
         else:
             screen.blit(joueur.findepartieperdu,(0,0))
-            votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
-        
-        
+            font4 = pygame.font.SysFont('Comic Sans MS,Arial',56)
+
+            votreprenom = font.render(joueur.nomjoueur + " vous avez perdu !", True ,(0,0,0),(255,255,255))
+
+            gameover1 = font4.render("GAME-OVER.", True ,(0,0,0),(255,255,255))
+            gameover_rect = gameover1.get_rect()
+            gameover_rect.x = 300
+            gameover_rect.y = 300
+            screen.blit(gameover1, gameover_rect)
+
         screen.blit(joueur.picturerecommencer,(35, 295))
 
         votreprenom_rect = votreprenom.get_rect()
         votreprenom_rect.x = 0
         votreprenom_rect.y = 0
         screen.blit(votreprenom, votreprenom_rect)
+        
         
         #mettre à jour l'arriere plan
         pygame.display.flip()
