@@ -326,7 +326,8 @@ class Joueur(pygame.sprite.Sprite):
             self.positionIA -= self.valeurdude_joueur1
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
-            
+            self.hoteljIA = 0
+
     def verif1(self):
 
         
@@ -549,6 +550,7 @@ class Joueur(pygame.sprite.Sprite):
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
+            self.hotelj1 = 0
                    
     def vefifIA(self):
             

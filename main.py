@@ -60,7 +60,8 @@ while joueur.recommencer :
         screen.blit(joueur.messageAcceuil,(488,40))
         screen.blit(joueur.jouez,(35,40))
         screen.blit(joueur.regles,(35,130))
-        screen.blit(joueur.pictureAcceuil,(35,295)) 
+        screen.blit(joueur.pictureAcceuil,(35,295))
+         
         pygame.display.set_caption("  acceuil")
         
         
@@ -266,7 +267,7 @@ while joueur.recommencer :
         
         
         
-        enregistrercliq = pygame.Rect((300, 300),(215, 60))
+        enregistrercliq = pygame.Rect((300, 300),(440, 100))
 
         font = pygame.font.SysFont('Comic Sans MS,Arial',16)
 
@@ -279,10 +280,11 @@ while joueur.recommencer :
                 
                 font5 = pygame.font.SysFont('Comic Sans MS,Arial',56)
 
-                enregistrer = font.render(joueur.nomjoueur + "GAGNEZ Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
+                enregistrer = font5.render("SAUVEGARDER", True ,(0,0,0),(255,255,255))
                 
             else:
                 enregistrer = font.render(joueur.nomjoueur + " Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
+                joueur.sauvegarde = False
 
             enregistrer_rect = enregistrer.get_rect()
             enregistrer_rect.x = 300
