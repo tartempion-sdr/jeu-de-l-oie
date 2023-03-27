@@ -513,38 +513,20 @@ class Joueur(pygame.sprite.Sprite):
         
         
         # regle pour joueurIA casespeciale 31 == 31 et 52 == 52
-        if  31 == self.position1 and 31 == self.positionIA :
+        if  31 == self.position1 and 52 == self.positionIA :
 
             self.joueur1peutjouer = False
             self.joueurIApeutjouer = True
 
-            pygame.time.delay(500)         
-            self.printrandomIA()
-            pygame.time.delay(1000)
-            self.deplacementdupionIA()
-            self.toutAfficher()
-            print("jIA est sortie du puit")
+            
 
-        if  52 == self.position1 and 52 == self.positionIA :
+        if  52 == self.position1 and 31 == self.position1:
             
             self.joueur1peutjouer = False
             self.joueurIApeutjouer = True
 
-            pygame.time.delay(500)         
-            self.printrandomIA()
-            pygame.time.delay(1000)
-            self.deplacementdupionIA()
-            self.toutAfficher()
-
-            print("jIA est sortie de prison")
-
-        if  19 == self.position1 and 19 == self.positionIA :
             
-            self.joueur1peutjouer = False
-            self.joueurIApeutjouer = True
-            self.hoteljIA = 0
-            print("jIA est partis de l hotel sans payer")
-            
+
 
 
     def printrandomIA(self):
@@ -767,23 +749,16 @@ class Joueur(pygame.sprite.Sprite):
             print("j1 est partis de l hotel")
 
         # regle pour joueur1 casespeciale 31 == 31 et 52 == 52
-        if  31 == self.position1 and 31 == self.positionIA :
+        if  31 == self.position1 and 52 == self.positionIA :
 
             self.joueur1peutjouer = True
             self.joueurIApeutjouer = False
             print("j1 est sortie du puit")
 
-        if  52 == self.position1 and 52 == self.positionIA :
+        if  52 == self.position1 and 31 == self.positionIA :
             
             self.joueur1peutjouer = True
             self.joueurIApeutjouer = False
             print("j1 est sortie de prison")
 
-        if  19 == self.position1 and 19 == self.positionIA :
-            
-            self.joueur1peutjouer = True
-            self.joueurIApeutjouer = False
-            self.hotelj1 = 0
-            print("j1 est partis de l hotel sans payer")
-
-        
+      

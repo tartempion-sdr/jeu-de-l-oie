@@ -277,7 +277,7 @@ while joueur.recommencer :
     
             if joueur.sauvegarde == True:
                 
-                screen.blit(joueur.pictureAcceuil,(0,333))
+                
                 enregistrer = font.render(joueur.nomjoueur + " Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
                 
             else:
