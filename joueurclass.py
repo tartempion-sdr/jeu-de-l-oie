@@ -68,6 +68,9 @@ class Joueur(pygame.sprite.Sprite):
          
         self.decliquable = pygame.image.load("assets/dés/de.png")
 
+        self.findepartiegagner = pygame.image.load("assets/findepartiegagner.jpg")
+        self.findepartieperdu = pygame.image.load("assets/findepartieperdu.jpg")
+        self.picturerecommencer = pygame.image.load("assets/recommencer.jpg")
         
         self.caseliste = {8:oie, 19:hotel, 26:oie, 27:basechelle2, 31:puit, 36:oie, 42:labyrinth, 46:basechelle2, 52:prison, 58:tetedemort, 62:basechelle2}
 
@@ -192,20 +195,20 @@ class Joueur(pygame.sprite.Sprite):
             if int(self.position1) in (8, 19, 26, 27, 31, 36, 42, 46, 52, 58, 62):
                 #print(caseliste[8])
                 casespeciale1 = self.caseliste[self.position1]
-                self.screen.blit(casespeciale1,(420,258))
+                self.screen.blit(casespeciale1,(452,258))
                 
 
             if self.positionIA in (8, 19, 26, 27, 31, 36, 42, 46, 52, 58, 62):
 
                 casespecialeIA = self.caseliste[self.positionIA]
-                self.screen.blit(casespecialeIA,(420,315))
+                self.screen.blit(casespecialeIA,(452,315))
            
             if self.hotelj1 == 1 or self.hotelj1 == 2 :
                 
                 front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
                 casehotel1 = front3.render(str(self.hotelj1), True ,(0,0,0),(255,255,255))
                 casehotel1_rect1 = casehotel1.get_rect()
-                casehotel1_rect1.x = 473
+                casehotel1_rect1.x = 426
                 casehotel1_rect1.y = 258
                 self.screen.blit(casehotel1, casehotel1_rect1)
 
@@ -214,12 +217,12 @@ class Joueur(pygame.sprite.Sprite):
                 front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
                 casehotelIA = front3.render(str(self.hoteljIA), True ,(0,0,0),(255,255,255))
                 casehotelIA_rect1 = casehotelIA.get_rect()
-                casehotelIA_rect1.x = 473
+                casehotelIA_rect1.x = 426
                 casehotelIA_rect1.y = 315
                 self.screen.blit(casehotelIA, casehotelIA_rect1)
 
             # nom du joueur1, valeur du dé
-            font = pygame.font.SysFont('Comic Sans MS,Arial',16)
+            font = pygame.font.SysFont('Comic Sans MS,Arial',15)
             votreprenom = font.render("  " + self.nomjoueur + " votre score est de: " + str(self.score), True ,(0,0,0),(255,255,255))
             prompt_rect = votreprenom.get_rect()
             prompt_rect.x = 266

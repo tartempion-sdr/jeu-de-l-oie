@@ -57,7 +57,7 @@ while joueur.recommencer :
 
         # appliquer a l'arriere plan de notre jeu
         screen.blit(joueur.backgroundAcceuil,(0,0))
-        screen.blit(joueur.messageAcceuil,(587,40))
+        screen.blit(joueur.messageAcceuil,(488,40))
         screen.blit(joueur.jouez,(35,40))
         screen.blit(joueur.regles,(35,130))
         screen.blit(joueur.pictureAcceuil,(35,295)) 
@@ -263,24 +263,25 @@ while joueur.recommencer :
         pygame.display.set_caption("  FIN")
         # appliquer a l'arriere plan de notre jeu
         # plateau et case affichage...
-        beige = (225,210,184)
-        blanc = (250,250,250)
-        screen.fill(beige)
-        screen.blit(joueur.pictureAcceuil,(0,333))
+        
+        
         
         enregistrercliq = pygame.Rect((0, 0),(215, 60))
 
         font = pygame.font.SysFont('Comic Sans MS,Arial',16)
 
         if joueur.position1 == 63 :
+            screen.blit(joueur.findepartiegagner,(0,0))
             votreprenom = font.render(joueur.nomjoueur + " votre score est de: " + str(joueur.score) + " vous avez gagné ! ", True ,(0,0,0),(255,255,255))
             
     
             if joueur.sauvegarde == True:
-                enregistrer = font.render(" Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
+                
+                screen.blit(joueur.pictureAcceuil,(0,333))
+                enregistrer = font.render(joueur.nomjoueur + " Cliquez ICI pour enregistrez Votre score", True ,(0,0,0),(255,255,255))
                 
             else:
-                enregistrer = font.render(" Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
+                enregistrer = font.render(joueur.nomjoueur + " Votre partie a bien été enregistrer", True ,(0,0,0),(255,255,255))
 
             enregistrer_rect = enregistrer.get_rect()
             enregistrer_rect.x = 0
@@ -288,10 +289,11 @@ while joueur.recommencer :
             screen.blit(enregistrer, enregistrer_rect)
 
         else:
+            screen.blit(joueur.findepartieperdu,(0,0))
             votreprenom = font.render(joueur.nomjoueur + " vous avez perdu", True ,(0,0,0),(255,255,255))
         
         
-       
+        screen.blit(joueur.picturerecommencer,(35, 295))
 
         votreprenom_rect = votreprenom.get_rect()
         votreprenom_rect.x = 0
