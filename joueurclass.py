@@ -501,6 +501,8 @@ class Joueur(pygame.sprite.Sprite):
                 self.joueurIApeutjouer = True
                 self.joueur1peutjouer = False
                 self.hoteljIA = 0
+                self.hotelj1 = 0
+
                 print("echange de prisonnier jIA liberer ")
 
         if 19 == self.positionIA :
@@ -514,10 +516,10 @@ class Joueur(pygame.sprite.Sprite):
             casehotelIA_rect1.y = 315
             self.screen.blit(casehotelIA, casehotelIA_rect1)
 
-        if self.hoteljIA > 2 :
-            self.joueurIApeutjouer = True
-            self.hotelj1 = 0
-            print("jIA est partis de l hotel")
+            if self.hoteljIA > 2 :
+                self.joueurIApeutjouer = True
+                self.hotelj1 = 0
+                print("jIA est partis de l hotel")
         
         
         
@@ -733,6 +735,7 @@ class Joueur(pygame.sprite.Sprite):
                 self.joueur1peutjouer = True
                 self.joueurIApeutjouer = False
                 self.hotelj1 = 0
+                self.hoteljIA = 0
                 print("echange de prisonnier j1 liberer") 
 
         if 19 == self.position1 :
@@ -746,11 +749,11 @@ class Joueur(pygame.sprite.Sprite):
             casehotel1_rect1.y = 258
             self.screen.blit(casehotel1, casehotel1_rect1)
 
-        if self.hotelj1 > 2 :
+            if self.hotelj1 > 2 :
 
-            self.joueur1peutjouer = True
-            self.hotelj1 = 0
-            print("j1 est partis de l hotel")
+                self.joueur1peutjouer = True
+                self.hotelj1 = 0
+                print("j1 est partis de l hotel")
 
        
 
