@@ -13,18 +13,19 @@
 	      =:-Le joueur qui tombe sur la case:-:=
 	    
 	     8  Oie                             
-	    19  hôtel passe son tour durant 2 tours.
+	    19  correspondant a l'hôtel 
+			recommencez la partie depuis le début
 	    26  Oie 
 	    27 -> 57  echelles  
-	    31  au puits attendra qu’un autre joueur arrive
-		au même numéro et prendra sa place.
+	    31  correspondant au puits 
+			recommencez la partie depuis le début
 	    36 Oie
 	    40 -> 62  echelles 
 	    42 correspondant au labyrinthe 
-	       retournera obligatoirement à la case 30.
+	       retournez à la case 30.
 	    46 -> 54  echelles 
-	    52 correspondant la prison attendra 
-	       qu’un autre joueur vienne au même numéro pour repartir.
+	    52 correspondant a la prison 
+	       recommencez la partie depuis le début
 	    58 correspondant à la case Tête de mort 
 	    recommencera la partie depuis le début
 	    
