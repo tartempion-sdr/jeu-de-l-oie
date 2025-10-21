@@ -48,7 +48,7 @@ sudo apt-get install python3-pygame
 
 pip3 install pandas  
 
-ou  
+ou  test
 
 sudo apt-get install python3-pandas
 
