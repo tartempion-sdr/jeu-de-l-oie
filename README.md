@@ -44,11 +44,12 @@ pip3 install pygame
 
 ou  
 
-sudo apt-get install python3-pygame
+sudo apt-get install python3-pygame  
+
 
 pip3 install pandas  
 
-ou  test
+ou  test  
 
 sudo apt-get install python3-pandas
 
