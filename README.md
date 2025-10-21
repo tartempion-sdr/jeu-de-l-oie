@@ -41,21 +41,15 @@ git clone https://github.com/tartempion-sdr/jeu-de-l-oie.git
     install pré-requis
 
 pip3 install pygame  
-
 ou  
-
 sudo apt-get install python3-pygame  
 
 
 pip3 install pandas  
-
-ou  test  
-
+ou  
 sudo apt-get install python3-pandas
 
 pip3 install csv
-
-
 
     lancez le jeu de l'oie
 
