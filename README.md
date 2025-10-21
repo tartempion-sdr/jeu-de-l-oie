@@ -63,7 +63,7 @@ python3 main.py
 git pull
 
     mise a jour du repository
-    
-git add .
-git commit -m "go pygame" 
-git push origine master
+
+git add .  
+git commit -m "go pygame"   
+git push origine master  
