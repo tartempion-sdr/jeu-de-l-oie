@@ -57,8 +57,8 @@ class Joueur(pygame.sprite.Sprite):
         self.pictureAcceuil = pygame.image.load("assets/oie2.jpeg")
         self.messageAcceuil = pygame.image.load("assets/message-acceuil.png")
         self.jouez = pygame.image.load("assets/jouez.png")
-        self.regles = pygame.image.load("assets/regles.png")
-        self.reglestexte = pygame.image.load("assets/regles-texte2.png")
+        self.regles = pygame.image.load("assets/regles.png")        
+        self.reglestexte = pygame.image.load("assets/regles-texte4.png")
         self.carreblanc = pygame.image.load("assets/carre-blanc.png")
         
         
