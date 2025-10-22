@@ -389,7 +389,7 @@ class Joueur(pygame.sprite.Sprite):
             
             pygame.time.delay(1000)
             self.position1 = 0
-            self.sound_manager.play("mort")
+            self.sound_manager.play("fusil")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
             
@@ -397,7 +397,9 @@ class Joueur(pygame.sprite.Sprite):
             
             pygame.time.delay(1000)
             self.position1 = 0
-            self.sound_manager.play("prison")
+            self.sound_manager.play("fusil")
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2] 
 
         if self.position1 == 46:
 
@@ -429,6 +431,7 @@ class Joueur(pygame.sprite.Sprite):
             
             pygame.time.delay(1000)
             self.position1 = 0
+            self.sound_manager.play("fusil")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
             
@@ -457,9 +460,9 @@ class Joueur(pygame.sprite.Sprite):
             
             pygame.time.delay(1000)
             self.position1 = 0
+            self.sound_manager.play("fusil")
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
-            self.sound_manager.play("hotel")
             
         if self.position1 == 8:
             
@@ -589,7 +592,7 @@ class Joueur(pygame.sprite.Sprite):
 
             pygame.time.delay(1000)
             self.positionIA = 0
-            self.sound_manager.play("mort")
+            self.sound_manager.play("fusil")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
             
@@ -597,7 +600,10 @@ class Joueur(pygame.sprite.Sprite):
 
             pygame.time.delay(1000)
             self.positionIA = 0
-            self.sound_manager.play("prison")
+            self.sound_manager.play("fusil")
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
+            self.rect_joueurIA.y = Grille[self.positionIA][2] 
+            
 
         if self.positionIA == 46:
             
@@ -628,6 +634,7 @@ class Joueur(pygame.sprite.Sprite):
 
             pygame.time.delay(1000)
             self.positionIA = 0
+            self.sound_manager.play("fusil")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
             
@@ -655,9 +662,9 @@ class Joueur(pygame.sprite.Sprite):
             
             pygame.time.delay(1000)
             self.positionIA = 0   
+            self.sound_manager.play("fusil")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2]   
-            self.sound_manager.play("hotel")
 
         if self.positionIA == 8:
             
