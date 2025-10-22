@@ -17,11 +17,8 @@ de6 = "assets/dés/64px-Dice-6-b.svg.png"
 
 depart =       pygame.image.load("assets/plateau/depart.png")            
 oie =          pygame.image.load("assets/plateau/oiecase.png")
-prison =       pygame.image.load("assets/plateau/prison.png")
-hotel =        pygame.image.load("assets/plateau/hotel.png") 
+fusil =       pygame.image.load("assets/plateau/fusil.png")
 labyrinth =    pygame.image.load("assets/plateau/labyrinth.png")
-puit =         pygame.image.load("assets/plateau/puit.png")
-tetedemort =   pygame.image.load("assets/plateau/tetedemort.png")
 arriver =      pygame.image.load("assets/plateau/arriver.png")
 basechelle2 =  pygame.image.load("assets/plateau/basechelle2.png") 
 longechelle1 = pygame.image.load("assets/plateau/longechelle1.png")
@@ -44,8 +41,6 @@ class Joueur(pygame.sprite.Sprite):
         self.screen = pygame.display.set_mode((850,567)) 
         self.nomjoueur = ""
        
-        self.hotelj1 = 0
-        self.hoteljIA = 0
         
         self.valeurdude_joueur1 = 0
         self.valeurdude_joueurIA = 0
@@ -72,7 +67,7 @@ class Joueur(pygame.sprite.Sprite):
         self.findepartieperdu = pygame.image.load("assets/findepartieperdu.jpg")
         self.picturerecommencer = pygame.image.load("assets/recommencer.jpg")
         
-        self.caseliste = {8:oie, 19:hotel, 26:oie, 27:basechelle2, 31:puit, 36:oie, 42:labyrinth, 46:basechelle2, 52:prison, 58:tetedemort, 62:basechelle2}
+        self.caseliste = {8:oie, 19:fusil, 26:oie, 27:basechelle2, 31:fusil, 36:oie, 42:labyrinth, 46:basechelle2, 52:fusil, 58:fusil, 62:basechelle2}
 
 
         self.position1 = 0
@@ -176,15 +171,15 @@ class Joueur(pygame.sprite.Sprite):
 
             self.screen.blit(depart,        (18, 22))
             self.screen.blit(oie,          (514, 22))
-            self.screen.blit(hotel,       (763, 429))
+            self.screen.blit(fusil,       (763, 429))
             self.screen.blit(oie,         (390, 488))                
             self.screen.blit(basechelle2, (328, 429))
-            self.screen.blit(puit,         (80, 488))                
+            self.screen.blit(fusil,         (80, 488))                
             self.screen.blit(oie,          (18, 256))             
             self.screen.blit(labyrinth,   (266, 139))     
             self.screen.blit(longechelle1,(514, 197))
-            self.screen.blit(prison,      (638, 372))
-            self.screen.blit(tetedemort,  (266, 372))                
+            self.screen.blit(fusil,      (638, 372))
+            self.screen.blit(fusil,  (266, 372))                
             self.screen.blit(basechelle2, (142, 197))
             self.screen.blit(arriver,     (204, 256))
             
@@ -203,23 +198,7 @@ class Joueur(pygame.sprite.Sprite):
                 casespecialeIA = self.caseliste[self.positionIA]
                 self.screen.blit(casespecialeIA,(452,315))
            
-            if self.hotelj1 == 1 or self.hotelj1 == 2 :
-                
-                front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
-                casehotel1 = front3.render(str(self.hotelj1), True ,(0,0,0),(255,255,255))
-                casehotel1_rect1 = casehotel1.get_rect()
-                casehotel1_rect1.x = 426
-                casehotel1_rect1.y = 258
-                self.screen.blit(casehotel1, casehotel1_rect1)
-
-            if self.hoteljIA == 1 or self.hoteljIA == 2 : 
-
-                front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
-                casehotelIA = front3.render(str(self.hoteljIA), True ,(0,0,0),(255,255,255))
-                casehotelIA_rect1 = casehotelIA.get_rect()
-                casehotelIA_rect1.x = 426
-                casehotelIA_rect1.y = 315
-                self.screen.blit(casehotelIA, casehotelIA_rect1)
+            
 
             # nom du joueur1, valeur du dé
             font = pygame.font.SysFont('Comic Sans MS,Arial',15)
@@ -326,7 +305,7 @@ class Joueur(pygame.sprite.Sprite):
             self.positionIA -= self.valeurdude_joueur1
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
-            self.hoteljIA = 0
+            
 
     def verif1(self):
 
@@ -415,9 +394,10 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.y = Grille[self.position1][2] 
             
         if self.position1 == 52:
-            if self.joueur1peutjouer == True :
-                pygame.time.delay(1000)
-                self.sound_manager.play("prison")
+            
+            pygame.time.delay(1000)
+            self.position1 = 0
+            self.sound_manager.play("prison")
 
         if self.position1 == 46:
 
@@ -448,12 +428,10 @@ class Joueur(pygame.sprite.Sprite):
         if self.position1 == 31:
             
             pygame.time.delay(1000)
-            
+            self.position1 = 0
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
-            if self.joueur1peutjouer == True :
-                self.sound_manager.play("plouf")
-
+            
         if self.position1 == 27:
 
             pygame.time.delay(1000)
@@ -476,9 +454,12 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.y = Grille[self.position1][2] 
             
         if self.position1 == 19:
-            if self.joueur1peutjouer == True :
-                pygame.time.delay(1000)
-                self.sound_manager.play("hotel")
+            
+            pygame.time.delay(1000)
+            self.position1 = 0
+            self.rect_joueur1.x = Grille[self.position1][1] 
+            self.rect_joueur1.y = Grille[self.position1][2] 
+            self.sound_manager.play("hotel")
             
         if self.position1 == 8:
             
@@ -488,42 +469,7 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.x = Grille[self.position1][1] 
             self.rect_joueur1.y = Grille[self.position1][2] 
             
-    def casespeciale1(self):
-        # regle pour joueur1 casespeciale
-        if 19 == self.positionIA or 31 == self.positionIA or 52 == self.positionIA :
-
-            self.joueurIApeutjouer = False
-            self.joueur1peutjouer = True
-            print("interdit a jIA de jouer tout seul ") 
-
-            if 19 == self.position1 or 31 == self.position1 or 52 == self.position1 :
-
-                self.joueurIApeutjouer = True
-                self.joueur1peutjouer = False
-                self.hoteljIA = 0
-                self.hotelj1 = 0
-
-                print("echange de prisonnier jIA liberer ")
-
-        if 19 == self.positionIA :
-            self.hoteljIA += 1
-            print("jIA " + str(self.hoteljIA) + " jour d hotel")
-            
-            front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
-            casehotelIA = front3.render(str(self.hoteljIA), True ,(0,0,0),(255,255,255))
-            casehotelIA_rect1 = casehotelIA.get_rect()
-            casehotelIA_rect1.x = 473
-            casehotelIA_rect1.y = 315
-            self.screen.blit(casehotelIA, casehotelIA_rect1)
-
-            if self.hoteljIA > 2 :
-                self.joueurIApeutjouer = True
-                self.hotelj1 = 0
-                print("jIA est partis de l hotel")
-        
-        
-        
-            
+    
 
 
 
@@ -649,9 +595,9 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.positionIA == 52:
 
-            if self.joueurIApeutjouer == True :
-                pygame.time.delay(1000)
-                self.sound_manager.play("prison")
+            pygame.time.delay(1000)
+            self.positionIA = 0
+            self.sound_manager.play("prison")
 
         if self.positionIA == 46:
             
@@ -681,11 +627,10 @@ class Joueur(pygame.sprite.Sprite):
         if self.positionIA == 31:
 
             pygame.time.delay(1000)
-            
+            self.positionIA = 0
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
-            if self.joueurIApeutjouer == True :
-                self.sound_manager.play("plouf")
+            
 
         if self.positionIA == 27:
             
@@ -707,9 +652,12 @@ class Joueur(pygame.sprite.Sprite):
             
 
         if self.positionIA == 19:
-            if self.joueurIApeutjouer == True :
-                pygame.time.delay(1000)     
-                self.sound_manager.play("hotel")
+            
+            pygame.time.delay(1000)
+            self.positionIA = 0   
+            self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
+            self.rect_joueurIA.y = Grille[self.positionIA][2]   
+            self.sound_manager.play("hotel")
 
         if self.positionIA == 8:
             
@@ -719,42 +667,7 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
             self.rect_joueurIA.y = Grille[self.positionIA][2]
             
-    def casescpecialeIA(self):
-
-    # regle pour joueurIA casespeciale
-                        
-            
-        if 19 == self.position1 or 31 == self.position1 or 52 == self.position1 :
-
-        
-            self.joueur1peutjouer = False
-            self.joueurIApeutjouer = True
-            print("interdit a j1 de jouer tout seul") 
-
-            if 19 == self.positionIA or 31 == self.positionIA or 52 == self.positionIA :
-                self.joueur1peutjouer = True
-                self.joueurIApeutjouer = False
-                self.hotelj1 = 0
-                self.hoteljIA = 0
-                print("echange de prisonnier j1 liberer") 
-
-        if 19 == self.position1 :
-            self.hotelj1 += 1
-            print("j1 " + str(self.hotelj1) + " jour d hotel")
-            
-            front3 =  pygame.font.SysFont('Comic Sans MS,Arial',39)
-            casehotel1 = front3.render(str(self.hotelj1), True ,(0,0,0),(255,255,255))
-            casehotel1_rect1 = casehotel1.get_rect()
-            casehotel1_rect1.x = 473
-            casehotel1_rect1.y = 258
-            self.screen.blit(casehotel1, casehotel1_rect1)
-
-            if self.hotelj1 > 2 :
-
-                self.joueur1peutjouer = True
-                self.hotelj1 = 0
-                print("j1 est partis de l hotel")
-
+   
        
 
       

@@ -217,7 +217,7 @@ while joueur.recommencer :
                         joueur.joueurIApeutjouer = True
                         print("debloque jIA") 
 
-                        joueur.casespeciale1()
+                        
                     
 
                     # IA joueur    
@@ -253,7 +253,7 @@ while joueur.recommencer :
                         joueur.joueurIApeutjouer = False
                         print("debloque j1") 
 
-                        joueur.casescpecialeIA()
+                        
 
                         pygame.event.clear()    
                             
