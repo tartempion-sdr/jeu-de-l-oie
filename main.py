@@ -25,7 +25,7 @@ pygame.mouse.set_cursor(*pygame.cursors.arrow)
 mous = pygame.cursors.load_xbm("assets/dés/de.xbm", "assets/dés/de-mask.xbm")
 # entrez votre nom
 
-font = pygame.font.SysFont('Comic Sans MS,Arial',13)
+font = pygame.font.SysFont('Comic Sans MS,Arial',18)
 entrezvotreprenom = font.render("ENTREZ VOTRE PRENOM :" ,True ,(0,0,0),(255,255,255))
 prompt_rect = entrezvotreprenom.get_rect()
 prompt_rect.x = 55
@@ -189,33 +189,26 @@ while joueur.recommencer :
                 if joueur.joueur1peutjouer  == True:  
                     joueur.toutAfficher()
                     # 1 joueur 
-                    if joueur.rect_joueur1 != 52 and joueur.rect_joueur1 != 31 :
-                        joueur.printrandom1()
-                        pygame.time.delay(1000)
+                    joueur.printrandom1()
+                    pygame.time.delay(100)
                         
-                        joueur.deplacementdupion1() 
-                        joueur.toutAfficher()
+                    joueur.deplacementdupion1() 
+                    joueur.toutAfficher()
                         
-                        joueur.colision1() 
-                        joueur.toutAfficher()
+                    joueur.colision1() 
+                    joueur.toutAfficher() 
 
-                        if joueur.position1 > 57 :
-                            pygame.time.delay(500) 
-                            joueur.verif1()
-                            joueur.toutAfficher()
-                            print("triple verification j1")  
+                    joueur.verif1()
+                    joueur.toutAfficher()
 
-                        joueur.verif1()
-                        joueur.toutAfficher()
+                    joueur.verif1()
+                    pygame.time.delay(100)
+                    joueur.toutAfficher()
+                    print("double verification j1")  
 
-                        joueur.verif1()
-                        pygame.time.delay(100)
-                        joueur.toutAfficher()
-                        print("double verification j1")  
-
-                        joueur.joueur1peutjouer = False
-                        joueur.joueurIApeutjouer = True
-                        print("debloque jIA") 
+                    joueur.joueur1peutjouer = False
+                    joueur.joueurIApeutjouer = True
+                    print("debloque jIA") 
 
                         
                     
@@ -223,39 +216,29 @@ while joueur.recommencer :
                     # IA joueur    
                 if joueur.joueurIApeutjouer  == True:  
                     joueur.toutAfficher()
-                
-                    if joueur.rect_joueurIA != 52 and joueur.rect_joueurIA != 31 :
-                        pygame.time.delay(500)         
-                        joueur.printrandomIA()
+                    joueur.printrandomIA()
 
-                        pygame.time.delay(1000)
-                        joueur.deplacementdupionIA()
-                        joueur.toutAfficher()
+                    pygame.time.delay(100)
+                    joueur.deplacementdupionIA()
+                    joueur.toutAfficher()
 
-                        joueur.colisionIA() 
-                        joueur.toutAfficher()
+                   
 
-                        if joueur.positionIA > 57 :
-                            pygame.time.delay(500) 
-                            joueur.vefifIA()
-                            joueur.toutAfficher()
-                            print("triple verification jIA") 
-
-                        joueur.vefifIA()
-                        joueur.toutAfficher()                            
-                         
-                        joueur.vefifIA()
-                        pygame.time.delay(100)    
-                        joueur.toutAfficher()
-                        print("double verification jIA")
-                                               
-                        joueur.joueur1peutjouer = True
-                        joueur.joueurIApeutjouer = False
-                        print("debloque j1") 
+                    joueur.vefifIA()
+                    joueur.toutAfficher()                            
+                        
+                    joueur.vefifIA()
+                    pygame.time.delay(100)    
+                    joueur.toutAfficher()
+                    print("double verification jIA")
+                                            
+                    joueur.joueur1peutjouer = True
+                    joueur.joueurIApeutjouer = False
+                    print("debloque j1") 
 
                         
 
-                        pygame.event.clear()    
+                    pygame.event.clear()    
                             
 
     while joueur.findepartie :
@@ -354,8 +337,6 @@ while joueur.recommencer :
                     joueur.rect_joueurIA.x = Grille[joueur.positionIA][1] + 30
                     joueur.rect_joueurIA.y = Grille[joueur.positionIA][2] 
                     joueur.nomjoueur = ""
-                    joueur.hotelj1 = 0
-                    joueur.hoteljIA = 0
                     user_input = font.render(joueur.nomjoueur, True, (0,0,0), (255,255,255))
                     joueur.joueur1peutjouer = True
                     joueur.joueurIApeutjouer = False
