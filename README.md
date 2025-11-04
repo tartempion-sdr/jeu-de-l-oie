@@ -69,4 +69,4 @@ git pull
 
 git add .  
 git commit -m "go pygame"   
-git push origine master  
+git push origin master  
