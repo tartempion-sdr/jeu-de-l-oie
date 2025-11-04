@@ -299,7 +299,7 @@ class Joueur(pygame.sprite.Sprite):
     def colision1(self):
         
         if self.position1 == self.positionIA and self.position1 != 0:
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.sound_manager.play("pion")
             self.positionIA -= self.valeurdude_joueur1
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -313,7 +313,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.position1 == 69:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1  = 63 - (self.position1 - 63)
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -323,7 +323,7 @@ class Joueur(pygame.sprite.Sprite):
            
         if self.position1 == 68:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1  =  63 - (self.position1 - 63)
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -332,7 +332,7 @@ class Joueur(pygame.sprite.Sprite):
         
         if self.position1 == 67:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1   =  63 - (self.position1 - 63)
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -341,7 +341,7 @@ class Joueur(pygame.sprite.Sprite):
        
         if self.position1 == 66:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1  =  63 - (self.position1 - 63)
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -350,7 +350,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 65: 
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1  =  63 - (self.position1 - 63)
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -359,7 +359,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 64:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 =  63 - (self.position1 - 63)
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -368,7 +368,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 63:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             print("JOUEUR1 A GAGNER !!!!!!") 
             self.sound_manager.play("pion")
             self.running = False
@@ -377,7 +377,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 62:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 40
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -387,7 +387,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.position1 == 52:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 0
             self.sound_manager.play("fusil")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -395,7 +395,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 46:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 54
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -403,7 +403,7 @@ class Joueur(pygame.sprite.Sprite):
             
 
         if self.position1 == 42:
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 30
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -412,7 +412,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 36:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 += self.valeurdude_joueur1
             self.sound_manager.play("oie")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -421,7 +421,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 31:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 0
             self.sound_manager.play("fusil")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -429,7 +429,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.position1 == 27:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 57
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -442,7 +442,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.position1 == 26:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 += self.valeurdude_joueur1
             self.sound_manager.play("oie")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -450,7 +450,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.position1 == 19:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 = 0
             self.sound_manager.play("fusil")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -458,7 +458,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.position1 == 8:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.position1 += self.valeurdude_joueur1
             self.sound_manager.play("oie")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -488,7 +488,7 @@ class Joueur(pygame.sprite.Sprite):
 
 
         if self.positionIA == self.position1 and self.position1 != 0:
-            pygame.time.delay(1000)    
+            pygame.time.delay(100)    
             self.position1 -= self.valeurdude_joueurIA
             self.sound_manager.play("pion")
             self.rect_joueur1.x = Grille[self.position1][1] 
@@ -501,7 +501,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.positionIA == 69:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA  =  63 - (self.positionIA - 63)
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -511,7 +511,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.positionIA == 68:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA  =  63 - (self.positionIA - 63)
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -521,7 +521,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.positionIA == 67:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA  =  63 - (self.positionIA - 63)
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -532,7 +532,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.positionIA == 66:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA  =  63 - (self.positionIA - 63)
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -542,7 +542,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.positionIA == 65:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA =  63 - (self.positionIA - 63)
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -552,7 +552,7 @@ class Joueur(pygame.sprite.Sprite):
         # out of range > 
         if self.positionIA == 64:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA =  63 - (self.positionIA - 63)
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -561,7 +561,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 63:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             print("JOUEUR-IA A GAGNER !!!!!!")
             #acceuil = True
             self.sound_manager.play("pion")
@@ -571,7 +571,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 62:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 40
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -581,7 +581,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.positionIA == 52:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 0
             self.sound_manager.play("fusil")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -590,7 +590,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 46:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 54
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -598,7 +598,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.positionIA == 42:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 30
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -607,7 +607,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 36:
            
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA += self.valeurdude_joueurIA
             self.sound_manager.play("oie")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -615,7 +615,7 @@ class Joueur(pygame.sprite.Sprite):
             
         if self.positionIA == 31:
 
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 0
             self.sound_manager.play("fusil")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -624,7 +624,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 27:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 57
             self.sound_manager.play("pion")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -634,7 +634,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 26:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA += self.valeurdude_joueurIA
             self.sound_manager.play("oie")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -643,7 +643,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 19:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA = 0   
             self.sound_manager.play("fusil")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
@@ -651,7 +651,7 @@ class Joueur(pygame.sprite.Sprite):
 
         if self.positionIA == 8:
             
-            pygame.time.delay(1000)
+            pygame.time.delay(100)
             self.positionIA += self.valeurdude_joueurIA
             self.sound_manager.play("oie")
             self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
