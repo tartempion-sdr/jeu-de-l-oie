@@ -13,24 +13,23 @@
     Si lors de la partie, le joueur tombe sur une oie(case[ 8,26,36 ])
 	   avance de nouveau du nombre de points réalisés. 
 	    
+	    
 	      =:-Le joueur qui tombe sur la case:-:=
 	    
-	     8  Oie                             
-	    19  correspondant a l'hôtel 
+	     8   Oie double votre deplacement                            
+	    19  correspondant au coups de fusil 
 			recommencez la partie depuis le début
-	    26  Oie 
-	    27 -> 57  echelles  
-	    31  correspondant au puits 
+	    26  Oie double votre deplacement
+	    27 -> 57  echelle  
+	    31  correspondant au coups de fusil 
 			recommencez la partie depuis le début
-	    36 Oie
-	    40 -> 62  echelles 
+	    36 Oie double votre deplacement
+	    40 -> 62  echelle 
 	    42 correspondant au labyrinthe 
 	       retournez à la case 30.
-	    46 -> 54  echelles 
-	    52 correspondant a la prison 
+	    46 -> 54  echelle 
+	    52 correspondant au coups de fusil  
 	       recommencez la partie depuis le début
-	    58 correspondant à la case Tête de mort 
-	    recommencera la partie depuis le début
 	    
 		si le joueur réalise un score aux dés 
 	supérieur au nombre de case le séparant de la case 63 

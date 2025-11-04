@@ -67,7 +67,7 @@ class Joueur(pygame.sprite.Sprite):
         self.findepartieperdu = pygame.image.load("assets/findepartieperdu.jpg")
         self.picturerecommencer = pygame.image.load("assets/recommencer.jpg")
         
-        self.caseliste = {8:oie, 19:fusil, 26:oie, 27:basechelle2, 31:fusil, 36:oie, 42:labyrinth, 46:basechelle2, 52:fusil, 58:fusil, 62:basechelle2}
+        self.caseliste = {8:oie, 19:fusil, 26:oie, 27:basechelle2, 31:fusil, 36:oie, 42:labyrinth, 46:basechelle2, 52:fusil, 62:basechelle2}
 
 
         self.position1 = 0
@@ -178,8 +178,7 @@ class Joueur(pygame.sprite.Sprite):
             self.screen.blit(oie,          (18, 256))             
             self.screen.blit(labyrinth,   (266, 139))     
             self.screen.blit(longechelle1,(514, 197))
-            self.screen.blit(fusil,      (638, 372))
-            self.screen.blit(fusil,  (266, 372))                
+            self.screen.blit(fusil,      (638, 372))               
             self.screen.blit(basechelle2, (142, 197))
             self.screen.blit(arriver,     (204, 256))
             
@@ -187,13 +186,13 @@ class Joueur(pygame.sprite.Sprite):
 
 
             # case spéciale!
-            if int(self.position1) in (8, 19, 26, 27, 31, 36, 42, 46, 52, 58, 62):
+            if int(self.position1) in (8, 19, 26, 27, 31, 36, 42, 46, 52, 62):
                 #print(caseliste[8])
                 casespeciale1 = self.caseliste[self.position1]
                 self.screen.blit(casespeciale1,(452,258))
                 
 
-            if self.positionIA in (8, 19, 26, 27, 31, 36, 42, 46, 52, 58, 62):
+            if self.positionIA in (8, 19, 26, 27, 31, 36, 42, 46, 52, 62):
 
                 casespecialeIA = self.caseliste[self.positionIA]
                 self.screen.blit(casespecialeIA,(452,315))
@@ -385,13 +384,6 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueur1.y = Grille[self.position1][2] 
             self.toutAfficher()
 
-        if self.position1 == 58:
-            
-            pygame.time.delay(1000)
-            self.position1 = 0
-            self.sound_manager.play("fusil")
-            self.rect_joueur1.x = Grille[self.position1][1] 
-            self.rect_joueur1.y = Grille[self.position1][2] 
             
         if self.position1 == 52:
             
@@ -586,15 +578,6 @@ class Joueur(pygame.sprite.Sprite):
             self.rect_joueurIA.y = Grille[self.positionIA][2] 
             self.toutAfficher()
          
-
-        if self.positionIA == 58:
-            
-
-            pygame.time.delay(1000)
-            self.positionIA = 0
-            self.sound_manager.play("fusil")
-            self.rect_joueurIA.x = Grille[self.positionIA][1] + 28
-            self.rect_joueurIA.y = Grille[self.positionIA][2] 
             
         if self.positionIA == 52:
 
