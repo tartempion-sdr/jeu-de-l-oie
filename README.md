@@ -1,4 +1,4 @@
-![alt tag](https://github.com/tartempion-sdr/jeu-de-l-oie/blob/master/assets/capture-decran-de-2023-03-08-00-26-29.png)
+![alt tag](https://github.com/tartempion-sdr/jeu-de-l-oie/blob/master/assets/Capture d’écran du 2025-11-04 18-13-28.png)
 
 
 
